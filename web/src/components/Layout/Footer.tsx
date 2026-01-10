@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
                         <Link href="/" className="text-2xl font-bold text-primary mb-4 block">
-                            EventPro
+                            UpgreatExpo
                         </Link>
                         <p className="text-muted-foreground text-sm">
                             Creating unforgettable experiences for your most important moments.
@@ -55,7 +55,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} EventPro. All rights reserved.
+                    © {new Date().getFullYear()} UpgreatExpo. All rights reserved.
                 </div>
             </div>
         </footer>

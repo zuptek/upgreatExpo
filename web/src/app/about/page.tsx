@@ -2,7 +2,7 @@ import { Button } from "@/components/UI/Button";
 import Image from "next/image";
 
 export const metadata = {
-    title: "About Us - EventPro",
+    title: "About Us - UpgreatExpo",
     description: "Learn more about our team and our mission.",
 };
 
@@ -12,7 +12,7 @@ export default function AboutPage() {
             <div className="container px-4">
                 {/* Hero */}
                 <div className="max-w-3xl mx-auto text-center mb-20">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About EventPro</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">About UpgreatExpo</h1>
                     <p className="text-xl text-muted-foreground">
                         We are a team of passionate event planners dedicated to creating unforgettable experiences.
                     </p>
@@ -29,7 +29,7 @@ export default function AboutPage() {
                     <div>
                         <h2 className="text-3xl font-bold mb-6">Our Story</h2>
                         <p className="text-muted-foreground mb-6 leading-relaxed">
-                            Founded in 2020, EventPro started with a simple mission: to take the stress out of event planning.
+                            Founded in 2020, UpgreatExpo started with a simple mission: to take the stress out of event planning.
                             What began as a small team of two has grown into a full-service agency with experts in every field
                             of event management.
                         </p>

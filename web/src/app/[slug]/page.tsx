@@ -21,16 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
         if (!page) {
             return {
-                title: "Page Not Found - EventPro",
+                title: "Page Not Found - UpgreatExpo",
             };
         }
 
         return {
-            title: `${page.title} - EventPro`,
+            title: `${page.title} - UpgreatExpo`,
         };
     } catch (error) {
         return {
-            title: "EventPro",
+            title: "UpgreatExpo",
         };
     }
 }

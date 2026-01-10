@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-    title: "EventPro - Professional Event Management",
+    title: "UpgreatExpo - Professional Event Management",
     description: "Creating unforgettable experiences for your most important moments.",
 };
 

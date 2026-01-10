@@ -23,19 +23,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
         if (!post) {
             return {
-                title: "Post Not Found - EventPro",
+                title: "Post Not Found - UpgreatExpo",
             };
         }
 
         return {
-            title: `${post.title} - EventPro`,
+            title: `${post.title} - UpgreatExpo`,
             openGraph: {
                 images: post.mainImage ? [urlFor(post.mainImage).url()] : [],
             },
         };
     } catch (error) {
         return {
-            title: "Blog - EventPro",
+            title: "Blog - UpgreatExpo",
         };
     }
 }

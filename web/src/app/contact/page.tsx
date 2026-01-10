@@ -2,7 +2,7 @@ import { Button } from "@/components/UI/Button";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata = {
-    title: "Contact Us - EventPro",
+    title: "Contact Us - UpgreatExpo",
     description: "Get in touch with us to start planning your next event.",
 };
 

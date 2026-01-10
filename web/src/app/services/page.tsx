@@ -1,7 +1,7 @@
 import ServicesList from "@/components/Services/ServicesList";
 
 export const metadata = {
-    title: "Our Services - EventPro",
+    title: "Our Services - UpgreatExpo",
     description: "Explore our comprehensive event management services.",
 };
 

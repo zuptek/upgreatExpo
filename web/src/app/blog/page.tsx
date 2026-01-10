@@ -2,7 +2,7 @@ import { client } from "@/lib/sanity";
 import BlogCard from "@/components/Blog/BlogCard";
 
 export const metadata = {
-    title: "Blog - EventPro",
+    title: "Blog - UpgreatExpo",
     description: "Latest news, tips, and insights from the world of event planning.",
 };
 
