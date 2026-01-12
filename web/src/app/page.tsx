@@ -33,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-background text-foreground font-sans selection:bg-primary selection:text-primary-foreground">
+    <div ref={containerRef} className="text-foreground font-sans selection:bg-primary selection:text-primary-foreground">
 
       {/* HERO SECTION */}
       <Hero />

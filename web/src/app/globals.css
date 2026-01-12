@@ -37,8 +37,10 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 222.2 84% 4.9%;
+    /* Dark by default */
+    --foreground: 210 40% 98%;
+    /* Light text */
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -46,7 +48,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 0 84.2% 60.2%;
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
@@ -107,6 +109,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    background: linear-gradient(135deg, #0a0a2e 0%, #1a1a5e 50%, #2a2a8e 100%);
+    min-height: 100vh;
   }
 
   h1,
