@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import ScrollToTop from "@/components/UI/ScrollToTop";
 
 import { client } from "@/lib/sanity";
 
@@ -63,6 +64,7 @@ export default async function RootLayout({
                     {children}
                 </main>
                 <Footer />
+                <ScrollToTop />
             </body>
         </html>
     );
