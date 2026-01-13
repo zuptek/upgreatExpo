@@ -2,6 +2,9 @@
 
 import React from "react";
 import Hero from "@/components/Home/Hero";
+import EndToEndExecution from "@/components/Home/EndToEndExecution";
+import OurProcess from "@/components/Home/OurProcess";
+import UpGreatAdvantage from "@/components/Home/UpGreatAdvantage";
 import WorkCarousel from "@/components/Home/WorkCarousel";
 import ImageGrid from "@/components/Home/ImageGrid";
 import { Button } from "@/components/UI/Button";
@@ -13,7 +16,16 @@ export default function Home() {
       {/* 1. HERO SECTION (Includes Video, Subscription, Text, Feature) */}
       <Hero />
 
-      {/* 2. WORK CAROUSEL (Horizontal Scroll) */}
+      {/* 2. END-TO-END EXECUTION */}
+      <EndToEndExecution />
+
+      {/* 3. OUR PROCESS */}
+      <OurProcess />
+
+      {/* 4. THE UPGREAT ADVANTAGE */}
+      <UpGreatAdvantage />
+
+      {/* 5. WORK CAROUSEL (Horizontal Scroll) */}
       <WorkCarousel />
 
       {/* 3. IMAGE GRID (Masonry Gallery) */}

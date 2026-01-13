@@ -96,7 +96,7 @@ export default function Hero() {
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[#003063]/60 mix-blend-multiply z-10" />
                     <img
-                        src="/assets/hero_img.jpeg"
+                        src="/assets/hero_img.webp"
                         alt="Trade Show Floor"
                         className="w-full h-full object-cover"
                     />

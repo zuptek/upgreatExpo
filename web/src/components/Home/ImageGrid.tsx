@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const images = Array(12).fill(null).map((_, i) => ({
     id: i,
-    src: "", // Placeholder as requested
+    src: `/assets/event_img${i + 1}.webp`,
     size: i % 3 === 0 ? "large" : "small" // Simple logic to vary sizes
 }));
 
@@ -33,11 +33,13 @@ export default function ImageGrid() {
                             className={`relative group overflow-hidden rounded-sm bg-gray-300 ${img.size === "large" ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1"
                                 }`}
                         >
-                            <img
-                                src={img.src}
-                                alt={`Gallery Image ${i + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
+                            {img.src && (
+                                <img
+                                    src={img.src}
+                                    alt={`Gallery Image ${i + 1}`}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                            )}
                             <div className="absolute inset-0 bg-[#00529b]/0 group-hover:bg-[#00529b]/20 transition-colors duration-300" />
                         </motion.div>
                     ))}

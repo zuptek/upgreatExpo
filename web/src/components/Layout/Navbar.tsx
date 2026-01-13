@@ -58,19 +58,24 @@ export default function Navbar({ items }: NavbarProps) {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? "bg-white border-b border-gray-100 shadow-sm h-16" // Scrolled State (White)
-                : "bg-transparent h-20" // Initial State (Transparent/Blue style)
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+                ? "bg-white/90 backdrop-blur-md shadow-sm h-16 border-b border-gray-100" // Scrolled State (White)
+                : "bg-[#003063]/10 backdrop-blur-md h-20 shadow-lg" // Initial State (Smoky Blue)
                 }`}
         >
             <div className="container mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
-                {/* Logo - Changes color based on scroll */}
+                {/* Logo */}
                 <Link
                     href="/"
-                    className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"
-                        }`}
+                    className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}
                 >
-                    <img src="/assets/logo.png" alt="" />
+                    <img
+                        src="/assets/expoLogo.webp"
+                        alt="Upreat Expo"
+                        width="60"
+                        height="20"
+                        className={`transition-all duration-300 ${isScrolled ? "bg-black p-1 rounded" : ""}`}
+                    />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -79,8 +84,7 @@ export default function Navbar({ items }: NavbarProps) {
                         <div key={link.label} className="relative group h-full flex items-center">
                             {link.subItems && link.subItems.length > 0 ? (
                                 <button
-                                    className={`flex items-center gap-1 text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isScrolled ? "text-slate-600 hover:text-[#00529b]" : "text-white/90 hover:text-white"
-                                        }`}
+                                    className={`flex items-center gap-1 text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isScrolled ? "text-slate-600 hover:text-[#00529b]" : "text-white/90 hover:text-white"}`}
                                     onMouseEnter={() => setActiveDropdown(link.label)}
                                 >
                                     {link.label}
@@ -89,14 +93,13 @@ export default function Navbar({ items }: NavbarProps) {
                             ) : (
                                 <Link
                                     href={link.href}
-                                    className={`text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isScrolled ? "text-slate-600 hover:text-[#00529b]" : "text-white/90 hover:text-white"
-                                        }`}
+                                    className={`text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${isScrolled ? "text-slate-600 hover:text-[#00529b]" : "text-white/90 hover:text-white"}`}
                                 >
                                     {link.label}
                                 </Link>
                             )}
 
-                            {/* Dropdown - Ensure it always has a white background for readability */}
+                            {/* Dropdown */}
                             {link.subItems && link.subItems.length > 0 && (
                                 <div
                                     className={`absolute top-full left-0 pt-0 w-56 transition-all duration-200 ${activeDropdown === link.label ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
@@ -127,10 +130,9 @@ export default function Navbar({ items }: NavbarProps) {
                     </Button>
                 </div>
 
-                {/* Mobile Menu Button - Changes color based on scroll */}
+                {/* Mobile Menu Button */}
                 <button
-                    className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"
-                        }`}
+                    className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}

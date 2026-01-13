@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 
 const projects = [
-    { title: "CES 2025", category: "Technology", src: "" },
-    { title: "Salesforce Dreamforce", category: "Corporate", src: "" },
-    { title: "Adobe Summit", category: "Digital", src: "" },
-    { title: "Google I/O", category: "Experiential", src: "" },
-    { title: "TwitchCon", category: "Gaming", src: "" },
-    { title: "SXSW Activation", category: "Creative", src: "" },
+    { title: "CES 2025", category: "Technology", src: "/assets/event_img13.webp" },
+    { title: "Salesforce Dreamforce", category: "Corporate", src: "/assets/event_img14.webp" },
+    { title: "Adobe Summit", category: "Digital", src: "/assets/event_img15.webp" },
+    { title: "Google I/O", category: "Experiential", src: "/assets/event_img4.webp" },
+    { title: "TwitchCon", category: "Gaming", src: "/assets/event_img5.webp" },
+    { title: "SXSW Activation", category: "Creative", src: "/assets/event_img6.webp" },
 ];
 
 export default function WorkCarousel() {
@@ -32,11 +32,13 @@ export default function WorkCarousel() {
                 <motion.div style={{ x }} className="flex gap-8 px-10">
                     {projects.map((project, i) => (
                         <div key={i} className="group relative h-[60vh] w-[40vw] flex-shrink-0 overflow-hidden rounded-sm bg-gray-200">
-                            <img
-                                src={project.src}
-                                alt={project.title}
-                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
+                            {project.src && (
+                                <img
+                                    src={project.src}
+                                    alt={project.title}
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                            )}
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
                             <div className="absolute bottom-8 left-8 text-white">
                                 <p className="text-sm font-bold uppercase tracking-widest mb-2 opacity-80">{project.category}</p>
