@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Search } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
+import SearchModal from '@/components/UI/SearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ... (navLinks and interfaces stay the same)
@@ -20,6 +21,7 @@ interface NavbarProps {
 export default function Navbar({ items }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     // 1. Add state to track if user has scrolled
     const [isScrolled, setIsScrolled] = useState(false);
@@ -124,6 +126,13 @@ export default function Navbar({ items }: NavbarProps) {
                         </div>
                     ))}
 
+                    <button
+                        onClick={() => setIsSearchOpen(true)}
+                        className={`p-2 transition-colors duration-300 hover:bg-white/10 rounded-full ${isScrolled ? "text-slate-600 hover:text-[#00529b]" : "text-white/90 hover:text-white"}`}
+                    >
+                        <Search size={20} />
+                    </button>
+
                     <Button
                         className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-[10px] h-10 px-6 rounded-sm transition-all shadow-md"
                         href="/contact"
@@ -189,6 +198,8 @@ export default function Navbar({ items }: NavbarProps) {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
         </nav>
     );
 }
