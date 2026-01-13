@@ -38,8 +38,8 @@ export default function Navbar({ items }: NavbarProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Navigation Links
-    const links: NavItem[] = [
+    // Navigation Links - Use CMS items if available, otherwise fallback to hardcoded
+    const defaultLinks: NavItem[] = [
         {
             label: 'Solutions',
             href: '/services',
@@ -55,6 +55,8 @@ export default function Navbar({ items }: NavbarProps) {
         { label: 'About Us', href: '/about' },
         { label: 'Contact', href: '/contact' },
     ];
+
+    const links = items && items.length > 0 ? items : defaultLinks;
 
     return (
         <nav
