@@ -1,109 +1,40 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
+import React from "react";
 import Hero from "@/components/Home/Hero";
+import WorkCarousel from "@/components/Home/WorkCarousel";
+import ImageGrid from "@/components/Home/ImageGrid";
+import { Button } from "@/components/UI/Button";
 
 export default function Home() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    // GSAP implementation for the smooth text reveal on scroll
-    const textElements = gsap.utils.toArray(".reveal-up");
-    textElements.forEach((el: any) => {
-      gsap.fromTo(el,
-        { y: 100, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 1.5, ease: "power4.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-          }
-        }
-      );
-    });
-  }, []);
-
   return (
-    <div ref={containerRef} className="text-foreground font-sans selection:bg-primary selection:text-primary-foreground">
+    <div className="text-foreground font-sans selection:bg-[#E6007E] selection:text-white">
 
-      {/* HERO SECTION */}
+      {/* 1. HERO SECTION (Includes Video, Subscription, Text, Feature) */}
       <Hero />
 
-      {/* 3. THE "MASKED" IMAGE REVEAL (Parallax) */}
-      <section className="relative py-40 px-8 md:px-20">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm group">
-          <motion.div
-            whileInView={{ scale: 1.1 }}
-            transition={{ duration: 2 }}
-            className="h-full w-full"
+      {/* 2. WORK CAROUSEL (Horizontal Scroll) */}
+      <WorkCarousel />
+
+      {/* 3. IMAGE GRID (Masonry Gallery) */}
+      <ImageGrid />
+
+      {/* 4. CONTACT SECTION (Freeman Style) */}
+      <section className="bg-[#003063] py-24 text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
+            Ready to make your next event unforgettable?
+          </h2>
+          <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto">
+            Let's collaborate to create meaningful experiences that connect your brand with your audience.
+          </p>
+          <Button
+            className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-sm px-10 h-14 rounded-sm transition-all shadow-lg"
+            href="/contact"
           >
-            <img
-              src="/api/placeholder/1920/1080"
-              alt="Event"
-              className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
-            />
-          </motion.div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="reveal-up text-6xl md:text-[8vw] font-bold uppercase mix-blend-difference pointer-events-none">
-              The Showcase
-            </h2>
-          </div>
+            Get In Touch
+          </Button>
         </div>
-      </section>
-
-      {/* 4. BRUTALIST LIST (Alternative to Cards) */}
-      <section className="py-40 container">
-        <div className="border-t border-white/10">
-          {[
-            { id: "01", name: "Corporate Galas", category: "Strategy & Execution" },
-            { id: "02", name: "Tech Summits", category: "Immersive Production" },
-            { id: "03", name: "Luxury Launches", category: "Bespoke Design" },
-            { id: "04", name: "Global Expos", category: "Logistics" },
-          ].map((item, i) => (
-            <div key={i} className="group flex items-center justify-between py-12 border-b border-white/10 hover:px-8 transition-all duration-500 cursor-pointer hover:bg-white/5">
-              <div className="flex items-center gap-20">
-                <span className="text-sm font-mono opacity-30">{item.id}</span>
-                <h3 className="text-4xl md:text-7xl font-bold uppercase italic tracking-tighter group-hover:text-purple-500 transition-colors">
-                  {item.name}
-                </h3>
-              </div>
-              <span className="hidden md:block text-xs uppercase tracking-widest opacity-40">{item.category}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. OVERSIZED TEXT MARQUEE (GSAP Animation) */}
-      <section className="py-20 overflow-hidden bg-white text-black">
-        <div className="flex whitespace-nowrap text-[10vw] font-black uppercase italic leading-none">
-          <motion.div
-            animate={{ x: [0, -1000] }}
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-            className="flex gap-20"
-          >
-            <span>The UpGreat Expo • Elevate your Vision • The UpGreat Expo • Elevate your Vision •</span>
-            <span>The UpGreat Expo • Elevate your Vision • The UpGreat Expo • Elevate your Vision •</span>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 6. CONTACT (SIMPLE & POWERFUL) */}
-      <section className="h-screen flex flex-col items-center justify-center p-8">
-        <h2 className="reveal-up text-center text-4xl md:text-7xl font-bold uppercase tracking-tighter mb-20 max-w-4xl leading-tight">
-          Ready to make your next event <span className="italic underline underline-offset-8 decoration-1 decoration-white/20">unforgettable?</span>
-        </h2>
-        <a href="mailto:hello@upgreatexpo.com" className="text-[10vw] font-black uppercase italic hover:text-blue-500 transition-colors">
-          Hello@Us
-        </a>
       </section>
 
     </div>

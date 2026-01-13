@@ -38,7 +38,7 @@ export default function Navbar({ items }: NavbarProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Freeman-style links
+    // Navigation Links
     const links: NavItem[] = [
         {
             label: 'Solutions',
