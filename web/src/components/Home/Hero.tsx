@@ -12,8 +12,7 @@ export default function Hero() {
             <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
                 {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-[#00458c]/80 mix-blend-multiply z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#003063] via-transparent to-transparent z-10 opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#001f3f] via-[#003063] to-[#00529b] opacity-90 z-10" />
                     <video
                         autoPlay
                         loop

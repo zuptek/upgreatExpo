@@ -6,11 +6,11 @@ import { Button } from '@/components/UI/Button';
 
 const projects = [
     { title: "CES 2025", category: "Technology", src: "/assets/event_img13.webp" },
-    { title: "Salesforce Dreamforce", category: "Corporate", src: "/assets/event_img14.webp" },
-    { title: "Adobe Summit", category: "Digital", src: "/assets/event_img15.webp" },
-    { title: "Google I/O", category: "Experiential", src: "/assets/event_img4.webp" },
-    { title: "TwitchCon", category: "Gaming", src: "/assets/event_img5.webp" },
-    { title: "SXSW Activation", category: "Creative", src: "/assets/event_img6.webp" },
+    { title: "Sahil Graphics", category: "Digital", src: "/assets/event_img14.webp" },
+    { title: "Cosmo Films", category: "Corporate", src: "/assets/event_img15.webp" },
+    { title: "Saga Uv Solutions Pvt ltd", category: "Electricals", src: "/assets/event_img4.webp" },
+    { title: "Kirby", category: "Experimental", src: "/assets/event_img5.webp" },
+    { title: "Acer Biomedicals", category: "Chemicals", src: "/assets/event_img7.webp" },
 ];
 
 export default function WorkCarousel() {

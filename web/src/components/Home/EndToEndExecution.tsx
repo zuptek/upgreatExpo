@@ -57,7 +57,7 @@ export default function EndToEndExecution() {
     ];
 
     return (
-        <section className="bg-[#003063] py-20 text-white overflow-hidden">
+        <section className="bg-white py-20 text-[#003063] overflow-hidden">
             <div className="container mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -67,12 +67,12 @@ export default function EndToEndExecution() {
                         <div className="space-y-8">
                             {steps.map((step, index) => (
                                 <div key={index} className="flex items-start gap-4 group">
-                                    <div className="p-3 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 transition-colors">
+                                    <div className="p-3 rounded-full bg-slate-100 border border-slate-200 group-hover:border-[#003063]/20 transition-colors">
                                         {step.icon}
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">{step.title}</h3>
-                                        <p className="text-white/70 text-sm">{step.description}</p>
+                                        <h3 className="text-lg font-bold text-[#003063] group-hover:text-cyan-600 transition-colors">{step.title}</h3>
+                                        <p className="text-slate-600 text-sm">{step.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -82,13 +82,13 @@ export default function EndToEndExecution() {
                     {/* Right Column: Feature Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
-                            <div key={index} className="bg-[#00458c] border border-white/10 p-6 rounded-lg hover:border-cyan-500/30 transition-all duration-300 group shadow-lg">
+                            <div key={index} className="bg-[#003063] border border-white/10 p-6 rounded-lg hover:border-cyan-500/30 transition-all duration-300 group shadow-lg">
                                 <div className="mb-4">
                                     <div className="w-8 h-8 bg-cyan-500/20 rounded flex items-center justify-center">
                                         <Check className="text-cyan-400" size={16} />
                                     </div>
                                 </div>
-                                <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors">{feature.title}</h3>
+                                <h3 className="text-lg font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">{feature.title}</h3>
                                 <p className="text-white/70 text-sm leading-relaxed">
                                     {feature.description}
                                 </p>
