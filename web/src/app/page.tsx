@@ -15,12 +15,13 @@ export default function Home() {
 
       {/* 1. HERO SECTION (Includes Video, Subscription, Text, Feature) */}
       <Hero />
-
+            
+      {/* 3. OUR PROCESS */}
+      <OurProcess />
       {/* 2. END-TO-END EXECUTION */}
       <EndToEndExecution />
 
-      {/* 3. OUR PROCESS */}
-      <OurProcess />
+ 
 
       {/* 4. THE UPGREAT ADVANTAGE */}
       <UpGreatAdvantage />

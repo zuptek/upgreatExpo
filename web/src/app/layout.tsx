@@ -49,6 +49,10 @@ async function getNavigation() {
     }
 }
 
+import ScrollProgress from "@/components/UI/ScrollProgress";
+
+// ... existing imports ...
+
 export default async function RootLayout({
     children,
 }: Readonly<{
@@ -59,6 +63,7 @@ export default async function RootLayout({
     return (
         <html lang="en" className="scroll-smooth">
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased flex flex-col min-h-screen`}>
+                <ScrollProgress />
                 <Navbar items={navItems.length > 0 ? navItems : undefined} />
                 <main className="flex-grow pt-16">
                     {children}

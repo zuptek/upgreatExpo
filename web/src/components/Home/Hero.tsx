@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 import { ArrowRight } from 'lucide-react';
+import TechExhibitionNetwork from './TechExhibitionNetwork';
 
 export default function Hero() {
     return (
@@ -12,7 +13,7 @@ export default function Hero() {
             <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
                 {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#001f3f] via-[#003063] to-[#00529b] opacity-90 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#191970] via-[#191970] to-[#191970] opacity-90 z-10" />
                     <video
                         autoPlay
                         loop
@@ -63,7 +64,7 @@ export default function Hero() {
             </section>
 
             {/* 2. SUBSCRIPTION BAR */}
-            <div className="w-full bg-[#003063] py-6 border-t border-white/10">
+            <div className="w-full bg-[#191970] py-6 border-t border-white/10">
                 <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-white text-sm md:text-base font-medium text-center md:text-left">
                         Stay inspired. Join our community for the latest in event trends and insights.
@@ -73,27 +74,16 @@ export default function Hero() {
                     </Button>
                 </div>
             </div>
-
-            {/* 3. UNFORGETTABLE MOMENTS TEXT SECTION */}
-            <section className="w-full bg-white py-24 lg:py-32">
-                <div className="container mx-auto px-6 lg:px-12">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#003063] leading-tight max-w-5xl"
-                    >
-                        UpGreat Expo designs and delivers <span className="font-bold">unforgettable experiences</span> that create lasting bonds between brands and audiences. We define the future of live events.
-                    </motion.h2>
-                </div>
+            <section>
+                <TechExhibitionNetwork />
             </section>
+
 
             {/* 4. LET'S DESIGN SECTION */}
             <section className="relative w-full min-h-[80vh] flex items-center overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-[#003063]/60 mix-blend-multiply z-10" />
+                    <div className="absolute inset-0 bg-[#191970]/60 mix-blend-multiply z-10" />
                     <img
                         src="/assets/hero_img.webp"
                         alt="Trade Show Floor"
@@ -130,6 +120,20 @@ export default function Hero() {
                             </h3>
                         </motion.div>
                     </div>
+                </div>
+            </section>
+            {/* 3. UNFORGETTABLE MOMENTS TEXT SECTION */}
+            <section className="w-full bg-white py-24 lg:py-32">
+                <div className="container mx-auto px-6 lg:px-12">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#191970] leading-tight max-w-5xl"
+                    >
+                        UpGreat Expo designs and delivers <span className="font-bold">unforgettable experiences</span> that create lasting bonds between brands and audiences. We define the future of live events.
+                    </motion.h2>
                 </div>
             </section>
         </div>
