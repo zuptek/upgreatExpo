@@ -22,7 +22,8 @@ export default function WorkCarousel() {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-50%"]);
 
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-white">
+        // Added z-50 to stack over UpGreatAdvantage (z-40)
+        <section ref={targetRef} className="relative h-[300vh] bg-white z-50">
             <div className="sticky top-0 flex h-screen items-center overflow-hidden">
                 <div className="absolute top-10 left-10 z-10">
                     <h2 className="text-5xl font-bold text-[#003063] uppercase tracking-tight">

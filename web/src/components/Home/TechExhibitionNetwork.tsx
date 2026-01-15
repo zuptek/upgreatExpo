@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Users, CheckCircle, PlayCircle, Store, Clock } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { motion, useSpring, useTransform, useInView } from 'framer-motion';
+import { motion, useSpring, useTransform, useInView, useScroll } from 'framer-motion';
 
 const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
     const ref = useRef(null);
@@ -21,8 +21,17 @@ const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => 
 };
 
 const TechExhibitionNetwork = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yColumn1 = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+    const yColumn2 = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+
     return (
-        <section className="bg-white py-20 text-gray-900 overflow-hidden relative">
+        <section ref={containerRef} className="bg-white py-20 text-gray-900 overflow-hidden relative">
             {/* Background Gradient Effect - Subtle Light */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#191970]/10 to-transparent opacity-60 pointer-events-none" />
 
@@ -78,7 +87,7 @@ const TechExhibitionNetwork = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                         {/* Card 1: Projects */}
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                        <motion.div style={{ y: yColumn1 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
                             <div className="w-10 h-10 rounded-lg bg-[#191970]/5 flex items-center justify-center mb-4 group-hover:bg-[#191970]/10 transition-colors">
                                 <CheckCircle className="text-[#191970]" size={20} />
                             </div>
@@ -86,10 +95,10 @@ const TechExhibitionNetwork = () => {
                                 <Counter value={200} suffix="+" />
                             </h3>
                             <p className="text-gray-500 text-sm">Projects Delivered</p>
-                        </div>
+                        </motion.div>
 
                         {/* Card 2: Happy Clients (Pink) - Kept dark/colored for contrast */}
-                        <div className="bg-[#E6007E] p-6 rounded-2xl border border-[#E6007E] shadow-lg hover:shadow-xl transition-all text-white relative overflow-hidden">
+                        <motion.div style={{ y: yColumn2 }} className="bg-[#E6007E] p-6 rounded-2xl border border-[#E6007E] shadow-lg hover:shadow-xl transition-all text-white relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4 opacity-20">
                                 <Users size={64} />
                             </div>
@@ -100,10 +109,10 @@ const TechExhibitionNetwork = () => {
                                 <Counter value={55} suffix="+" />
                             </h3>
                             <p className="text-white/90 text-sm relative z-10">Happy Clients</p>
-                        </div>
+                        </motion.div>
 
                         {/* Card 3: Experience */}
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                        <motion.div style={{ y: yColumn1 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
                             <div className="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-4 group-hover:bg-pink-100 transition-colors">
                                 <Clock className="text-[#E6007E]" size={20} />
                             </div>
@@ -111,10 +120,10 @@ const TechExhibitionNetwork = () => {
                                 <Counter value={5} suffix="+" />
                             </h3>
                             <p className="text-gray-500 text-sm">Years of Experience</p>
-                        </div>
+                        </motion.div>
 
                         {/* Card 4: On-Time Delivery */}
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                        <motion.div style={{ y: yColumn2 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
                             <div className="w-10 h-10 rounded-lg bg-[#191970]/5 flex items-center justify-center mb-4 group-hover:bg-[#191970]/10 transition-colors">
                                 <CheckCircle className="text-[#191970]" size={20} />
                             </div>
@@ -133,7 +142,7 @@ const TechExhibitionNetwork = () => {
                             <p className="text-right text-[#191970] text-[10px] mt-1 font-medium">
                                 <Counter value={100} suffix="%" /> Success
                             </p>
-                        </div>
+                        </motion.div>
 
                     </div>
 

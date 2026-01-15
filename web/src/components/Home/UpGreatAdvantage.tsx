@@ -1,9 +1,18 @@
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { BarChart3, User, Layers, Shield } from 'lucide-react';
 
 export default function UpGreatAdvantage() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yCards = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+
     const features = [
         {
             icon: <BarChart3 className="text-[#E6007E]" size={24} />,
@@ -28,7 +37,8 @@ export default function UpGreatAdvantage() {
     ];
 
     return (
-        <section className="bg-[#191970] py-20 text-white overflow-hidden relative">
+        // Added sticky, top-0, z-40 for curtain effect
+        <section ref={containerRef} className="sticky top-0 z-40 bg-[#191970] py-20 text-white overflow-hidden relative min-h-screen flex flex-col justify-center">
             {/* Background Gradient for depth - REMOVED to match theme */}
             {/* <div className="absolute inset-0 bg-gradient-to-br from-[#191970] to-[#0f0f4a] z-0" /> */}
 
@@ -37,20 +47,48 @@ export default function UpGreatAdvantage() {
 
                     {/* Left Column: Text Content */}
                     <div>
-                        <h2 className="text-4xl font-bold mb-4 font-outfit">The UpGreat Advantage</h2>
-                        <h3 className="text-3xl font-bold text-[#E6007E] mb-6 font-outfit">
+                        <motion.h2
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="text-4xl font-bold mb-4 font-outfit"
+                        >
+                            The UpGreat Advantage
+                        </motion.h2>
+                        <motion.h3
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="text-3xl font-bold text-[#E6007E] mb-6 font-outfit"
+                        >
                             Maximum Footfall.<br />
                             Maximum Impact.
-                        </h3>
-                        <p className="text-white/80 text-lg leading-relaxed max-w-md">
+                        </motion.h3>
+                        <motion.p
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="text-white/80 text-lg leading-relaxed max-w-md"
+                        >
                             Our unique approach combines creativity, precision, and a relentless focus on achieving your event objectives.
-                        </p>
+                        </motion.p>
                     </div>
 
                     {/* Right Column: Feature Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
-                            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-lg hover:border-[#E6007E]/50 transition-all duration-300 group hover:shadow-lg hover:shadow-[#E6007E]/10">
+                            <motion.div
+                                key={index}
+                                style={{ y: index % 2 === 0 ? 0 : yCards }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-lg hover:border-[#E6007E]/50 transition-all duration-300 group hover:shadow-lg hover:shadow-[#E6007E]/10"
+                            >
                                 <div className="mb-4">
                                     <div className="w-10 h-10 bg-[#E6007E]/10 rounded flex items-center justify-center group-hover:bg-[#E6007E]/20 transition-colors">
                                         {feature.icon}
@@ -60,7 +98,7 @@ export default function UpGreatAdvantage() {
                                 <p className="text-white/70 text-sm leading-relaxed">
                                     {feature.description}
                                 </p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
 

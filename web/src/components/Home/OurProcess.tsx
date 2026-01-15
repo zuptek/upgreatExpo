@@ -1,9 +1,17 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function OurProcess() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yLine = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
     const steps = [
         {
             number: "1",
@@ -38,7 +46,8 @@ export default function OurProcess() {
     ];
 
     return (
-        <section className="bg-[#00356b] py-20 text-white overflow-hidden">
+        // Removed sticky, top-0, z-20 to fix visibility issue
+        <section ref={containerRef} className="relative bg-[#00356b] py-20 text-white overflow-hidden min-h-screen flex flex-col justify-center">
             <div className="container mx-auto px-6 lg:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -53,13 +62,12 @@ export default function OurProcess() {
 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Vertical Line */}
-                    <motion.div
-                        initial={{ height: 0 }}
-                        whileInView={{ height: '100%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute left-1/2 transform -translate-x-1/2 w-px bg-white/10 hidden md:block"
-                    ></motion.div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-white/10 hidden md:block overflow-hidden">
+                        <motion.div
+                            style={{ height: yLine }}
+                            className="w-full bg-[#E6007E]"
+                        />
+                    </div>
 
                     <div className="space-y-12 relative">
                         {steps.map((step, index) => (
@@ -68,16 +76,20 @@ export default function OurProcess() {
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                                // Increased delay for more noticeable stagger
+                                transition={{ duration: 0.6, delay: index * 0.15 }}
                                 className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                             >
 
                                 {/* Card Side */}
                                 <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                                    <div className={`bg-[#00458c] p-6 rounded-lg border border-white/10 w-full max-w-md relative hover:border-cyan-500/30 transition-all duration-300 group shadow-lg ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                                    <motion.div
+                                        whileHover={{ y: -10 }} // Increased hover lift
+                                        className={`bg-[#00458c] p-6 rounded-lg border border-white/10 w-full max-w-md relative hover:border-cyan-500/30 transition-all duration-300 group shadow-lg ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}
+                                    >
                                         <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors">{step.title}</h3>
                                         <p className="text-white/70 text-sm">{step.description}</p>
-                                    </div>
+                                    </motion.div>
                                 </div>
 
                                 {/* Center Number */}
@@ -86,7 +98,7 @@ export default function OurProcess() {
                                         initial={{ scale: 0 }}
                                         whileInView={{ scale: 1 }}
                                         viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: index * 0.2 + 0.2 }}
+                                        transition={{ duration: 0.4, delay: index * 0.15 + 0.2 }}
                                         className="w-12 h-12 rounded-full bg-[#00458c] border border-white/20 flex items-center justify-center text-cyan-400 font-bold shadow-[0_0_15px_rgba(6,182,212,0.15)]"
                                     >
                                         {step.number}
@@ -96,7 +108,7 @@ export default function OurProcess() {
                                         initial={{ width: 0 }}
                                         whileInView={{ width: '2rem' }} // 2rem is w-8
                                         viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: index * 0.2 + 0.4 }}
+                                        transition={{ duration: 0.4, delay: index * 0.15 + 0.4 }}
                                         className={`hidden md:block absolute top-1/2 -translate-y-1/2 h-px bg-white/10 ${index % 2 === 0 ? 'right-full mr-6' : 'left-full ml-6'}`}
                                     ></motion.div>
                                 </div>

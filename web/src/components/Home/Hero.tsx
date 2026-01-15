@@ -1,18 +1,44 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 import { ArrowRight } from 'lucide-react';
 import TechExhibitionNetwork from './TechExhibitionNetwork';
 
 export default function Hero() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"]
+    });
+
+    const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+    const expertiseRef = useRef(null);
+    const { scrollYProgress: expertiseScroll } = useScroll({
+        target: expertiseRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Increased parallax range for more visible effect
+    const yExpertiseBg = useTransform(expertiseScroll, [0, 1], ["-30%", "30%"]);
+
     return (
-        <div className="flex flex-col w-full">
-            {/* 1. HERO SECTION */}
-            <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
+        <div ref={containerRef} className="flex flex-col w-full relative">
+            {/* 1. HERO SECTION - STICKY */}
+            {/* The container needs a defined height to scroll over, but here we want the video to stick 
+                while the NEXT content comes up. 
+                Actually, for the curtain effect, the Hero should be sticky at top:0, 
+                and the next section should have a higher z-index and background to cover it.
+            */}
+            <section className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden z-0">
                 {/* Background Video */}
-                <div className="absolute inset-0 z-0">
+                <motion.div
+                    style={{ y: yBackground }}
+                    className="absolute inset-0 z-0"
+                >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#191970] via-[#191970] to-[#191970] opacity-95 z-10" />
                     <video
                         autoPlay
@@ -23,12 +49,13 @@ export default function Hero() {
                     >
                         <source src="/assets/hero-background.mp4" type="video/mp4" />
                     </video>
-                </div>
+                </motion.div>
 
                 {/* Hero Content */}
                 <div className="container mx-auto px-6 lg:px-12 relative z-20 pt-20 flex-grow flex flex-col justify-center">
                     <div className="max-w-4xl">
                         <motion.h1
+                            style={{ y: yText }}
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
@@ -63,8 +90,8 @@ export default function Hero() {
                 </div>
             </section>
 
-            {/* 2. SUBSCRIPTION BAR */}
-            <div className="w-full bg-[#191970] py-6 border-t border-white/10">
+            {/* 2. SUBSCRIPTION BAR - Needs relative and z-index to scroll OVER the sticky hero */}
+            <div className="w-full bg-[#191970] py-6 border-t border-white/10 relative z-10">
                 <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-white text-sm md:text-base font-medium text-center md:text-left">
                         Stay inspired. Join our community for the latest in event trends and insights.
@@ -74,20 +101,23 @@ export default function Hero() {
                     </Button>
                 </div>
             </div>
-            <section>
+
+            {/* Tech Network - Relative z-10 to cover hero */}
+            <section className="relative z-10 bg-white">
                 <TechExhibitionNetwork />
             </section>
 
 
-            {/* 4. LET'S DESIGN SECTION */}
-            <section className="relative w-full min-h-[80vh] flex items-center overflow-hidden">
+            {/* 4. LET'S DESIGN SECTION - Relative z-10 */}
+            <section ref={expertiseRef} className="relative w-full min-h-[80vh] flex items-center overflow-hidden z-10">
                 {/* Background Image */}
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 overflow-hidden">
                     <div className="absolute inset-0 bg-[#191970]/60 mix-blend-multiply z-10" />
-                    <img
+                    <motion.img
+                        style={{ y: yExpertiseBg }}
                         src="/assets/hero_img.webp"
                         alt="Trade Show Floor"
-                        className="w-full h-full object-cover"
+                        className="w-full h-[120%] object-cover -mt-[10%]"
                     />
                 </div>
 
@@ -122,8 +152,8 @@ export default function Hero() {
                     </div>
                 </div>
             </section>
-            {/* 3. UNFORGETTABLE MOMENTS TEXT SECTION */}
-            <section className="w-full bg-white py-24 lg:py-32">
+            {/* 3. UNFORGETTABLE MOMENTS TEXT SECTION - Relative z-10 */}
+            <section className="w-full bg-white py-24 lg:py-32 relative z-10">
                 <div className="container mx-auto px-6 lg:px-12">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
