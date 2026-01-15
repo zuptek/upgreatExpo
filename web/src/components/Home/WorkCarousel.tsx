@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 
 const projects = [
-    { title: "CES 2025", category: "Technology", src: "/assets/event_img13.webp" },
-    { title: "Sahil Graphics", category: "Digital", src: "/assets/event_img14.webp" },
-    { title: "Cosmo Films", category: "Corporate", src: "/assets/event_img15.webp" },
-    { title: "Saga Uv Solutions Pvt ltd", category: "Electricals", src: "/assets/event_img4.webp" },
-    { title: "Kirby", category: "Experimental", src: "/assets/event_img5.webp" },
-    { title: "Acer Biomedicals", category: "Chemicals", src: "/assets/event_img7.webp" },
+    { title: "VANGUARD", category: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/16.jpg" },
+    { title: "ROLLERS", category: "RIDE ASIA EXHIBITION", src: "/portfolio_images/8.jpg" },
+    { title: "THERMO CABLE", category: "ELECRAMA EXHIBITION", src: "/portfolio_images/12.jpg" },
+    { title: "APL", category: "PRINT PACK", src: "/portfolio_images/apl.jpg" },
+    { title: "LP VALVES", category: "LP VALVES", src: "/portfolio_images/9.jpg" },
+    { title: "UP TWIGA", category: "UP TWIGA", src: "/portfolio_images/7.jpg" },
 ];
 
 export default function WorkCarousel() {

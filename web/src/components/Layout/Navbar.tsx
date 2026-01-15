@@ -42,23 +42,12 @@ export default function Navbar({ items }: NavbarProps) {
 
     // Navigation Links - Use CMS items if available, otherwise fallback to hardcoded
     const defaultLinks: NavItem[] = [
-        {
-            label: 'Solutions',
-            href: '/services',
-            subItems: [
-                { label: 'Strategy', href: '/services/strategy' },
-                { label: 'Creative', href: '/services/creative' },
-                { label: 'Digital', href: '/services/digital' },
-                { label: 'Event Technology', href: '/services/event-tech' },
-                { label: 'Logistics', href: '/services/logistics' },
-            ]
-        },
-        { label: 'Insights', href: '/blog' },
-        { label: 'About Us', href: '/about' },
-        { label: 'Contact', href: '/contact' },
+        { label: 'Home', href: '/' },
+        { label: 'About Us', href: '/about' }, 
+        { label: 'Services', href: '/services' },
     ];
+    const links = [...defaultLinks, ...(items || [])];
 
-    const links = items && items.length > 0 ? items : defaultLinks;
 
     return (
         <nav

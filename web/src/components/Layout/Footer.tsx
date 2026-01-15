@@ -7,7 +7,7 @@ export default function Footer() {
             {/* 1. Pre-Footer: Sponsorship / Join Us */}
 
             {/* 2. Main Footer */}
-            <div className="bg-black text-white pt-20 pb-10">
+            <div className="bg-gradient-to-br from-[#0a0a2e] via-[#191970] to-[#2e001f] text-white pt-20 pb-10">
                 <div className="container mx-auto px-6 lg:px-12">
 
                     {/* Top Section: Brand & Links */}
@@ -62,7 +62,7 @@ export default function Footer() {
                                     <li><Link href="/about" className="hover:text-[#E6007E] transition-colors">About us</Link></li>
                                     <li><Link href="/careers" className="hover:text-[#E6007E] transition-colors">Careers</Link></li>
                                     <li><Link href="/contact" className="hover:text-[#E6007E] transition-colors">Contact</Link></li>
-                                    <li><Link href="/privacy" className="hover:text-[#E6007E] transition-colors">Privacy policy</Link></li>
+                                    <li><Link href="/privacy-policy" className="hover:text-[#E6007E] transition-colors">Privacy policy</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -121,10 +121,10 @@ export default function Footer() {
                     <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
                         <p>© {new Date().getFullYear()} UpGreat World Pvt Ltd. All rights reserved.</p>
                         <div className="flex gap-6">
-                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Disclaimer</Link>
+                            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+                            <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+                            <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
                         </div>
                     </div>
                 </div>

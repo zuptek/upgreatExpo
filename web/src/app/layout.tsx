@@ -50,6 +50,7 @@ async function getNavigation() {
 }
 
 import ScrollProgress from "@/components/UI/ScrollProgress";
+import CookieConsent from "@/components/UI/CookieConsent";
 
 // ... existing imports ...
 
@@ -61,7 +62,7 @@ export default async function RootLayout({
     const navItems = await getNavigation();
 
     return (
-        <html lang="en" className="scroll-smooth">
+        <html lang="en" className="scroll-smooth" suppressHydrationWarning>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased flex flex-col min-h-screen`}>
                 <ScrollProgress />
                 <Navbar items={navItems.length > 0 ? navItems : undefined} />
@@ -70,6 +71,7 @@ export default async function RootLayout({
                 </main>
                 <Footer />
                 <ScrollToTop />
+                <CookieConsent />
             </body>
         </html>
     );

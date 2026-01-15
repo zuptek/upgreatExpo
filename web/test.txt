@@ -1,0 +1,52 @@
+[
+  {
+    "title": "ifsec",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2022/12/ifsec.jpg"
+  },
+  {
+    "title": "PAINT AND COATING EXPO",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2023/09/PAINT-AND-COATING-EXPO.jpg"
+  },
+  {
+    "title": "PACKEX MUMBAI",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2023/09/PACKEX-MUMBAI.jpg"
+  },
+  {
+    "title": "PACK PLUS MUMBAI",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2023/09/PACK-PLUS-MUMBAI.jpg"
+  },
+  {
+    "title": "PACK PLUS MUMBAI.",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2023/09/PACK-PLUS-MUMBAI-1.jpg"
+  },
+  {
+    "title": "KIRBY",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2023/12/01.jpg"
+  },
+  {
+    "title": "Medical Fair Mumbai",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2024/04/IMG_6659.jpg"
+  },
+  {
+    "title": "COSMO FILMS",
+    "caption": "LABEL EXPO 2024",
+    "url": "https://aakritidesign.in/wp-content/uploads/2024/11/edited-02-scaled.jpg"
+  },
+  {
+    "title": "WAREHOUSE EXPO MUMBAI",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2024/11/edited-01.tif"
+  },
+  {
+    "title": "WAREHOUSE EXPO MUMBAI",
+    "caption": "",
+    "url": "https://aakritidesign.in/wp-content/uploads/2024/12/KIRBY-MUMBAI-scaled.jpg"
+  }
+]

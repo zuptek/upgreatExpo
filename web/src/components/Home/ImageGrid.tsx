@@ -3,10 +3,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const images = Array(12).fill(null).map((_, i) => ({
+const images = [
+    { title: "WAREHOUSE EXPO MUMBAI", caption: "WAREHOUSE EXPO MUMBAI", src: "/portfolio_images/20220901_125003_Original-scaled.jpeg" },
+    { title: "ABM", caption: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/17.jpg" },
+    { title: "SAFR", caption: "IFSEC EXHIBITION", src: "/portfolio_images/13.jpg" },
+    { title: "ANSCER ROBOTIC", caption: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/anscer.jpg" },
+    { title: "Music Events", caption: "Music Events Organized by Aaakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/music-events.jpg" },
+    { title: "Music Event", caption: "Organized by Aakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-11.jpg" },
+    { title: "C-NET Stall Design", caption: "Exhibition Stall Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-2.jpg" },
+    { title: "Music Events", caption: "Organized By Aakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-9.jpg" },
+    { title: "STV Stall Design", caption: "Exhibition Stall Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-3.jpg" },
+    { title: "CAME", caption: "IFSEC EXHIBITION", src: "/portfolio_images/6.jpg" },
+    { title: "AIR CARE", caption: "AIR CARE", src: "/portfolio_images/10.jpg" },
+    { title: "Time Watch", caption: "Time Watch Expo", src: "https://aakritidesign.in/wp-content/uploads/2022/12/IMG_1098-1.jpeg" }
+].map((img, i) => ({
+    ...img,
     id: i,
-    src: `/assets/event_img${i + 1}.webp`,
-    size: i % 3 === 0 ? "large" : "small" // Simple logic to vary sizes
+    size: i % 3 === 0 ? "large" : "small"
 }));
 
 export default function ImageGrid() {
@@ -36,11 +49,18 @@ export default function ImageGrid() {
                             {img.src && (
                                 <img
                                     src={img.src}
-                                    alt={`Gallery Image ${i + 1}`}
+                                    alt={img.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                             )}
-                            <div className="absolute inset-0 bg-[#00529b]/0 group-hover:bg-[#00529b]/20 transition-colors duration-300" />
+                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4">
+                                <h3 className="text-white text-2xl font-bold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    {img.title}
+                                </h3>
+                                <p className="text-white/80 text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                                    {img.caption}
+                                </p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

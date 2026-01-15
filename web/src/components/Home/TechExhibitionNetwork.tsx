@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { Users, MapPin, CheckCircle, PlayCircle, Store } from 'lucide-react';
+import { Users, CheckCircle, PlayCircle, Store, Clock } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
 import { motion, useSpring, useTransform, useInView } from 'framer-motion';
 
@@ -64,8 +64,8 @@ const TechExhibitionNetwork = () => {
 
                         <div className="pt-8 flex items-center gap-4 text-sm text-gray-500">
                             <span>Locations:</span>
-                            <div className="flex gap-2">
-                                {['DELHI', 'MUMBAI', 'BANGALORE'].map((city) => (
+                            <div className="flex gap-2 flex-wrap">
+                                {['MUMBAI', 'DELHI', 'NOIDA', 'GURGAON', 'GHAZIABAD', 'BANGALORE', 'CHENNAI', 'PUNJAB', 'KOLKATA'].map((city) => (
                                     <span key={city} className="bg-gray-100 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-600">
                                         {city}
                                     </span>
@@ -83,7 +83,7 @@ const TechExhibitionNetwork = () => {
                                 <CheckCircle className="text-[#191970]" size={20} />
                             </div>
                             <h3 className="text-3xl font-bold mb-1 text-gray-900">
-                                <Counter value={1000} suffix="+" />
+                                <Counter value={200} suffix="+" />
                             </h3>
                             <p className="text-gray-500 text-sm">Projects Delivered</p>
                         </div>
@@ -97,18 +97,20 @@ const TechExhibitionNetwork = () => {
                                 <Users className="text-white" size={20} />
                             </div>
                             <h3 className="text-3xl font-bold mb-1 relative z-10">
-                                <Counter value={200} suffix="+" />
+                                <Counter value={55} suffix="+" />
                             </h3>
                             <p className="text-white/90 text-sm relative z-10">Happy Clients</p>
                         </div>
 
-                        {/* Card 3: Pan India */}
+                        {/* Card 3: Experience */}
                         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
                             <div className="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-4 group-hover:bg-pink-100 transition-colors">
-                                <MapPin className="text-[#E6007E]" size={20} />
+                                <Clock className="text-[#E6007E]" size={20} />
                             </div>
-                            <h3 className="text-3xl font-bold mb-1 text-gray-900">Pan India</h3>
-                            <p className="text-gray-500 text-sm">Service Reach</p>
+                            <h3 className="text-3xl font-bold mb-1 text-gray-900">
+                                <Counter value={5} suffix="+" />
+                            </h3>
+                            <p className="text-gray-500 text-sm">Years of Experience</p>
                         </div>
 
                         {/* Card 4: On-Time Delivery */}
