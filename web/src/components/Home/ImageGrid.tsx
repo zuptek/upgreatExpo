@@ -4,18 +4,15 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const images = [
-    { title: "WAREHOUSE EXPO MUMBAI", caption: "WAREHOUSE EXPO MUMBAI", src: "/portfolio_images/20220901_125003_Original-scaled.jpeg" },
-    { title: "ABM", caption: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/17.jpg" },
-    { title: "SAFR", caption: "IFSEC EXHIBITION", src: "/portfolio_images/13.jpg" },
-    { title: "ANSCER ROBOTIC", caption: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/anscer.jpg" },
-    { title: "Music Events", caption: "Music Events Organized by Aaakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/music-events.jpg" },
-    { title: "Music Event", caption: "Organized by Aakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-11.jpg" },
-    { title: "C-NET Stall Design", caption: "Exhibition Stall Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-2.jpg" },
-    { title: "Music Events", caption: "Organized By Aakriti Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-9.jpg" },
-    { title: "STV Stall Design", caption: "Exhibition Stall Design", src: "https://aakritidesign.in/wp-content/uploads/2022/10/work-3.jpg" },
-    { title: "CAME", caption: "IFSEC EXHIBITION", src: "/portfolio_images/6.jpg" },
-    { title: "AIR CARE", caption: "AIR CARE", src: "/portfolio_images/10.jpg" },
-    { title: "Time Watch", caption: "Time Watch Expo", src: "https://aakritidesign.in/wp-content/uploads/2022/12/IMG_1098-1.jpeg" }
+    { title: "WAREHOUSE EXPO MUMBAI", caption: "WAREHOUSE EXPO MUMBAI", src: "/portfolio_images/20220901_125003_Original-scaled.webp" },
+    { title: "ABM", caption: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/17.webp" },
+    { title: "SAFR", caption: "IFSEC EXHIBITION", src: "/portfolio_images/13.webp" },
+    { title: "ANSCER ROBOTIC", caption: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/anscer.webp" },
+    { title: "C-NET Stall Design", caption: "Exhibition Stall Design", src: "/portfolio_images/work-2.webp" },
+    { title: "STV Stall Design", caption: "Exhibition Stall Design", src: "/portfolio_images/work-3.webp" },
+    { title: "CAME", caption: "IFSEC EXHIBITION", src: "/portfolio_images/6.webp" },
+    { title: "AIR CARE", caption: "AIR CARE", src: "/portfolio_images/10.webp" },
+    { title: "Time Watch", caption: "Time Watch Expo", src: "/portfolio_images/12.webp" }
 ].map((img, i) => ({
     ...img,
     id: i,

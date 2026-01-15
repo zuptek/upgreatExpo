@@ -37,8 +37,8 @@ export default function UpGreatAdvantage() {
     ];
 
     return (
-        // Added sticky, top-0, z-40 for curtain effect
-        <section ref={containerRef} className="sticky top-0 z-40 bg-[#191970] py-20 text-white overflow-hidden relative min-h-screen flex flex-col justify-center">
+        // Removed sticky positioning to fix footer overlap issue
+        <section ref={containerRef} className="relative bg-[#191970] py-20 text-white overflow-hidden min-h-screen flex flex-col justify-center">
             {/* Background Gradient for depth - REMOVED to match theme */}
             {/* <div className="absolute inset-0 bg-gradient-to-br from-[#191970] to-[#0f0f4a] z-0" /> */}
 

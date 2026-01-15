@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 
 const projects = [
-    { title: "VANGUARD", category: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/16.jpg" },
-    { title: "ROLLERS", category: "RIDE ASIA EXHIBITION", src: "/portfolio_images/8.jpg" },
-    { title: "THERMO CABLE", category: "ELECRAMA EXHIBITION", src: "/portfolio_images/12.jpg" },
-    { title: "APL", category: "PRINT PACK", src: "/portfolio_images/apl.jpg" },
-    { title: "LP VALVES", category: "LP VALVES", src: "/portfolio_images/9.jpg" },
-    { title: "UP TWIGA", category: "UP TWIGA", src: "/portfolio_images/7.jpg" },
+    { title: "VANGUARD", category: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/16.webp" },
+    { title: "ROLLERS", category: "RIDE ASIA EXHIBITION", src: "/portfolio_images/8.webp" },
+    { title: "THERMO CABLE", category: "ELECRAMA EXHIBITION", src: "/portfolio_images/12.webp" },
+    { title: "APL", category: "PRINT PACK", src: "/portfolio_images/apl.webp" },
+    { title: "LP VALVES", category: "LP VALVES", src: "/portfolio_images/9.webp" },
+    { title: "UP TWIGA", category: "UP TWIGA", src: "/portfolio_images/7.webp" },
 ];
 
 export default function WorkCarousel() {

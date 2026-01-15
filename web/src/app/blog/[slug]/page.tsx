@@ -1,134 +1,135 @@
 import { client, urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "@/components/Blog/RichTextComponents";
 import Image from "next/image";
-import { Calendar, User } from "lucide-react";
+import { notFound } from "next/navigation";
+import { Calendar, User, Tag } from "lucide-react";
 import { Metadata } from "next";
 
-// Revalidate every 60 seconds
-export const revalidate = 60;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const query = `*[_type == "post" && slug.current == $slug][0] { title, "excerpt": array::join(string::split((pt::text(body)), "")[0..150], "") + "..." }`;
+    const post = await client.fetch(query, { slug });
 
-interface Props {
-    params: Promise<{
-        slug: string;
-    }>;
-}
-
-// Generate Metadata
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    try {
-        const { slug } = await params;
-        const query = `*[_type == "post" && slug.current == $slug][0]{ title, mainImage }`;
-        const post = await client.fetch(query, { slug });
-
-        if (!post) {
-            return {
-                title: "Post Not Found - UpgreatExpo",
-            };
-        }
-
+    if (!post) {
         return {
-            title: `${post.title} - UpgreatExpo`,
-            openGraph: {
-                images: post.mainImage ? [urlFor(post.mainImage).url()] : [],
-            },
-        };
-    } catch (error) {
-        return {
-            title: "Blog - UpgreatExpo",
+            title: "Post Not Found - UpgreatExpo",
         };
     }
-}
 
-// Generate Static Params for ISR
-export async function generateStaticParams() {
-    try {
-        const query = `*[_type == "post"]{ slug }`;
-        const posts = await client.fetch(query);
-
-        return posts.map((post: any) => ({
-            slug: post.slug.current,
-        }));
-    } catch (error) {
-        console.error("Error fetching posts for static params:", error);
-        return [];
-    }
+    return {
+        title: `${post.title} - UpgreatExpo Blog`,
+        description: post.excerpt,
+    };
 }
 
 async function getPost(slug: string) {
-    try {
-        const query = `*[_type == "post" && slug.current == $slug][0]{
-      title,
-      slug,
-      mainImage,
-      publishedAt,
-      categories[]->{title},
-      body,
-      "author": author->name
+    const query = `*[_type == "post" && slug.current == $slug][0] {
+        title,
+        mainImage,
+        publishedAt,
+        body,
+        "authorName": author->name,
+        "authorImage": author->image,
+        categories[]->{title}
     }`;
-        return await client.fetch(query, { slug });
-    } catch (error) {
-        console.error("Error fetching post:", error);
-        return null;
-    }
+    const data = await client.fetch(query, { slug });
+    return data;
 }
 
-export default async function BlogPostPage({ params }: Props) {
+const ptComponents = {
+    types: {
+        image: ({ value }: any) => {
+            if (!value?.asset?._ref) {
+                return null;
+            }
+            return (
+                <div className="relative w-full h-96 my-8 rounded-xl overflow-hidden">
+                    <Image
+                        src={urlFor(value).url()}
+                        alt={value.alt || 'Blog Image'}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+            );
+        }
+    },
+    block: {
+        h2: ({ children }: any) => <h2 className="text-3xl font-bold text-[#003063] mt-12 mb-6">{children}</h2>,
+        h3: ({ children }: any) => <h3 className="text-2xl font-bold text-[#003063] mt-8 mb-4">{children}</h3>,
+        normal: ({ children }: any) => <p className="text-lg text-slate-700 leading-relaxed mb-6">{children}</p>,
+        blockquote: ({ children }: any) => <blockquote className="border-l-4 border-[#E6007E] pl-6 italic text-xl text-slate-600 my-8">{children}</blockquote>,
+    },
+    list: {
+        bullet: ({ children }: any) => <ul className="list-disc pl-6 mb-6 space-y-2 text-lg text-slate-700">{children}</ul>,
+        number: ({ children }: any) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-lg text-slate-700">{children}</ol>,
+    },
+};
+
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getPost(slug);
 
     if (!post) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <h1 className="text-2xl font-bold">Post not found</h1>
-            </div>
-        );
+        notFound();
     }
 
     return (
-        <article className="min-h-screen py-20">
-            {/* Hero Image */}
-            {post.mainImage && (
-                <div className="relative h-[50vh] w-full mb-12">
-                    <Image
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                    <div className="absolute bottom-0 left-0 right-0 p-8 container">
-                        <div className="max-w-4xl mx-auto text-white">
-                            <div className="flex items-center gap-4 mb-4 text-sm opacity-90">
-                                {post.categories && (
-                                    <span className="bg-primary px-3 py-1 rounded-full text-white font-medium">
-                                        {post.categories[0].title}
-                                    </span>
+        <article className="min-h-screen bg-white pb-24">
+            {/* Hero / Header */}
+            <div className="relative h-[60vh] min-h-[400px] w-full bg-[#003063]">
+                {post.mainImage && (
+                    <>
+                        <Image
+                            src={urlFor(post.mainImage).url()}
+                            alt={post.title}
+                            fill
+                            className="object-cover opacity-40"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#003063] via-transparent to-transparent" />
+                    </>
+                )}
+
+                <div className="absolute inset-0 flex items-end pb-16">
+                    <div className="container mx-auto px-6 lg:px-12">
+                        <div className="max-w-4xl">
+                            {post.categories && post.categories.length > 0 && (
+                                <div className="flex gap-2 mb-6">
+                                    {post.categories.map((cat: any) => (
+                                        <span key={cat.title} className="bg-[#E6007E] text-white px-3 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">
+                                            {cat.title}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+
+                            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                                {post.title}
+                            </h1>
+
+                            <div className="flex flex-wrap items-center gap-6 text-slate-300">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={18} />
+                                    <span>{new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                </div>
+                                {post.authorName && (
+                                    <div className="flex items-center gap-2">
+                                        <User size={18} />
+                                        <span>By {post.authorName}</span>
+                                    </div>
                                 )}
-                                <span className="flex items-center gap-1">
-                                    <Calendar className="w-4 h-4" />
-                                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric',
-                                    })}
-                                </span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
 
-            <div className="container px-4">
+            {/* Content Body */}
+            <div className="container mx-auto px-6 lg:px-12 mt-12">
                 <div className="max-w-3xl mx-auto">
-                    {!post.mainImage && (
-                        <h1 className="text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
-                    )}
-
-                    <div className="prose prose-lg dark:prose-invert max-w-none">
-                        <PortableText value={post.body} components={RichTextComponents} />
+                    <div className="prose prose-lg prose-slate max-w-none">
+                        <PortableText value={post.body} components={ptComponents} />
                     </div>
                 </div>
             </div>

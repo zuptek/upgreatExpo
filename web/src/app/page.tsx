@@ -7,6 +7,7 @@ import OurProcess from "@/components/Home/OurProcess";
 import UpGreatAdvantage from "@/components/Home/UpGreatAdvantage";
 import WorkCarousel from "@/components/Home/WorkCarousel";
 import ImageGrid from "@/components/Home/ImageGrid";
+import FAQ from "@/components/Home/FAQ";
 import { Button } from "@/components/UI/Button";
 
 export default function Home() {
@@ -15,13 +16,13 @@ export default function Home() {
 
       {/* 1. HERO SECTION (Includes Video, Subscription, Text, Feature) */}
       <Hero />
-            
+
       {/* 3. OUR PROCESS */}
       <OurProcess />
       {/* 2. END-TO-END EXECUTION */}
       <EndToEndExecution />
 
- 
+
 
       {/* 4. THE UPGREAT ADVANTAGE */}
       <UpGreatAdvantage />
@@ -31,6 +32,9 @@ export default function Home() {
 
       {/* 3. IMAGE GRID (Masonry Gallery) */}
       <ImageGrid />
+
+      {/* 6. FAQ SECTION */}
+      <FAQ />
 
       {/* 4. CONTACT SECTION (Freeman Style) */}
       <section className="bg-[#003063] py-24 text-center">

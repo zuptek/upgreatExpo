@@ -59,11 +59,10 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
-                            className="text-[clamp(3.5rem,9vw,7rem)] font-bold text-white leading-[1] tracking-tight mb-8 drop-shadow-lg"
+                            className="text-[clamp(2.5rem,6vw,5rem)] font-bold text-white leading-[1.1] tracking-tight mb-8 drop-shadow-lg"
                         >
-                            Elevate <br />
-                            Your <br />
-                            Vision
+                            We Don’t Upgrade Brands. <br />
+                            We <span className="text-[#E6007E]">UpGreat</span> Them.
                         </motion.h1>
 
                         <motion.div
@@ -152,18 +151,35 @@ export default function Hero() {
                     </div>
                 </div>
             </section>
-            {/* 3. UNFORGETTABLE MOMENTS TEXT SECTION - Relative z-10 */}
-            <section className="w-full bg-white py-24 lg:py-32 relative z-10">
+            {/* 3. CTA SECTION - Relative z-10 */}
+            <section className="w-full bg-white py-24 relative z-10">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#191970] leading-tight max-w-5xl"
+                        className="bg-[#F0F4F8] rounded-3xl p-12 md:p-20 text-center max-w-5xl mx-auto relative overflow-hidden"
                     >
-                        UpGreat Expo designs and delivers <span className="font-bold">unforgettable experiences</span> that create lasting bonds between brands and audiences. We define the future of live events.
-                    </motion.h2>
+                        {/* Decorative Circles */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/50 rounded-full -mr-32 -mt-32 blur-3xl" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E6007E]/5 rounded-full -ml-32 -mb-32 blur-3xl" />
+
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#191970] mb-6 relative z-10">
+                            Ready to UpGreat Your Next Event?
+                        </h2>
+                        <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 relative z-10 leading-relaxed">
+                            Let's build an unforgettable experience together. Our experts are ready to turn your vision into a landmark exhibition.
+                        </p>
+                        <div className="relative z-10">
+                            <Button
+                                className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-sm h-14 px-10 rounded-sm shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
+                                href="/contact"
+                            >
+                                Get Started Now
+                            </Button>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

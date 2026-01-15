@@ -7,18 +7,13 @@ import { Button } from '@/components/UI/Button';
 import SearchModal from '@/components/UI/SearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ... (navLinks and interfaces stay the same)
 interface NavItem {
     label: string;
     href: string;
     subItems?: NavItem[];
 }
 
-interface NavbarProps {
-    items?: NavItem[];
-}
-
-export default function Navbar({ items }: NavbarProps) {
+export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -40,14 +35,26 @@ export default function Navbar({ items }: NavbarProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Navigation Links - Use CMS items if available, otherwise fallback to hardcoded
-    const defaultLinks: NavItem[] = [
+    // Navigation Links
+    const links: NavItem[] = [
         { label: 'Home', href: '/' },
-        { label: 'About Us', href: '/about' }, 
-        { label: 'Services', href: '/services' },
+        { label: 'About Us', href: '/about' },
+        {
+            label: 'Services',
+            href: '/services',
+            subItems: [
+                { label: 'Exhibition Stall Design', href: '/services/exhibition-stall-design' },
+                { label: 'Corporate Events', href: '/services/corporate-events' },
+                { label: 'Product Launches', href: '/services/product-launches' },
+                { label: 'Trade Show Organization', href: '/services/trade-show-organization' },
+                { label: 'MICE Services', href: '/services/mice-services' },
+                { label: 'Dealer Meets', href: '/services/dealer-meets' },
+            ]
+        },
+        { label: 'Portfolio', href: '/work' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Blog', href: '/blog' },
     ];
-    const links = [...defaultLinks, ...(items || [])];
-
 
     return (
         <nav
