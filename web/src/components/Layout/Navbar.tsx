@@ -51,9 +51,11 @@ export default function Navbar() {
                 { label: 'Dealer Meets', href: '/services/dealer-meets' },
             ]
         },
+
         { label: 'Portfolio', href: '/work' },
-        { label: 'Contact', href: '/contact' },
         { label: 'Blog', href: '/blog' },
+        { label: 'Contact', href: '/contact' },
+
     ];
 
     return (
@@ -74,7 +76,7 @@ export default function Navbar() {
                         alt="Upreat Expo"
                         width="60"
                         height="20"
-                        className={`transition-all duration-300 ${isScrolled ? "bg-black p-1 rounded" : ""}`}
+                        className={`transition-all duration-300 ${isScrolled ? "bg-[#003063] p-1 rounded" : ""}`}
                     />
                 </Link>
 
