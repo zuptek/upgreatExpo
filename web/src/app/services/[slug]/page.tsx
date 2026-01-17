@@ -4,6 +4,7 @@ import { Button } from '@/components/UI/Button';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import SubServiceItem from '@/components/Services/SubServiceItem';
 
 // Define the Service Data Interface
 interface ServiceData {
@@ -18,23 +19,25 @@ interface ServiceData {
         description: string;
         features?: string[];
         image?: string;
+        images?: string[];
     }[];
 }
 
 const servicesData: Record<string, ServiceData> = {
     'exhibition-stall-design': {
-        title: "Exhibition Stall Design & Fabrication",
-        subtitle: "Crafting World-Class Brand Environments",
-        description: "From 9 sqm shell schemes to 500+ sqm island pavilions, we design and fabricate exhibition stalls that command attention and drive conversions. Our in-house fabrication facility ensures quality control, on-time delivery, and competitive pricing.",
+        title: "Exhibition Stall Design & Fabrication Services",
+        subtitle: "Custom Wooden Exhibition Stalls | Modular Octanorm Exhibition Systems | DoubleDecker Exhibition Booths | Island Pavilion Design",
+        description: "From compact 9 sqm shell scheme customizations to expansive 500+ sqm island pavilions, we design and fabricate exhibition stalls that dominate trade show floors and drive business results. Our 15,000 sq ft in-house fabrication facility guarantees quality control, punctual delivery, and competitive pricing.",
         features: [
-            "3D Design Visualization",
-            "Strategic Layout Planning",
-            "Premium Materials",
-            "Professional Installation",
-            "BTS Documentation Included"
+            "Strategic consultation",
+            "3D booth visualization",
+            "Conversion-optimized layout planning",
+            "Premium material selection",
+            "Expert installation management",
+            "Professional BTS documentation"
         ],
         image: "/portfolio_images/17.webp",
-        ctaText: "Explore Exhibition Stall Services",
+        ctaText: "Explore Exhibition Stall Design Services",
         subServices: [
             {
                 title: "Custom Wooden Exhibition Stalls",
@@ -45,7 +48,12 @@ const servicesData: Record<string, ServiceData> = {
                     "Brand Exclusivity: A one-of-a-kind structure that competitors cannot replicate.",
                     "Durability: Robust structures suitable for heavy product displays."
                 ],
-                image: "/portfolio_images/12.webp"
+                image: "/portfolio_images/custom-wooden-1.jpg",
+                images: [
+                    "/portfolio_images/custom-wooden-1.jpg",
+                    "/portfolio_images/custom-wooden-2.jpg",
+                    "/portfolio_images/custom-wooden-3.jpg"
+                ]
             },
             {
                 title: "Modular Octanorm Systems",
@@ -83,18 +91,17 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'corporate-events': {
-        title: "Corporate Event Management",
-        subtitle: "Conferences | Summits | Award Ceremonies | AGMs | Executive Offsites",
-        description: "Professional end-to-end event management for corporate gatherings of 50 to 5,000+ attendees. We handle venue selection, stage design, AV production, registration, catering coordination, and every detail that makes events memorable and effective.",
+        title: "Corporate Event Management Services",
+        subtitle: "Business Conferences | Industry Summits | Corporate Award Ceremonies | Annual General Meetings | Executive Leadership Offsites",
+        description: "End-to-end professional event management for corporate gatherings ranging from intimate 50-person board meetings to grand 5,000+ attendee conferences. We orchestrate venue selection, stage design, AV production, registration systems, catering coordination, and every micro-detail that transforms events into memorable business experiences.",
         features: [
-            "Strategic Event Planning",
-            "Comprehensive Vendor Management",
-            "Technical Production",
-            "Flawless Execution",
-            "Post-Event Analytics & Reporting"
+            "Strategic event architecture",
+            "Complete vendor coordination",
+            "Advanced technical production",
+            "Seamless on-ground execution"
         ],
         image: "/portfolio_images/music-events.webp",
-        ctaText: "Explore Corporate Event Services",
+        ctaText: "Explore Corporate Event Management Services",
         subServices: [
             {
                 title: "Corporate Conferences & Summits",
@@ -143,18 +150,17 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'trade-show-organization': {
-        title: "Trade Show Organization",
-        subtitle: "B2B Trade Shows | Consumer Expos | Industry Exhibitions | Virtual & Hybrid Events",
-        description: "Complete trade show organization including exhibitor management, floor planning, visitor engagement systems, registration technology, and post-event analytics. We transform empty venues into thriving business marketplaces.",
+        title: "Trade Show Organization & Management",
+        subtitle: "B2B Trade Show Production | Consumer Exhibition Management | Industry-Specific Expos | Virtual & Hybrid Event Solutions",
+        description: "Full-service trade show organization encompassing exhibitor recruitment, strategic floor planning, visitor engagement systems, registration technology platforms, and comprehensive post-event analytics. We transform empty convention centers into thriving business marketplaces.",
         features: [
-            "Exhibitor Acquisition",
-            "Floor Layout Design",
-            "Visitor Marketing",
-            "Lead Generation Systems",
-            "Post-Event ROI Analysis"
+            "Exhibitor acquisition strategies",
+            "Optimized floor layout design",
+            "Targeted visitor marketing campaigns",
+            "Advanced lead generation technology"
         ],
         image: "/portfolio_images/7.webp",
-        ctaText: "Explore Trade Show Services",
+        ctaText: "Explore Trade Show Organization Services",
         subServices: [
             {
                 title: "B2B Trade Show Management",
@@ -203,15 +209,14 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'product-launches': {
-        title: "Product Launch Experiences",
-        subtitle: "Media Launches | Consumer Experiences | B2B Product Unveilings | Virtual Launches",
-        description: "Create market-defining moments with product launches that generate buzz, capture media attention, and create lasting brand impressions. We specialize in experiential launches that make products unforgettable.",
+        title: "Product Launch Event Experiences",
+        subtitle: "Media Product Launches | Immersive Consumer Experiences | B2B Product Unveiling Events | Virtual Launch Productions",
+        description: "Create market-defining moments with product launch events that generate substantial media coverage, capture audience imagination, and establish lasting brand positioning. We specialize in experiential product launches that make offerings unforgettable.",
         features: [
-            "Launch Strategy",
-            "Experience Design",
-            "Media Coordination",
-            "Influencer Management",
-            "Post-Launch Momentum"
+            "Launch strategy development",
+            "Immersive experience design",
+            "Media relations coordination",
+            "Influencer partnership management"
         ],
         image: "/portfolio_images/20220901_125003_Original-scaled.webp",
         ctaText: "Explore Product Launch Services",
@@ -263,18 +268,17 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'mice-services': {
-        title: "MICE Services",
-        subtitle: "Meetings | Incentives | Conferences | Exhibitions",
-        description: "Sophisticated MICE management for corporate clients requiring multi-day programs, destination events, and seamless attendee experiences. From 50-person board meetings to 2,000-person international conferences.",
+        title: "MICE Services (Meetings, Incentives, Conferences, Exhibitions)",
+        subtitle: "Corporate Board Meetings | Incentive Travel Programs | International Conferences | Large-Scale Exhibitions",
+        description: "Sophisticated MICE management for corporate clients requiring multi-day programs, destination events, and exceptional attendee experiences. From exclusive 50-person board meetings to expansive 2,000-person international conferences and beyond.",
         features: [
-            "Destination Selection",
-            "Accommodation Management",
-            "Multi-Day Coordination",
-            "Incentive Programs",
-            "International Logistics"
+            "Destination research and selection",
+            "Comprehensive accommodation management",
+            "Multi-day program coordination",
+            "Custom incentive program design"
         ],
         image: "/portfolio_images/10.webp",
-        ctaText: "Explore MICE Services",
+        ctaText: "Explore Premium MICE Services",
         subServices: [
             {
                 title: "Destination Management",
@@ -323,18 +327,17 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'dealer-meets': {
-        title: "Corporate Roadshows & Dealer Meets",
-        subtitle: "Multi-City Brand Campaigns | Dealer Conferences | Distributor Events | Regional Engagement",
-        description: "Execute pan-India roadshows with consistent quality across 10, 20, or 50+ cities. Strengthen channel relationships through professionally managed dealer meets, training programs, and recognition events.",
+        title: "Corporate Roadshows & Dealer Conference Management",
+        subtitle: "Multi-City Brand Roadshow Campaigns | Annual Dealer Conferences | Distributor Recognition Events | Regional Channel Engagement",
+        description: "Execute flawless pan-India roadshow campaigns with absolute quality consistency across 10, 20, or 50+ cities simultaneously. Strengthen channel partner relationships through professionally managed dealer conferences, product training programs, and recognition ceremonies.",
         features: [
-            "Pan-India Coordination",
-            "Centralized Management",
-            "Regional Expertise",
-            "Channel Engagement",
-            "Performance Tracking"
+            "Pan-India coordination mastery",
+            "Centralized project management",
+            "Regional market expertise",
+            "Channel partner engagement optimization"
         ],
         image: "/portfolio_images/9.webp",
-        ctaText: "Explore Roadshow Services",
+        ctaText: "Explore Corporate Roadshow Services",
         subServices: [
             {
                 title: "Multi-City Product Roadshows",
@@ -383,15 +386,14 @@ const servicesData: Record<string, ServiceData> = {
         ]
     },
     'brand-activations': {
-        title: "Brand Activations & Experiential Marketing",
-        subtitle: "POP Installations | Mall Activations | College Campaigns | Sampling Drives | Street Marketing",
-        description: "Create memorable brand interactions at the point of purchase and beyond. Our experiential marketing campaigns drive trial, build brand love, and create tangible consumer connections that traditional advertising cannot achieve.",
+        title: "Brand Activation & Experiential Marketing",
+        subtitle: "Immersive Brand Experience Zones | Temporary Pop-Up Store Design | Product Sampling Campaigns | Interactive Digital Installations",
+        description: "Forge deep emotional connections with target audiences through immersive brand activation experiences. We design and execute activations that transform passive observers into passionate brand advocates and loyal customers.",
         features: [
-            "Consumer Engagement Design",
-            "Location Scouting & Management",
-            "Brand Ambassador Training",
-            "ROI Measurement",
-            "Social Media Amplification"
+            "Experience architecture design",
+            "Cutting-edge technology integration",
+            "Comprehensive engagement metrics",
+            "Social media amplification strategies"
         ],
         image: "/portfolio_images/20220901_125003_Original-scaled.jpeg.1",
         ctaText: "Explore Brand Activation Services",
@@ -441,20 +443,79 @@ const servicesData: Record<string, ServiceData> = {
                 image: "/portfolio_images/KIRBY-MUMBAI-scaled.webp"
             }
         ]
+    },
+    'stage-design': {
+        title: "Stage Design, Fabrication & Production",
+        subtitle: "Conference Stage Construction | Award Show Set Design | Product Launch Stage Production | Premium LED Video Wall Integration",
+        description: "Professional stage construction services with integrated lighting systems, advanced audio-visual technology, and custom scenic elements. From minimalist podium configurations to complex multi-level theatrical stage productions.",
+        features: [
+            "Custom stage architectural design",
+            "Structural engineering excellence",
+            "Seamless AV system integration",
+            "Complete safety compliance certification"
+        ],
+        image: "/portfolio_images/work-9.webp",
+        ctaText: "Explore Stage Design Services",
+        subServices: [
+            {
+                title: "Conference Stage Construction",
+                description: "Professional stage setups for conferences and seminars, designed to enhance speaker visibility and audience engagement.",
+                features: [
+                    "Modular Design: Scalable stage sizes for any venue.",
+                    "Branding Integration: Custom backdrops and signage.",
+                    "AV Support: Built-in screens and lighting trusses.",
+                    "Safety First: Certified structural integrity."
+                ],
+                image: "/portfolio_images/edited-01.webp"
+            },
+            {
+                title: "Award Show Set Design",
+                description: "Glamorous and impactful stage designs for award ceremonies, creating a visually stunning backdrop for celebration.",
+                features: [
+                    "Theatrical Lighting: Dynamic lighting effects.",
+                    "Scenic Elements: Custom props and decor.",
+                    "LED Walls: High-resolution video backgrounds.",
+                    "Grand Entrances: Designed for dramatic reveals."
+                ],
+                image: "/portfolio_images/work-9.webp"
+            },
+            {
+                title: "Product Launch Stage Production",
+                description: "Innovative stage designs specifically tailored for product reveals, ensuring the product is the star of the show.",
+                features: [
+                    "Reveal Mechanisms: Automated curtains, turntables, and lifts.",
+                    "Focus Lighting: Highlighting the product.",
+                    "Immersive Audio: Surround sound integration.",
+                    "Audience Interaction: Ramps and zones for closer viewing."
+                ],
+                image: "/portfolio_images/20220901_125003_Original-scaled.webp"
+            },
+            {
+                title: "Premium LED Video Wall Integration",
+                description: "Seamless integration of high-definition LED walls into stage designs for dynamic content delivery.",
+                features: [
+                    "High Resolution: Crystal clear visuals.",
+                    "Custom Shapes: Curved and irregular LED configurations.",
+                    "Content Management: Professional playback systems.",
+                    "Live Feed: Real-time camera integration."
+                ],
+                image: "/portfolio_images/work-3.webp"
+            }
+        ]
     }
 };
 
 const industries = [
-    { name: "Technology & IT", sub: "Software, Hardware, SaaS, Telecom, Electronics" },
-    { name: "Manufacturing & Industrial", sub: "Machinery, Automation, Engineering, Chemicals" },
-    { name: "Healthcare & Pharma", sub: "Medical Devices, Pharmaceuticals, Hospitals, Diagnostics" },
-    { name: "Banking & Finance", sub: "Banks, Insurance, Investment, Fintech, NBFC" },
-    { name: "Automotive", sub: "OEMs, Component Manufacturers, EV, Aftermarket" },
-    { name: "Real Estate & Construction", sub: "Developers, Architecture, Interior, Building Materials" },
-    { name: "Consumer Goods", sub: "FMCG, Electronics, Fashion, Home Appliances" },
-    { name: "Education & Training", sub: "Universities, Ed-Tech, Skill Development, Publishing" },
-    { name: "Hospitality & Tourism", sub: "Hotels, Travel, Restaurants, Event Venues" },
-    { name: "Energy & Infrastructure", sub: "Power, Renewable Energy, Oil & Gas, Utilities" },
+    { name: "Technology & Information Technology", sub: "Software Solutions, Hardware Manufacturing, SaaS Platforms, Telecommunications, Consumer Electronics" },
+    { name: "Manufacturing & Industrial Engineering", sub: "Heavy Machinery, Industrial Automation, Engineering Solutions, Chemical Manufacturing" },
+    { name: "Healthcare & Pharmaceutical", sub: "Medical Device Manufacturing, Pharmaceutical Companies, Hospital Systems, Diagnostic Services" },
+    { name: "Banking, Finance & Insurance", sub: "Commercial Banks, Insurance Providers, Investment Firms, FinTech Startups, NBFCs" },
+    { name: "Automotive & Electric Vehicles", sub: "Automobile OEMs, Component Manufacturers, EV Technology, Aftermarket Solutions" },
+    { name: "Real Estate & Construction", sub: "Property Developers, Architecture Firms, Interior Design, Building Material Suppliers" },
+    { name: "Consumer Goods & Retail", sub: "FMCG Brands, Consumer Electronics, Fashion Retail, Home Appliances" },
+    { name: "Education & Skill Development", sub: "Universities, EdTech Platforms, Skill Training Institutes, Educational Publishing" },
+    { name: "Hospitality & Tourism", sub: "Hotel Chains, Travel Companies, Restaurant Brands, Event Venues" },
+    { name: "Energy & Infrastructure", sub: "Power Generation, Renewable Energy, Oil & Gas, Utility Services" },
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -506,33 +567,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     {service.subServices && (
                         <div className="space-y-24 mb-24">
                             {service.subServices.map((sub, index) => (
-                                <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
-                                    {/* Image Side */}
-                                    <div className="w-full lg:w-1/2 relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl group">
-                                        <Image
-                                            src={sub.image || service.image}
-                                            alt={sub.title}
-                                            fill
-                                            className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                        />
-                                    </div>
-
-                                    {/* Text Side */}
-                                    <div className="w-full lg:w-1/2">
-                                        <h3 className="text-3xl font-bold text-[#003063] mb-6">{sub.title}</h3>
-                                        <p className="text-lg text-slate-600 leading-relaxed mb-8">{sub.description}</p>
-                                        {sub.features && (
-                                            <ul className="space-y-4">
-                                                {sub.features.map((feat, i) => (
-                                                    <li key={i} className="flex items-start gap-3 text-slate-700">
-                                                        <CheckCircle2 className="w-5 h-5 text-[#E6007E] mt-1 shrink-0" />
-                                                        <span className="text-lg">{feat}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </div>
-                                </div>
+                                <SubServiceItem
+                                    key={index}
+                                    {...sub}
+                                    index={index}
+                                />
                             ))}
                         </div>
                     )}

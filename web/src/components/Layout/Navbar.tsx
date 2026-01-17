@@ -38,9 +38,9 @@ export default function Navbar() {
     // Navigation Links
     const links: NavItem[] = [
         { label: 'Home', href: '/' },
-        { label: 'About Us', href: '/about' },
+        { label: 'Who We Are', href: '/about' },
         {
-            label: 'Services',
+            label: 'What We Do',
             href: '/services',
             subItems: [
                 { label: 'Exhibition Stall Design', href: '/services/exhibition-stall-design' },
@@ -52,9 +52,9 @@ export default function Navbar() {
             ]
         },
 
-        { label: 'Portfolio', href: '/work' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'Contact', href: '/contact' },
+        { label: 'Our Work', href: '/work' },
+        { label: 'Insights', href: '/blog' },
+        { label: 'Get In Touch', href: '/contact' },
 
     ];
 
@@ -73,10 +73,10 @@ export default function Navbar() {
                 >
                     <img
                         src="/assets/expoLogo.webp"
-                        alt="Upreat Expo"
-                        width="60"
-                        height="20"
-                        className={`transition-all duration-300 ${isScrolled ? "bg-[#003063] p-1 rounded" : ""}`}
+                        alt="UpGreat Expo"
+                        width="150"
+                        height="auto"
+                        className={`transition-all duration-300 ${isScrolled ? "invert" : ""}`}
                     />
                 </Link>
 

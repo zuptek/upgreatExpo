@@ -42,16 +42,20 @@ const TechExhibitionNetwork = () => {
                     <div className="space-y-8">
                         <div className="inline-flex items-center space-x-2 bg-[#191970]/5 border border-[#191970]/10 rounded-full px-4 py-1.5">
                             <span className="w-2 h-2 rounded-full bg-[#191970] animate-pulse"></span>
-                            <span className="text-[#191970] text-xs font-semibold tracking-wider uppercase">Elevating Brand Experiences</span>
+                            <span className="text-[#191970] text-xs font-semibold tracking-wider uppercase">Why Global Brands Choose Us</span>
                         </div>
 
                         <h2 className="text-5xl md:text-6xl font-bold leading-tight font-outfit text-gray-900">
-                            Your Trusted Partner for <br />
-                            <span className="text-[#191970]">Exhibitions & Events.</span>
+                            We Don't Upgrade Brands. We UpGreat <br />
+                            <span className="text-[#191970]">Them.</span>
                         </h2>
 
+                        <div className="text-lg font-semibold text-[#191970] font-outfit">
+                            Award-Winning Exhibition Stall Design | Corporate Event Management Excellence | Pan-India Execution
+                        </div>
+
                         <p className="text-gray-600 text-lg max-w-xl leading-relaxed">
-                            From concept to execution, we deliver world-class exhibition stalls and corporate events. Stand out with UpgreatExpo in Delhi, Mumbai, Bangalore, and beyond.
+                            Transform your trade show presence from ordinary participation into revenue-generating powerhouses. The UpGreat Expo delivers world-class exhibition booth design, strategic event planning, and measurable business outcomes across India's premier exhibition venues.
                         </p>
 
                         <div className="flex flex-wrap gap-4">
@@ -64,23 +68,14 @@ const TechExhibitionNetwork = () => {
                             <Button
                                 variant="outline"
                                 className="bg-[#191970] border-[#191970] text-white hover:bg-[#191970]/90 hover:text-white h-12 px-6 rounded-sm gap-2"
-                                href="/#work"
+                                href="/work"
                             >
                                 <PlayCircle size={18} />
                                 View Our Work
                             </Button>
                         </div>
 
-                        <div className="pt-8 flex items-center gap-4 text-sm text-gray-500">
-                            <span>Locations:</span>
-                            <div className="flex gap-2 flex-wrap">
-                                {['MUMBAI', 'DELHI', 'NOIDA', 'GURGAON', 'GHAZIABAD', 'BANGALORE', 'CHENNAI', 'PUNJAB', 'KOLKATA'].map((city) => (
-                                    <span key={city} className="bg-gray-100 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-600">
-                                        {city}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
+
                     </div>
 
                     {/* Right Column: Stats Grid */}
@@ -94,7 +89,7 @@ const TechExhibitionNetwork = () => {
                             <h3 className="text-3xl font-bold mb-1 text-gray-900">
                                 <Counter value={200} suffix="+" />
                             </h3>
-                            <p className="text-gray-500 text-sm">Projects Delivered</p>
+                            <p className="text-gray-500 text-sm">Successful Exhibitions</p>
                         </motion.div>
 
                         {/* Card 2: Happy Clients (Pink) - Kept dark/colored for contrast */}
@@ -106,9 +101,9 @@ const TechExhibitionNetwork = () => {
                                 <Users className="text-white" size={20} />
                             </div>
                             <h3 className="text-3xl font-bold mb-1 relative z-10">
-                                <Counter value={55} suffix="+" />
+                                <Counter value={98} suffix="%" />
                             </h3>
-                            <p className="text-white/90 text-sm relative z-10">Happy Clients</p>
+                            <p className="text-white/90 text-sm relative z-10">Client Retention</p>
                         </motion.div>
 
                         {/* Card 3: Experience */}
@@ -117,9 +112,9 @@ const TechExhibitionNetwork = () => {
                                 <Clock className="text-[#E6007E]" size={20} />
                             </div>
                             <h3 className="text-3xl font-bold mb-1 text-gray-900">
-                                <Counter value={5} suffix="+" />
+                                <Counter value={50} suffix="+" />
                             </h3>
-                            <p className="text-gray-500 text-sm">Years of Experience</p>
+                            <p className="text-gray-500 text-sm">Pan-India Execution</p>
                         </motion.div>
 
                         {/* Card 4: On-Time Delivery */}

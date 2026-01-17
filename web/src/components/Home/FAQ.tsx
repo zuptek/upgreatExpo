@@ -6,28 +6,32 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
     {
-        question: "What services does UpgreatExpo offer?",
-        answer: "We offer end-to-end exhibition solutions including custom stall design & fabrication, modular systems, corporate event management, product launches, and MICE services across India and international locations."
+        question: "What are exhibition stall design costs in India?",
+        answer: "Exhibition stall costs vary based on booth size, design complexity, materials, and venue location. Standard shell scheme customizations (9-18 sqm) typically range from ₹80,000-₹2,50,000. Premium custom wooden stalls (36-100 sqm) range from ₹3,00,000-₹15,00,000. Large-scale island pavilions (200+ sqm) range from ₹25,00,000-₹1 crore+. Contact our team for precise pricing based on your specific exhibition requirements and business objectives."
     },
     {
-        question: "Do you provide services outside of Delhi/NCR?",
-        answer: "Yes, we have a strong presence across all major Indian cities including Mumbai, Bangalore, Chennai, Hyderabad, and Kolkata. We also manage international projects with our global partner network."
+        question: "What's included in your complete exhibition stall service?",
+        answer: "Every project comprehensively includes: strategic business consultation, photorealistic 3D design concepts, premium material procurement, professional fabrication, expert on-site installation, custom graphics and branding, professional lighting design, quality furniture, integrated storage solutions, complete electrical work, post-event dismantling, and complimentary professional BTS documentation (photography + videography)."
     },
     {
-        question: "What is the typical timeline for designing and building a stall?",
-        answer: "Ideally, we recommend starting the process 4-6 weeks before the event. This allows ample time for concept development, 3D rendering approvals, fabrication, and quality checks. However, we can also accommodate express timelines for urgent requirements."
+        question: "How far in advance should companies book exhibition services?",
+        answer: "For optimal strategic planning and execution quality, we recommend booking 8-12 weeks before your target exhibition date. This timeline allows adequate time for comprehensive strategy development, design refinement iterations, quality fabrication, and organizer approvals. We accommodate rush projects (4-6 weeks) with expedited coordination and may apply additional fees."
     },
     {
-        question: "Can you handle last-minute changes during the event?",
-        answer: "Absolutely. Our on-site project management team is always present during the event to handle any unforeseen requirements or last-minute adjustments to ensure a flawless experience."
+        question: "Do you manage exhibition registrations and complete logistics?",
+        answer: "Absolutely. We handle exhibitor registration processes, coordinate directly with event organizers and venue management, manage all material transportation logistics, obtain necessary venue approvals and permits, and orchestrate complete logistics from initial planning through final dismantling."
     },
     {
-        question: "Do you offer rental furniture and AV equipment?",
-        answer: "Yes, we provide a comprehensive range of rental furniture, high-tech AV equipment, LED walls, and lighting solutions to complement your stall design and enhance visitor engagement."
+        question: "Can you execute exhibitions in tier-2 and tier-3 Indian cities?",
+        answer: "Yes, extensively. We have successfully executed 500+ exhibition projects across 50+ Indian cities including numerous tier-2 and tier-3 markets. Our established pan-India execution network ensures consistent premium quality regardless of geographic location."
     },
     {
-        question: "How do you ensure the quality of fabrication?",
-        answer: "We have our own in-house manufacturing units equipped with modern machinery. Our quality control team conducts rigorous checks at every stage of production, from material selection to final assembly, ensuring a premium finish."
+        question: "Do you offer modular reusable exhibition stall systems?",
+        answer: "Yes, we specialize in Octanorm modular systems perfect for companies participating in multiple annual exhibitions. These systems are highly cost-effective, environmentally sustainable, and can be strategically reconfigured for different booth sizes, layouts, and branding requirements."
+    },
+    {
+        question: "What differentiates The UpGreat Expo from other exhibition companies?",
+        answer: "Four critical differentiators establish our market leadership: (1) Strategic business-focused approach emphasizing measurable outcomes over purely aesthetic design, (2) Complimentary professional BTS documentation included for marketing asset development, (3) Proven panIndia execution capability with centralized quality management, (4) Sustainable eco-friendly practices as standard operating procedure, not premium optional upgrades."
     }
 ];
 

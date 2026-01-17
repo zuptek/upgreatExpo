@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { Button } from "@/components/UI/Button";
-import { Mail, MapPin, Phone, MessageSquare, Loader2 } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, Loader2, Globe, Clock, Calendar, FileText, Briefcase } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { useEffect } from "react";
 
@@ -36,9 +36,9 @@ export default function ContactPage() {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-6">
                         <MessageSquare size={32} className="text-[#E6007E]" />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">Contact The UpGreat Expo</h1>
                     <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                        Ready to start planning? Contact us today for a consultation.
+                        Let's Create Your Next Exhibition Success Story
                     </p>
                 </div>
             </section>
@@ -49,38 +49,82 @@ export default function ContactPage() {
                     <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 h-full">
                         <h2 className="text-2xl font-bold text-[#003063] mb-8">Contact Information</h2>
                         <div className="space-y-8">
+                            {/* Address */}
                             <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300">
+                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300 flex-shrink-0">
                                     <MapPin className="w-6 h-6 text-[#003063] group-hover:text-white transition-colors duration-300" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Visit Us</h3>
+                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Corporate Head Office</h3>
                                     <p className="text-slate-600 leading-relaxed">
-                                        Unit No. 213-214, 2nd Floor,<br />
-                                        Welldone Tech Park,<br />
-                                        Gurgaon – 122018
+                                        The UpGreat Expo<br />
+                                        Welldone Tech Park, Sector 48<br />
+                                        Gurugram – 122018, Haryana, India
                                     </p>
                                 </div>
                             </div>
 
+                            {/* Email */}
                             <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300">
+                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300 flex-shrink-0">
                                     <Mail className="w-6 h-6 text-[#003063] group-hover:text-white transition-colors duration-300" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Email Us</h3>
-                                    <p className="text-slate-600">Info@UpGreatExpo.com</p>
+                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Business Email</h3>
+                                    <p className="text-slate-600">info@upgreatexpo.com</p>
                                 </div>
                             </div>
 
+                            {/* Website */}
                             <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300">
+                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300 flex-shrink-0">
+                                    <Globe className="w-6 h-6 text-[#003063] group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Website</h3>
+                                    <p className="text-slate-600">www.upgreatexpo.com</p>
+                                </div>
+                            </div>
+
+                            {/* Phone */}
+                            <div className="flex items-start gap-4 group">
+                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300 flex-shrink-0">
                                     <Phone className="w-6 h-6 text-[#003063] group-hover:text-white transition-colors duration-300" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Call Us</h3>
+                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Contact Number</h3>
                                     <p className="text-slate-600">+91 90886 55513</p>
                                 </div>
+                            </div>
+
+                            {/* Operating Hours */}
+                            <div className="flex items-start gap-4 group">
+                                <div className="w-12 h-12 rounded-lg bg-[#003063]/5 flex items-center justify-center group-hover:bg-[#003063] transition-colors duration-300 flex-shrink-0">
+                                    <Clock className="w-6 h-6 text-[#003063] group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg text-[#003063] mb-1">Business Operating Hours</h3>
+                                    <p className="text-slate-600">
+                                        Monday through Saturday: 9:00 AM - 6:00 PM IST<br />
+                                        Sunday: Closed (Emergency event support available)
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* CTA Buttons */}
+                            <div className="pt-6 space-y-3">
+                                <Button className="w-full bg-[#E6007E] hover:bg-[#C5006C] text-white justify-start h-auto py-3 px-4" href="/contact">
+                                    <Calendar className="w-5 h-5 mr-3" />
+                                    Schedule Your Free Consultation
+                                </Button>
+                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/contact">
+                                    <FileText className="w-5 h-5 mr-3" />
+                                    Request Custom Exhibition Quote
+                                </Button>
+                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/work">
+                                    <Briefcase className="w-5 h-5 mr-3" />
+                                    View Complete Portfolio
+                                </Button>
                             </div>
                         </div>
                     </div>

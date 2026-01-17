@@ -4,10 +4,15 @@ import React from "react";
 import Hero from "@/components/Home/Hero";
 import EndToEndExecution from "@/components/Home/EndToEndExecution";
 import OurProcess from "@/components/Home/OurProcess";
-import UpGreatAdvantage from "@/components/Home/UpGreatAdvantage";
+
 import WorkCarousel from "@/components/Home/WorkCarousel";
 import ImageGrid from "@/components/Home/ImageGrid";
 import FAQ from "@/components/Home/FAQ";
+import BTSDocumentation from "@/components/Home/BTSDocumentation";
+import PanIndiaExecution from "@/components/Home/PanIndiaExecution";
+import WhyPartner from "@/components/Home/WhyPartner";
+import BestExhibitionCompany from "@/components/Home/BestExhibitionCompany";
+import GetStarted from "@/components/Home/GetStarted";
 import { Button } from "@/components/UI/Button";
 
 export default function Home() {
@@ -19,22 +24,37 @@ export default function Home() {
 
       {/* 3. OUR PROCESS */}
       <OurProcess />
+
+      {/* 3.1 BTS DOCUMENTATION
+      <BTSDocumentation /> */}
       {/* 2. END-TO-END EXECUTION */}
-      <EndToEndExecution />
+      {/* <EndToEndExecution /> */}
+
+      {/* 2.1 PAN-INDIA EXECUTION */}
+      <PanIndiaExecution />
+
+      {/* 2.3 BEST EXHIBITION COMPANY */}
+      <BestExhibitionCompany />
+
+      {/* 2.2 WHY PARTNER */}
+      <WhyPartner />
 
 
 
-      {/* 4. THE UPGREAT ADVANTAGE */}
-      <UpGreatAdvantage />
+      {/* 7. GET STARTED SECTION */}
+      <GetStarted />
 
-      {/* 5. WORK CAROUSEL (Horizontal Scroll) */}
-      <WorkCarousel />
+
+
+      {/* 5. WORK CAROUSEL (Horizontal Scroll)
+      <WorkCarousel /> */}
 
       {/* 3. IMAGE GRID (Masonry Gallery) */}
       <ImageGrid />
 
       {/* 6. FAQ SECTION */}
       <FAQ />
+
 
       {/* 4. CONTACT SECTION (Freeman Style) */}
       <section className="bg-[#003063] py-24 text-center">
