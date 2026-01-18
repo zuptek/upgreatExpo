@@ -142,7 +142,7 @@ export default function Navbar() {
                         className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-[10px] h-10 px-6 rounded-sm transition-all shadow-md"
                         href="/contact-us"
                     >
-                        Get In Touch
+                        Let's UpGreat
                     </Button>
                 </div>
 
