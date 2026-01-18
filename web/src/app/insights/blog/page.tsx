@@ -220,7 +220,7 @@ export default async function BlogPage({
                                         .map((post: any) => (
                                             <a
                                                 key={post.slug.current}
-                                                href={`/blog/${post.slug.current}`}
+                                                href={`/insights/blog/${post.slug.current}`}
                                                 className="block group"
                                             >
                                                 <div className="flex items-start gap-3">

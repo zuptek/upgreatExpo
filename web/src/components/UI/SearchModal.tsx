@@ -128,7 +128,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                     {results.map((result) => (
                                         <Link
                                             key={result.slug.current}
-                                            href={`/blog/${result.slug.current}`}
+                                            href={`/insights/blog/${result.slug.current}`}
                                             onClick={onClose}
                                             className="block p-4 hover:bg-slate-50 transition-colors group"
                                         >

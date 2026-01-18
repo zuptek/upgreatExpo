@@ -46,8 +46,8 @@ const TechExhibitionNetwork = () => {
                         </div>
 
                         <h2 className="text-5xl md:text-6xl font-bold leading-tight font-outfit text-gray-900">
-                            We Don't Upgrade Brands. We UpGreat <br />
-                            <span className="text-[#191970]">Them.</span>
+                           India's Leading Exhibition Stall Designer <br />
+                            <span className="text-[#191970]">& Corporate Event Management Company</span>
                         </h2>
 
                         <div className="text-lg font-semibold text-[#191970] font-outfit">
@@ -61,14 +61,14 @@ const TechExhibitionNetwork = () => {
                         <div className="flex flex-wrap gap-4">
                             <Button
                                 className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold px-8 h-12 rounded-sm shadow-[0_4px_14px_rgba(230,0,126,0.4)] transition-all"
-                                href="/contact"
+                                href="/contact-us"
                             >
                                 Request a Proposal
                             </Button>
                             <Button
                                 variant="outline"
                                 className="bg-[#191970] border-[#191970] text-white hover:bg-[#191970]/90 hover:text-white h-12 px-6 rounded-sm gap-2"
-                                href="/work"
+                                href="/portfolio"
                             >
                                 <PlayCircle size={18} />
                                 View Our Work

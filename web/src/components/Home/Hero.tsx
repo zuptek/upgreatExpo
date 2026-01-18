@@ -73,14 +73,14 @@ export default function Hero() {
                         >
                             <Button
                                 className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-xs h-14 px-8 rounded-sm transition-all shadow-lg"
-                                href="/contact"
+                                href="/contact-us"
                             >
                                 Start Your Project
                             </Button>
                             <Button
                                 variant="outline"
                                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold uppercase tracking-widest text-xs h-14 px-8 rounded-sm transition-all"
-                                href="/work"
+                                href="/portfolio"
                             >
                                 View Portfolio
                             </Button>
@@ -174,7 +174,7 @@ export default function Hero() {
                         <div className="relative z-10">
                             <Button
                                 className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-sm h-14 px-10 rounded-sm shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-                                href="/contact"
+                                href="/contact-us"
                             >
                                 Get Started Now
                             </Button>

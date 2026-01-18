@@ -71,7 +71,7 @@ export default function CareersPage() {
                                     <h3 className="text-xl font-bold text-[#003063] group-hover:text-[#E6007E] transition-colors">Event Manager</h3>
                                     <p className="text-slate-500 mt-1">Full-time • Gurgaon</p>
                                 </div>
-                                <Link href="/contact">
+                                <Link href="/contact-us">
                                     <Button variant="outline" className="group-hover:bg-[#E6007E] group-hover:text-white group-hover:border-[#E6007E]">
                                         Apply Now <ArrowRight className="w-4 h-4 ml-2" />
                                     </Button>
@@ -85,7 +85,7 @@ export default function CareersPage() {
                                     <h3 className="text-xl font-bold text-[#003063] group-hover:text-[#E6007E] transition-colors">Graphic Designer</h3>
                                     <p className="text-slate-500 mt-1">Full-time • Gurgaon</p>
                                 </div>
-                                <Link href="/contact">
+                                <Link href="/contact-us">
                                     <Button variant="outline" className="group-hover:bg-[#E6007E] group-hover:text-white group-hover:border-[#E6007E]">
                                         Apply Now <ArrowRight className="w-4 h-4 ml-2" />
                                     </Button>
@@ -99,7 +99,7 @@ export default function CareersPage() {
                                     <h3 className="text-xl font-bold text-[#003063] group-hover:text-[#E6007E] transition-colors">Sales Executive</h3>
                                     <p className="text-slate-500 mt-1">Full-time • Gurgaon</p>
                                 </div>
-                                <Link href="/contact">
+                                <Link href="/contact-us">
                                     <Button variant="outline" className="group-hover:bg-[#E6007E] group-hover:text-white group-hover:border-[#E6007E]">
                                         Apply Now <ArrowRight className="w-4 h-4 ml-2" />
                                     </Button>

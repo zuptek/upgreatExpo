@@ -11,7 +11,7 @@ import FAQ from "@/components/Home/FAQ";
 import BTSDocumentation from "@/components/Home/BTSDocumentation";
 import PanIndiaExecution from "@/components/Home/PanIndiaExecution";
 import WhyPartner from "@/components/Home/WhyPartner";
-import BestExhibitionCompany from "@/components/Home/BestExhibitionCompany";
+
 import GetStarted from "@/components/Home/GetStarted";
 import { Button } from "@/components/UI/Button";
 
@@ -33,8 +33,7 @@ export default function Home() {
       {/* 2.1 PAN-INDIA EXECUTION */}
       <PanIndiaExecution />
 
-      {/* 2.3 BEST EXHIBITION COMPANY */}
-      <BestExhibitionCompany />
+
 
       {/* 2.2 WHY PARTNER */}
       <WhyPartner />
@@ -67,7 +66,7 @@ export default function Home() {
           </p>
           <Button
             className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-sm px-10 h-14 rounded-sm transition-all shadow-lg"
-            href="/contact"
+            href="/contact-us"
           >
             Get In Touch
           </Button>

@@ -32,7 +32,7 @@ export default function ServicesPage() {
                         The UpGreat Expo is not a vendor network. We are a single-point strategic partner for brands that want control, impact, and ROI.
                     </p>
                     <div className="flex flex-col md:flex-row gap-4 justify-center">
-                        <Link href="/contact">
+                        <Link href="/contact-us">
                             <Button className="bg-[#E6007E] hover:bg-[#C5006C] text-white px-8 py-6 text-lg rounded-full">
                                 Partner With Us
                             </Button>
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#003063] text-white hover:bg-[#00244a] px-6 py-3 rounded-full">
                                     Talk to a Strategist <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#003063] text-white hover:bg-[#00244a] px-6 py-3 rounded-full">
                                     Get Stall Quote <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#003063] text-white hover:bg-[#00244a] px-6 py-3 rounded-full">
                                     Design My Experience <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#003063] text-white hover:bg-[#00244a] px-6 py-3 rounded-full">
                                     Plan Your Event <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#003063] text-white hover:bg-[#00244a] px-6 py-3 rounded-full">
                                     Host Your Expo <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -314,7 +314,7 @@ export default function ServicesPage() {
                                 <li>• Engagement analytics</li>
                                 <li>• Post-expo data reports</li>
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button variant="ghost" className="text-white hover:text-[#E6007E] hover:bg-transparent p-0">
                                     Upgrade My ROI <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -329,7 +329,7 @@ export default function ServicesPage() {
                                 <li>• Social media assets</li>
                                 <li>• Brand credibility kits</li>
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button variant="ghost" className="text-white hover:text-[#E6007E] hover:bg-transparent p-0">
                                     Amplify My Brand <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -352,7 +352,7 @@ export default function ServicesPage() {
                         With the Upgrade to UpGreat model, your exhibition becomes a growth system—not an expense.
                         This structure positions The UpGreat Expo as an industry authority, not a vendor.
                     </p>
-                    <Link href="/contact">
+                    <Link href="/contact-us">
                         <Button className="bg-[#E6007E] hover:bg-[#C5006C] text-white px-10 py-6 text-xl rounded-full shadow-lg hover:shadow-xl transition-all">
                             Start Your Project
                         </Button>

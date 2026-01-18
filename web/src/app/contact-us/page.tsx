@@ -113,15 +113,15 @@ export default function ContactPage() {
 
                             {/* CTA Buttons */}
                             <div className="pt-6 space-y-3">
-                                <Button className="w-full bg-[#E6007E] hover:bg-[#C5006C] text-white justify-start h-auto py-3 px-4" href="/contact">
+                                <Button className="w-full bg-[#E6007E] hover:bg-[#C5006C] text-white justify-start h-auto py-3 px-4" href="/contact-us">
                                     <Calendar className="w-5 h-5 mr-3" />
                                     Schedule Your Free Consultation
                                 </Button>
-                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/contact">
+                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/contact-us">
                                     <FileText className="w-5 h-5 mr-3" />
                                     Request Custom Exhibition Quote
                                 </Button>
-                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/work">
+                                <Button className="w-full bg-white border-2 border-[#003063] text-[#003063] hover:bg-[#003063] hover:text-white justify-start h-auto py-3 px-4" href="/portfolio">
                                     <Briefcase className="w-5 h-5 mr-3" />
                                     View Complete Portfolio
                                 </Button>

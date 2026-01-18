@@ -24,7 +24,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             whileHover={{ y: -10 }}
             className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 h-full"
         >
-            <Link href={`/blog/${post.slug.current}`} className="flex flex-col h-full">
+            <Link href={`/insights/blog/${post.slug.current}`} className="flex flex-col h-full">
                 {/* Image Container */}
                 <div className="relative h-64 w-full overflow-hidden">
                     {post.mainImage ? (

@@ -319,7 +319,7 @@ export default function WorkPage() {
                         Let's discuss your vision and build an exhibition experience that sets you apart from the competition.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact">
+                        <Link href="/contact-us">
                             <Button className="bg-[#003063] hover:bg-[#00224a] text-white px-8 py-4 text-lg rounded-sm shadow-lg w-full sm:w-auto">
                                 Start Your Project
                             </Button>

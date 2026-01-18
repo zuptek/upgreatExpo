@@ -55,7 +55,7 @@ const WhyPartner = () => {
                                 Our exhibition strategy consultants analyze your business objectives, target demographics, and competitive positioning before creating a single design element. From booth layout architecture to visitor psychology integration—every component is optimized for lead generation, brand recall, and sales conversion.
                             </p>
                             <div className="mt-8">
-                                <Button href="/work" className="bg-[#E6007E] hover:bg-[#be0068] text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 group">
+                                <Button href="/portfolio" className="bg-[#E6007E] hover:bg-[#be0068] text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 group">
                                     View Our Work
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </Button>

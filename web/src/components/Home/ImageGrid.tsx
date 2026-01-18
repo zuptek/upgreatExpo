@@ -7,10 +7,10 @@ const images = [
     { title: "WAREHOUSE EXPO MUMBAI", caption: "WAREHOUSE EXPO MUMBAI", src: "/portfolio_images/20220901_125003_Original-scaled.webp" },
     { title: "ABM", caption: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/17.webp" },
     { title: "SAFR", caption: "IFSEC EXHIBITION", src: "/portfolio_images/13.webp" },
-    { title: "ANSCER ROBOTIC", caption: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/anscer.webp" },
+    { title: "BABA ADHESIVE AND COATINGS", caption: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/Baba_adhesive_and_coatings.webp" },
     { title: "C-NET Stall Design", caption: "Exhibition Stall Design", src: "/portfolio_images/work-2.webp" },
     { title: "STV Stall Design", caption: "Exhibition Stall Design", src: "/portfolio_images/work-3.webp" },
-    { title: "CAME", caption: "IFSEC EXHIBITION", src: "/portfolio_images/6.webp" },
+    { title: "Thaparkarr Printing Machinery", caption: "Thaparkarr Printing Machinery", src: "/portfolio_images/Thaparkarr_printing_machinery.webp" },
     { title: "AIR CARE", caption: "AIR CARE", src: "/portfolio_images/10.webp" },
     { title: "Time Watch", caption: "Time Watch Expo", src: "/portfolio_images/12.webp" }
 ].map((img, i) => ({

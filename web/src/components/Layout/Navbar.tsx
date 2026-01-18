@@ -38,9 +38,18 @@ export default function Navbar() {
     // Navigation Links
     const links: NavItem[] = [
         { label: 'Home', href: '/' },
-        { label: 'Who We Are', href: '/about' },
         {
-            label: 'What We Do',
+            label: 'About',
+            href: '/about',
+            subItems: [
+                { label: 'Our Story', href: '/about/our-story' },
+                { label: 'Team', href: '/about/team' },
+                { label: 'Where to Find Us', href: '/about/where-to-find-us' },
+                { label: 'Careers', href: '/about/careers' },
+            ]
+        },
+        {
+            label: 'Services',
             href: '/services',
             subItems: [
                 { label: 'Exhibition Stall Design', href: '/services/exhibition-stall-design' },
@@ -51,11 +60,9 @@ export default function Navbar() {
                 { label: 'Dealer Meets', href: '/services/dealer-meets' },
             ]
         },
-
-        { label: 'Our Work', href: '/work' },
-        { label: 'Insights', href: '/blog' },
-        { label: 'Get In Touch', href: '/contact' },
-
+        { label: 'Portfolio', href: '/portfolio' },
+        { label: 'Blog', href: '/insights/blog' },
+        { label: 'Contact Us', href: '/contact-us' },
     ];
 
     return (
@@ -133,7 +140,7 @@ export default function Navbar() {
 
                     <Button
                         className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-[10px] h-10 px-6 rounded-sm transition-all shadow-md"
-                        href="/contact"
+                        href="/contact-us"
                     >
                         Get In Touch
                     </Button>
@@ -189,7 +196,7 @@ export default function Navbar() {
                                     )}
                                 </div>
                             ))}
-                            <Button className="w-full mt-4 bg-[#E6007E] text-white rounded-none uppercase font-bold tracking-widest" href="/contact" onClick={() => setIsOpen(false)}>
+                            <Button className="w-full mt-4 bg-[#E6007E] text-white rounded-none uppercase font-bold tracking-widest" href="/contact-us" onClick={() => setIsOpen(false)}>
                                 Find Shows & Place Order
                             </Button>
                         </div>

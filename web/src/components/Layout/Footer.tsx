@@ -50,10 +50,10 @@ export default function Footer() {
                                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                                 <li><Link href="/about" className="hover:text-white transition-colors">Who We Are</Link></li>
                                 <li><Link href="/services" className="hover:text-white transition-colors">What We Do</Link></li>
-                                <li><Link href="/work" className="hover:text-white transition-colors">Our Work</Link></li>
-                                <li><Link href="/blog" className="hover:text-white transition-colors">Insights</Link></li>
+                                <li><Link href="/portfolio" className="hover:text-white transition-colors">Our Work</Link></li>
+                                <li><Link href="/insights/blog" className="hover:text-white transition-colors">Blog</Link></li>
                                 <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                                <li><Link href="/contact" className="hover:text-white transition-colors">Get In Touch</Link></li>
+                                <li><Link href="/contact-us" className="hover:text-white transition-colors">Get In Touch</Link></li>
                             </ul>
                         </div>
 
@@ -85,11 +85,11 @@ export default function Footer() {
                         <div>
                             <h4 className="font-bold text-base mb-4 text-[#E6007E]">RESOURCES</h4>
                             <ul className="space-y-2 text-sm text-gray-400">
-                                <li><Link href="/blog" className="hover:text-white transition-colors">Planning Guide</Link></li>
-                                <li><Link href="/blog" className="hover:text-white transition-colors">Design Trends</Link></li>
-                                <li><Link href="/work" className="hover:text-white transition-colors">Case Studies</Link></li>
-                                <li><Link href="/contact" className="hover:text-white transition-colors">FAQs</Link></li>
-                                <li><Link href="/contact" className="hover:text-white transition-colors">Brochure</Link></li>
+                                <li><Link href="/insights/blog" className="hover:text-white transition-colors">Planning Guide</Link></li>
+                                <li><Link href="/insights/blog" className="hover:text-white transition-colors">Design Trends</Link></li>
+                                <li><Link href="/portfolio/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+                                <li><Link href="/contact-us" className="hover:text-white transition-colors">FAQs</Link></li>
+                                <li><Link href="/contact-us" className="hover:text-white transition-colors">Brochure</Link></li>
                             </ul>
                         </div>
                     </div>

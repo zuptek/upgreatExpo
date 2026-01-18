@@ -595,7 +595,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/contact">
+                            <Link href="/contact-us">
                                 <Button className="bg-[#E6007E] hover:bg-[#C5006C] text-white px-8 py-4 text-lg rounded-sm shadow-lg">
                                     Get a Quote <ArrowRight className="w-5 h-5 ml-2" />
                                 </Button>
@@ -644,7 +644,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     <p className="text-xl text-white/80 mb-10">
                         Let's build an unforgettable experience together.
                     </p>
-                    <Link href="/contact">
+                    <Link href="/contact-us">
                         <Button className="bg-white text-[#003063] hover:bg-gray-100 px-10 py-5 text-lg rounded-full font-bold">
                             Contact Us Today
                         </Button>

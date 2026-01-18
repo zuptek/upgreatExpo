@@ -16,9 +16,9 @@ export default function SitemapPage() {
                 { label: "Home", href: "/" },
                 { label: "Who We Are", href: "/about" },
                 { label: "What We Do", href: "/services" },
-                { label: "Our Work", href: "/work" },
-                { label: "Insights (Blog)", href: "/blog" },
-                { label: "Get In Touch", href: "/contact" },
+                { label: "Our Work", href: "/portfolio" },
+                { label: "Blog", href: "/insights/blog" },
+                { label: "Get In Touch", href: "/contact-us" },
                 { label: "Careers", href: "/careers" },
             ]
         },
