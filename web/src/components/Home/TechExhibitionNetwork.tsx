@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Users, CheckCircle, PlayCircle, Store, Clock, LucideIcon } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { motion, useTransform, useInView, useScroll, useMotionValue, animate } from 'framer-motion';
+import { motion, useTransform, useInView, useScroll, useMotionValue, animate, AnimatePresence } from 'framer-motion';
 
 const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
     const ref = useRef(null);
@@ -70,10 +70,27 @@ const statsData: StatCard[] = [
     }
 ];
 
+const headings = [
+    "The UpGreat Expo – India’s Leading Exhibition Stall Design",
+    "The UpGreat Expo – India’s Leading Corporate Events",
+    "The UpGreat Expo – India’s Leading Product Launches",
+    "The UpGreat Expo – India’s Leading Trade Show Organization",
+    "The UpGreat Expo – India’s Leading MICE Services",
+    "The UpGreat Expo – India’s Leading Dealer Meets & Conferences"
+];
+
 const TechExhibitionNetwork = () => {
     const containerRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
     const [activeCard, setActiveCard] = useState<number>(1); // Default to Client Retention (index 1)
+    const [currentHeading, setCurrentHeading] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentHeading((prev) => (prev + 1) % headings.length);
+        }, 3000);
+        return () => clearInterval(timer);
+    }, []);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -110,10 +127,21 @@ const TechExhibitionNetwork = () => {
                             <span className="text-[#191970] text-xs font-semibold tracking-wider uppercase">Why Global Brands Choose Us</span>
                         </div>
 
-                        <h2 className="text-5xl md:text-6xl font-bold leading-tight font-outfit text-gray-900">
-                            India's Leading Exhibition Stall Designer <br />
-                            <span className="text-[#191970]">& Corporate Event Management Company</span>
-                        </h2>
+                        <div className="h-32 md:h-40 relative">
+                            <AnimatePresence mode="wait">
+                                <motion.h2
+                                    key={currentHeading}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="text-4xl md:text-5xl font-bold leading-tight font-outfit text-gray-900 absolute top-0 left-0 w-full"
+                                >
+                                    {headings[currentHeading].split("–")[0]} – <br />
+                                    <span className="text-[#191970]">{headings[currentHeading].split("–")[1]}</span>
+                                </motion.h2>
+                            </AnimatePresence>
+                        </div>
 
                         <div className="text-lg font-semibold text-[#191970] font-outfit">
                             Award-Winning Exhibition Stall Design | Corporate Event Management Excellence | Pan-India Execution

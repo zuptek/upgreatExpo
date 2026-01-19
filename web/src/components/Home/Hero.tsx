@@ -59,7 +59,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
-                            className="text-[clamp(2.5rem,6vw,5rem)] font-bold text-white leading-[1.1] tracking-tight mb-8 drop-shadow-lg"
+                            className="text-[clamp(4rem,5vw,4rem)] font-bold text-white leading-[1.1] tracking-tight mb-8 drop-shadow-lg"
                         >
                             We Don’t Upgrade Brands. <br />
                             We <span className="text-[#E6007E]">UpGreat</span> Them.

@@ -11,6 +11,15 @@ const projects = [
     { title: "APL", category: "PRINT PACK", src: "/portfolio_images/apl.webp" },
     { title: "LP VALVES", category: "LP VALVES", src: "/portfolio_images/9.webp" },
     { title: "UP TWIGA", category: "UP TWIGA", src: "/portfolio_images/7.webp" },
+    { title: "WAREHOUSE EXPO", category: "MUMBAI", src: "/portfolio_images/20220901_125003_Original-scaled.webp" },
+    { title: "ABM", category: "MEDICAL EXHIBITION MUMBAI", src: "/portfolio_images/17.webp" },
+    { title: "SAFR", category: "IFSEC EXHIBITION", src: "/portfolio_images/13.webp" },
+    { title: "BABA ADHESIVE", category: "INDIA WAREHOUSE EXHIBITION", src: "/portfolio_images/Baba_adhesive_and_coatings.webp" },
+    { title: "C-NET", category: "Stall Design", src: "/portfolio_images/work-2.webp" },
+    { title: "STV", category: "Stall Design", src: "/portfolio_images/work-3.webp" },
+    { title: "Thaparkarr", category: "Printing Machinery", src: "/portfolio_images/Thaparkarr_printing_machinery.webp" },
+    { title: "AIR CARE", category: "AIR CARE", src: "/portfolio_images/10.webp" },
+    { title: "Time Watch", category: "Time Watch Expo", src: "/portfolio_images/12.webp" },
 ];
 
 export default function WorkCarousel() {
@@ -19,7 +28,7 @@ export default function WorkCarousel() {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-50%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-85%"]);
 
     return (
         // Added z-50 to stack over UpGreatAdvantage (z-40)

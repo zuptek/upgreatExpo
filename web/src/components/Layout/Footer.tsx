@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="font-sans">
             {/* Main Footer */}
-            <div className="bg-gradient-to-br from-[#0a0a2e] via-[#191970] to-[#2e001f] text-white pt-8 pb-6">
+            <div className="bg-gradient-to-br from-[#02021a] via-[#0c0c38] to-[#1a0011] text-white pt-8 pb-6">
                 <div className="container mx-auto px-6 lg:px-12">
 
                     {/* Top Section: Brand & Social */}
@@ -48,12 +48,11 @@ export default function Footer() {
                             <h4 className="font-bold text-base mb-4 text-[#E6007E]">COMPANY</h4>
                             <ul className="space-y-2 text-sm text-gray-400">
                                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                                <li><Link href="/about" className="hover:text-white transition-colors">Who We Are</Link></li>
-                                <li><Link href="/services" className="hover:text-white transition-colors">What We Do</Link></li>
-                                <li><Link href="/portfolio" className="hover:text-white transition-colors">Our Work</Link></li>
+                                <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+                                <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
+                                <li><Link href="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></li>
                                 <li><Link href="/insights/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                                <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                                <li><Link href="/contact-us" className="hover:text-white transition-colors">Get In Touch</Link></li>
+                                <li><Link href="/contact-us" className="hover:text-white transition-colors">Contact Us</Link></li>
                             </ul>
                         </div>
 

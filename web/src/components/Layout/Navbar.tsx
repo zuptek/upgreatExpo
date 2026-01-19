@@ -67,10 +67,11 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                ? "bg-white/90 backdrop-blur-md shadow-sm h-16 border-b border-gray-100" // Scrolled State (White)
-                : "bg-[#003063]/10 backdrop-blur-md h-20 shadow-lg" // Initial State (Smoky Blue)
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+                isScrolled
+                    ? "bg-white/70 backdrop-blur-xl shadow-sm h-16 border-b border-gray-100"
+                    : "bg-[#191970]/20 backdrop-blur-lg border-b border-white/10 h-24"
+            }`}
         >
             <div className="container mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
                 {/* Logo */}
@@ -81,7 +82,7 @@ export default function Navbar() {
                     <img
                         src="/assets/expoLogo.webp"
                         alt="UpGreat Expo"
-                        width="150"
+                        width="110"
                         height="auto"
                         className={`transition-all duration-300 ${isScrolled ? "invert" : ""}`}
                     />
