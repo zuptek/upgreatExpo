@@ -1,27 +1,92 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { Users, CheckCircle, PlayCircle, Store, Clock } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Users, CheckCircle, PlayCircle, Store, Clock, LucideIcon } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { motion, useSpring, useTransform, useInView, useScroll } from 'framer-motion';
+import { motion, useTransform, useInView, useScroll, useMotionValue, animate } from 'framer-motion';
 
 const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const springValue = useSpring(0, { duration: 2000 }); // Using duration for smooth linear-ish ease, or we can use stiffness/damping
-    const displayValue = useTransform(springValue, (latest) => Math.floor(latest) + suffix);
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.floor(latest) + suffix);
 
     useEffect(() => {
         if (isInView) {
-            springValue.set(value);
+            const controls = animate(count, value, { duration: 2 });
+            return controls.stop;
         }
-    }, [isInView, value, springValue]);
+    }, [isInView, value, count]);
 
-    return <motion.span ref={ref}>{displayValue}</motion.span>;
+    return <motion.span ref={ref}>{rounded}</motion.span>;
 };
+
+interface StatCard {
+    id: number;
+    icon: LucideIcon;
+    value?: number;
+    suffix?: string;
+    label: string;
+    subLabel?: string;
+    type?: 'counter' | 'progress';
+    col: 1 | 2;
+}
+
+const statsData: StatCard[] = [
+    {
+        id: 0,
+        icon: CheckCircle,
+        value: 200,
+        suffix: "+",
+        label: "Successful Exhibitions",
+        col: 1,
+        type: 'counter'
+    },
+    {
+        id: 1,
+        icon: Users,
+        value: 98,
+        suffix: "%",
+        label: "Client Retention",
+        col: 2,
+        type: 'counter'
+    },
+    {
+        id: 2,
+        icon: Clock,
+        value: 50,
+        suffix: "+",
+        label: "Pan-India Execution",
+        col: 1,
+        type: 'counter'
+    },
+    {
+        id: 3,
+        icon: CheckCircle,
+        label: "On-Time Delivery",
+        subLabel: "Guaranteed Excellence",
+        col: 2,
+        type: 'progress'
+    }
+];
 
 const TechExhibitionNetwork = () => {
     const containerRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [activeCard, setActiveCard] = useState<number>(1); // Default to Client Retention (index 1)
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
@@ -46,7 +111,7 @@ const TechExhibitionNetwork = () => {
                         </div>
 
                         <h2 className="text-5xl md:text-6xl font-bold leading-tight font-outfit text-gray-900">
-                           India's Leading Exhibition Stall Designer <br />
+                            India's Leading Exhibition Stall Designer <br />
                             <span className="text-[#191970]">& Corporate Event Management Company</span>
                         </h2>
 
@@ -80,65 +145,73 @@ const TechExhibitionNetwork = () => {
 
                     {/* Right Column: Stats Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {statsData.map((card, index) => {
+                            const isActive = activeCard === index;
+                            const yValue = card.col === 1 ? yColumn1 : yColumn2;
 
-                        {/* Card 1: Projects */}
-                        <motion.div style={{ y: yColumn1 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
-                            <div className="w-10 h-10 rounded-lg bg-[#191970]/5 flex items-center justify-center mb-4 group-hover:bg-[#191970]/10 transition-colors">
-                                <CheckCircle className="text-[#191970]" size={20} />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-1 text-gray-900">
-                                <Counter value={200} suffix="+" />
-                            </h3>
-                            <p className="text-gray-500 text-sm">Successful Exhibitions</p>
-                        </motion.div>
-
-                        {/* Card 2: Happy Clients (Pink) - Kept dark/colored for contrast */}
-                        <motion.div style={{ y: yColumn2 }} className="bg-[#E6007E] p-6 rounded-2xl border border-[#E6007E] shadow-lg hover:shadow-xl transition-all text-white relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-4 opacity-20">
-                                <Users size={64} />
-                            </div>
-                            <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center mb-4 relative z-10">
-                                <Users className="text-white" size={20} />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-1 relative z-10">
-                                <Counter value={98} suffix="%" />
-                            </h3>
-                            <p className="text-white/90 text-sm relative z-10">Client Retention</p>
-                        </motion.div>
-
-                        {/* Card 3: Experience */}
-                        <motion.div style={{ y: yColumn1 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
-                            <div className="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-4 group-hover:bg-pink-100 transition-colors">
-                                <Clock className="text-[#E6007E]" size={20} />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-1 text-gray-900">
-                                <Counter value={50} suffix="+" />
-                            </h3>
-                            <p className="text-gray-500 text-sm">Pan-India Execution</p>
-                        </motion.div>
-
-                        {/* Card 4: On-Time Delivery */}
-                        <motion.div style={{ y: yColumn2 }} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all group">
-                            <div className="w-10 h-10 rounded-lg bg-[#191970]/5 flex items-center justify-center mb-4 group-hover:bg-[#191970]/10 transition-colors">
-                                <CheckCircle className="text-[#191970]" size={20} />
-                            </div>
-                            <h3 className="text-lg font-bold mb-1 text-gray-900">On-Time Delivery</h3>
-                            <p className="text-gray-500 text-xs mb-3">Guaranteed Excellence</p>
-
-                            <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                            return (
                                 <motion.div
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: '100%' }}
-                                    transition={{ duration: 1.5, ease: "easeOut" }}
-                                    viewport={{ once: true }}
-                                    className="bg-[#191970] h-full rounded-full"
-                                />
-                            </div>
-                            <p className="text-right text-[#191970] text-[10px] mt-1 font-medium">
-                                <Counter value={100} suffix="%" /> Success
-                            </p>
-                        </motion.div>
+                                    key={card.id}
+                                    style={{ y: isMobile ? 0 : yValue }}
+                                    onMouseEnter={() => setActiveCard(index)}
+                                    className={`
+                                        p-6 rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 group relative overflow-hidden cursor-default
+                                        ${isActive
+                                            ? 'bg-[#E6007E] border-[#E6007E] text-white'
+                                            : 'bg-white border-gray-200 text-gray-900'
+                                        }
+                                    `}
+                                >
 
+
+                                    <div className={`
+                                        w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 relative z-10
+                                        ${isActive
+                                            ? 'bg-white/20'
+                                            : 'bg-[#191970]/5 group-hover:bg-[#191970]/10'
+                                        }
+                                    `}>
+                                        <card.icon
+                                            size={20}
+                                            className={`transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#191970]'}`}
+                                        />
+                                    </div>
+
+                                    {card.type === 'counter' ? (
+                                        <>
+                                            <h3 className={`text-3xl font-bold mb-1 relative z-10 ${isActive ? 'text-white' : 'text-gray-900'}`}>
+                                                <Counter value={card.value || 0} suffix={card.suffix} />
+                                            </h3>
+                                            <p className={`text-sm relative z-10 ${isActive ? 'text-white/90' : 'text-gray-500'}`}>
+                                                {card.label}
+                                            </p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h3 className={`text-lg font-bold mb-1 relative z-10 ${isActive ? 'text-white' : 'text-gray-900'}`}>
+                                                {card.label}
+                                            </h3>
+                                            <p className={`text-xs mb-3 relative z-10 ${isActive ? 'text-white/90' : 'text-gray-500'}`}>
+                                                {card.subLabel}
+                                            </p>
+
+                                            <div className={`w-full h-1.5 rounded-full overflow-hidden ${isActive ? 'bg-white/30' : 'bg-gray-100'}`}>
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: '100%' }}
+                                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                                    viewport={{ once: true }}
+                                                    className={`h-full rounded-full ${isActive ? 'bg-white' : 'bg-[#191970]'}`}
+                                                />
+                                            </div>
+                                            <p className={`text-right text-[10px] mt-1 font-medium ${isActive ? 'text-white' : 'text-[#191970]'}`}>
+                                                <Counter value={100} suffix="%" /> Success
+                                            </p>
+                                        </>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
                     </div>
 
                 </div>

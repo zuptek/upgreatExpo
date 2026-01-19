@@ -39,7 +39,7 @@ export default function Hero() {
                     style={{ y: yBackground }}
                     className="absolute inset-0 z-0"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#191970] via-[#191970] to-[#191970] opacity-95 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#191970] via-[#191970] to-[#191970] opacity-30 z-10" />
                     <video
                         autoPlay
                         loop
