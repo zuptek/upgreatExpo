@@ -112,7 +112,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Interactive Technology: Live polling, Q&A systems, and networking apps.",
                     "Learning Retention: Post-event resource portals and knowledge reinforcement."
                 ],
-                image: "/assets/services/Dealer Conference & Award Events.webp"
+                image: "/assets/services/Corporate Conferences & Summits.webp"
             },
             {
                 title: "Annual General Meetings (AGMs)",
@@ -171,7 +171,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Pre-Scheduled Meetings: Optimized appointment systems for maximum efficiency.",
                     "Industry Insights: Concurrent conference programs with relevant content."
                 ],
-                image: "/portfolio_images/ifsec.webp"
+                image: "/assets/services/B2B Trade Show Management.webp"
             },
             {
                 title: "Consumer Expos & Public Exhibitions",
@@ -182,7 +182,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Ticketing Systems: Scalable solutions for high-volume entry management.",
                     "Retail Integration: On-site sales capabilities and POS systems."
                 ],
-                image: "/portfolio_images/IMG_6659.webp"
+                image: "/assets/services/Consumer Expos & Public Exhibitions.webp"
             },
             {
                 title: "Industry-Specific Exhibitions",
@@ -193,7 +193,7 @@ const servicesData: Record<string, ServiceData> = {
                     "International Participation: Support for overseas exhibitors and visitors.",
                     "Regulatory Compliance: Adherence to industry-specific regulations and standards."
                 ],
-                image: "/portfolio_images/PACK-PLUS-MUMBAI.webp"
+                image: "/assets/services/Industry-Specific Exhibitions.webp"
             },
             {
                 title: "Virtual & Hybrid Trade Shows",
@@ -204,7 +204,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Analytics Dashboard: Real-time data on visitor behavior and engagement.",
                     "Content On-Demand: Extended access to conference sessions and product information."
                 ],
-                image: "/portfolio_images/edited-02-scaled.webp"
+                image: "/assets/services/Virtual & Hybrid Trade Shows.webp"
             }
         ]
     },
@@ -241,7 +241,7 @@ const servicesData: Record<string, ServiceData> = {
                     "User-Generated Content: Hashtag campaigns and share-worthy moments.",
                     "Community Building: Launch events that foster brand communities."
                 ],
-                image: "/portfolio_images/IMG_1098-1.webp"
+                image: "/assets/services/Consumer Experience Launches.webp"
             },
             {
                 title: "B2B Product Unveilings",
@@ -252,7 +252,7 @@ const servicesData: Record<string, ServiceData> = {
                     "ROI Calculators: Interactive tools demonstrating business value.",
                     "Enterprise Integration: Case studies showing compatibility with existing systems."
                 ],
-                image: "/portfolio_images/anscer.webp"
+                image: "/assets/services/B2B Product Unveilings.webp"
             },
             {
                 title: "Virtual Launch Campaigns",
@@ -263,7 +263,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Digital Press Rooms: 24/7 accessible resources for international media.",
                     "Analytics Integration: Tracking viewer engagement and interest levels."
                 ],
-                image: "/portfolio_images/apl.webp"
+                image: "/assets/services/Virtual Launch Campaigns.webp"
             }
         ]
     },
@@ -381,7 +381,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Cultural Relevance: Adapting messaging to resonate with local audiences.",
                     "Language Customization: Materials and presentations in regional languages."
                 ],
-                image: "/assets/services/Regional Launch Events1.webp"
+                image: "/assets/services/Regional Launch Events.webp"
             }
         ]
     },

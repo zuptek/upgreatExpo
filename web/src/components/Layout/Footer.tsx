@@ -5,11 +5,15 @@ export default function Footer() {
     return (
         <footer className="font-sans">
             {/* Main Footer */}
-            <div className="bg-gradient-to-br from-[#02021a] via-[#0c0c38] to-[#1a0011] text-white pt-8 pb-6">
-                <div className="container mx-auto px-6 lg:px-12">
+            <div className="bg-black text-white pt-16 pb-6 relative overflow-hidden">
+
+                {/* Blue Bottom Shade */}
+                <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-to-t from-[#191970] to-transparent opacity-40 pointer-events-none z-0" />
+
+                <div className="container mx-auto px-6 lg:px-12 relative z-10">
 
                     {/* Top Section: Brand & Social */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8 border-b border-white/10 pb-8">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 border-b border-white/10 pb-12">
                         {/* Brand Column */}
                         <div className="space-y-4 max-w-lg">
                             <Link href="/" className="block">
@@ -23,30 +27,30 @@ export default function Footer() {
 
                         {/* Social Icons */}
                         <div className="flex gap-4">
-                            <a href="https://www.linkedin.com/company/theupgreatexpo/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
-                                <Linkedin size={16} />
+                            <a href="https://www.linkedin.com/company/theupgreatexpo/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
+                                <Linkedin size={18} />
                             </a>
-                            <a href="https://www.instagram.com/upgreatexpo?igsh=cTNycGZueDR5YWtt" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
-                                <Instagram size={16} />
+                            <a href="https://www.instagram.com/upgreatexpo?igsh=cTNycGZueDR5YWtt" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
+                                <Instagram size={18} />
                             </a>
-                            <a href="https://www.facebook.com/people/Upgreat-Expo/61567059624467/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
-                                <Facebook size={16} />
+                            <a href="https://www.facebook.com/people/Upgreat-Expo/61567059624467/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
+                                <Facebook size={18} />
                             </a>
-                            <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
-                                <Youtube size={16} />
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
+                                <Youtube size={18} />
                             </a>
-                            <a href="https://x.com/upgreatexpo?s=11" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
-                                <Twitter size={16} />
+                            <a href="https://x.com/upgreatexpo?s=11" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#E6007E] transition-colors">
+                                <Twitter size={18} />
                             </a>
                         </div>
                     </div>
 
                     {/* Links Section */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8 border-b border-white/10 pb-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 border-b border-white/10 pb-12">
                         {/* Column 1: Company Links */}
                         <div>
-                            <h4 className="font-bold text-base mb-4 text-[#E6007E]">COMPANY</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                            <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">COMPANY</h4>
+                            <ul className="space-y-3 text-sm text-gray-400">
                                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                                 <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
                                 <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
@@ -58,8 +62,8 @@ export default function Footer() {
 
                         {/* Column 2: Exhibition Design */}
                         <div>
-                            <h4 className="font-bold text-base mb-4 text-[#E6007E]">EXHIBITION</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                            <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">EXHIBITION</h4>
+                            <ul className="space-y-3 text-sm text-gray-400">
                                 <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Custom Stalls</Link></li>
                                 <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Modular Systems</Link></li>
                                 <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Double-Decker</Link></li>
@@ -70,8 +74,8 @@ export default function Footer() {
 
                         {/* Column 3: Event Management */}
                         <div>
-                            <h4 className="font-bold text-base mb-4 text-[#E6007E]">EVENTS</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                            <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">EVENTS</h4>
+                            <ul className="space-y-3 text-sm text-gray-400">
                                 <li><Link href="/services/corporate-events" className="hover:text-white transition-colors">Corporate Events</Link></li>
                                 <li><Link href="/services/corporate-events" className="hover:text-white transition-colors">Conferences</Link></li>
                                 <li><Link href="/services/product-launches" className="hover:text-white transition-colors">Product Launches</Link></li>
@@ -82,8 +86,8 @@ export default function Footer() {
 
                         {/* Column 4: Resources */}
                         <div>
-                            <h4 className="font-bold text-base mb-4 text-[#E6007E]">RESOURCES</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                            <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">RESOURCES</h4>
+                            <ul className="space-y-3 text-sm text-gray-400">
                                 <li><Link href="/insights/blog" className="hover:text-white transition-colors">Planning Guide</Link></li>
                                 <li><Link href="/insights/blog" className="hover:text-white transition-colors">Design Trends</Link></li>
                                 <li><Link href="/portfolio/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
@@ -94,38 +98,38 @@ export default function Footer() {
                     </div>
 
                     {/* Contact Info Bar */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center md:text-left">
-                        <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0">
-                                <MapPin size={18} />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center md:text-left">
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                            <div className="w-12 h-12 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#E6007E]/20">
+                                <MapPin size={20} />
                             </div>
                             <div>
-                                <h5 className="font-bold text-sm mb-1">Head Office</h5>
-                                <p className="text-xs text-gray-400">
+                                <h5 className="font-bold text-sm mb-2 text-white">Head Office</h5>
+                                <p className="text-sm text-gray-400 leading-relaxed">
                                     Welldone Tech Park, Sector 48<br />
                                     Gurugram – 122018
                                 </p>
                             </div>
                         </div>
-                        <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0">
-                                <Mail size={18} />
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                            <div className="w-12 h-12 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#E6007E]/20">
+                                <Mail size={20} />
                             </div>
                             <div>
-                                <h5 className="font-bold text-sm mb-1">Email & Website</h5>
-                                <p className="text-xs text-gray-400">
+                                <h5 className="font-bold text-sm mb-2 text-white">Email & Website</h5>
+                                <p className="text-sm text-gray-400 leading-relaxed">
                                     info@upgreatexpo.com<br />
                                     www.upgreatexpo.com
                                 </p>
                             </div>
                         </div>
-                        <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0">
-                                <Phone size={18} />
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                            <div className="w-12 h-12 rounded-full bg-[#E6007E] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#E6007E]/20">
+                                <Phone size={20} />
                             </div>
                             <div>
-                                <h5 className="font-bold text-sm mb-1">Contact</h5>
-                                <p className="text-xs text-gray-400">
+                                <h5 className="font-bold text-sm mb-2 text-white">Contact</h5>
+                                <p className="text-sm text-gray-400 leading-relaxed">
                                     +91 90886 55513
                                 </p>
                             </div>
@@ -133,7 +137,7 @@ export default function Footer() {
                     </div>
 
                     {/* Bottom Section: Copyright */}
-                    <div className="border-t border-white/10 pt-4">
+                    <div className="border-t border-white/10 pt-8">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
                             <p>© 2026 UpGreat World Pvt Ltd. All Rights Reserved.</p>
                             <div className="flex gap-6">
