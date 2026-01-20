@@ -27,18 +27,17 @@ export default function Hero() {
 
                 <div className="container mx-auto relative z-10 flex flex-col items-center">
                     {/* Main Title Above Video */}
+                    {/* Main Title Above Video */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="text-center mb-12"
                     >
-                        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white mb-4">
-                            UPGREAT EXPO 2025
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-lg">
+                            We Don’t Upgrade Brands. <br className="hidden md:block" />
+                            We <span className="text-[#E6007E]">UpGreat</span> Them.
                         </h1>
-                        <p className="text-white/80 text-lg md:text-xl font-light tracking-wide">
-                            We Don’t Upgrade Brands. We UpGreat Them.
-                        </p>
                     </motion.div>
 
                     {/* Video Card - Clean, No Text */}
