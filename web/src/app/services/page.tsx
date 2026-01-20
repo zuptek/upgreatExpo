@@ -15,7 +15,7 @@ export default function ServicesPage() {
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/portfolio_images/16.jpg"
+                        src="/assets/services/Comprehensive Solutions ✅MICE Services ✅.webp"
                         alt="Exhibition Stall"
                         fill
                         className="object-cover"
@@ -62,7 +62,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
                             <Image
-                                src="/portfolio_images/10.jpg"
+                                src="/assets/services/Comprehensive Solutions.webp"
                                 alt="Exhibition Strategy"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -144,7 +144,7 @@ export default function ServicesPage() {
                         </div>
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
                             <Image
-                                src="/portfolio_images/17.jpg"
+                                src="/assets/services/Custom Wooden Exhibition Stalls.webp"
                                 alt="Stall Design"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -160,7 +160,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
                             <Image
-                                src="/portfolio_images/20220901_125003_Original-scaled.jpeg"
+                                src="/assets/services/Island Pavilions.webp"
                                 alt="Brand Experience"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                         </div>
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
                             <Image
-                                src="/portfolio_images/music-events.jpg"
+                                src="/assets/services/Corporate Conferences & Summits.webp"
                                 alt="Corporate Events"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -258,7 +258,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
                             <Image
-                                src="/portfolio_images/7.jpg"
+                                src="/assets/services/International Conference Management.webp"
                                 alt="Trade Show Organization"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"

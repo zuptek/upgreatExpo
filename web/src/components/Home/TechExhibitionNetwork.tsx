@@ -70,13 +70,13 @@ const statsData: StatCard[] = [
     }
 ];
 
-const headings = [
-    "The UpGreat Expo – India’s Leading Exhibition Stall Design",
-    "The UpGreat Expo – India’s Leading Corporate Events",
-    "The UpGreat Expo – India’s Leading Product Launches",
-    "The UpGreat Expo – India’s Leading Trade Show Organization",
-    "The UpGreat Expo – India’s Leading MICE Services",
-    "The UpGreat Expo – India’s Leading Dealer Meets & Conferences"
+const dynamicHeadings = [
+    "Exhibition Stall Design",
+    "Corporate Events",
+    "Product Launches",
+    "Trade Show Organization",
+    "MICE Services",
+    "Dealer Meets & Conferences"
 ];
 
 const TechExhibitionNetwork = () => {
@@ -87,7 +87,7 @@ const TechExhibitionNetwork = () => {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentHeading((prev) => (prev + 1) % headings.length);
+            setCurrentHeading((prev) => (prev + 1) % dynamicHeadings.length);
         }, 3000);
         return () => clearInterval(timer);
     }, []);
@@ -127,20 +127,24 @@ const TechExhibitionNetwork = () => {
                             <span className="text-[#191970] text-xs font-semibold tracking-wider uppercase">Why Global Brands Choose Us</span>
                         </div>
 
-                        <div className="h-32 md:h-40 relative">
-                            <AnimatePresence mode="wait">
-                                <motion.h2
-                                    key={currentHeading}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="text-4xl md:text-5xl font-bold leading-tight font-outfit text-gray-900 absolute top-0 left-0 w-full"
-                                >
-                                    {headings[currentHeading].split("–")[0]} – <br />
-                                    <span className="text-[#191970]">{headings[currentHeading].split("–")[1]}</span>
-                                </motion.h2>
-                            </AnimatePresence>
+                        <div className="relative mb-8 md:mb-10">
+                            <h2 className="text-4xl md:text-5xl font-bold leading-tight font-outfit text-gray-900">
+                                The UpGreat Expo – India’s Leading <br />
+                                <div className="relative h-[1.2em] overflow-hidden">
+                                    <AnimatePresence mode="wait">
+                                        <motion.span
+                                            key={currentHeading}
+                                            initial={{ opacity: 0, y: 40 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -40 }}
+                                            transition={{ duration: 0.5, ease: "easeOut" }}
+                                            className="text-[#191970] absolute top-0 left-0 w-full block"
+                                        >
+                                            {dynamicHeadings[currentHeading]}
+                                        </motion.span>
+                                    </AnimatePresence>
+                                </div>
+                            </h2>
                         </div>
 
                         <div className="text-lg font-semibold text-[#191970] font-outfit">
