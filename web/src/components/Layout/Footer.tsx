@@ -7,8 +7,8 @@ export default function Footer() {
             {/* Main Footer */}
             <div className="bg-black text-white pt-16 pb-6 relative overflow-hidden">
 
-                {/* Blue Bottom Shade */}
-                <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-to-t from-[#191970] to-transparent opacity-40 pointer-events-none z-0" />
+                {/* Pink Bottom Shade */}
+                <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-to-t from-[#E6007E] to-transparent opacity-20 pointer-events-none z-0" />
 
                 <div className="container mx-auto px-6 lg:px-12 relative z-10">
 
