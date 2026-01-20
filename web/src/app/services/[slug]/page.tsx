@@ -36,7 +36,7 @@ const servicesData: Record<string, ServiceData> = {
             "Expert installation management",
             "Professional BTS documentation"
         ],
-        image: "/portfolio_images/17.webp",
+        image: "/assets/services/Custom Wooden Exhibition Stalls.webp",
         ctaText: "Explore Exhibition Stall Design Services",
         subServices: [
             {
@@ -48,9 +48,9 @@ const servicesData: Record<string, ServiceData> = {
                     "Brand Exclusivity: A one-of-a-kind structure that competitors cannot replicate.",
                     "Durability: Robust structures suitable for heavy product displays."
                 ],
-                image: "/portfolio_images/custom-wooden-1.jpg",
+                image: "/assets/services/Custom Wooden Exhibition Stalls.webp",
                 images: [
-                    "/portfolio_images/custom-wooden-1.jpg",
+                    "/assets/services/Custom Wooden Exhibition Stalls.webp",
                     "/portfolio_images/custom-wooden-2.jpg",
                     "/portfolio_images/custom-wooden-3.jpg"
                 ]
@@ -64,7 +64,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Eco-Friendly: Reusable components reduce waste and carbon footprint.",
                     "Scalable: Easily adjust the size and layout for different stall spaces."
                 ],
-                image: "/portfolio_images/6.webp"
+                image: "/assets/services/Modular Octanorm Systems.webp"
             },
             {
                 title: "Double-Decker Booths",
@@ -75,7 +75,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Maximum Visibility: Towering structures that stand out above standard stalls.",
                     "Prestige: Immediately establishes your brand as a major market player."
                 ],
-                image: "/portfolio_images/13.webp"
+                image: "/assets/services/Double-Decker Booths.webp"
             },
             {
                 title: "Island Pavilions",
@@ -86,7 +86,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Zoning Flexibility: Distinct areas for demos, reception, and networking.",
                     "High Impact: The centerpiece of any exhibition hall."
                 ],
-                image: "/portfolio_images/16.webp"
+                image: "/assets/services/Island Pavilions.webp"
             }
         ]
     },
@@ -100,7 +100,7 @@ const servicesData: Record<string, ServiceData> = {
             "Advanced technical production",
             "Seamless on-ground execution"
         ],
-        image: "/portfolio_images/music-events.webp",
+        image: "/assets/services/Dealer Conference & Award Events.webp",
         ctaText: "Explore Corporate Event Management Services",
         subServices: [
             {
@@ -112,7 +112,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Interactive Technology: Live polling, Q&A systems, and networking apps.",
                     "Learning Retention: Post-event resource portals and knowledge reinforcement."
                 ],
-                image: "/portfolio_images/edited-01.webp"
+                image: "/assets/services/Dealer Conference & Award Events.webp"
             },
             {
                 title: "Annual General Meetings (AGMs)",
@@ -123,7 +123,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Voting Systems: Secure, transparent electronic voting solutions.",
                     "Crisis Management: Contingency planning for unexpected disruptions."
                 ],
-                image: "/portfolio_images/work-11.webp"
+                image: "/assets/services/Annual General Meetings (AGMs).webp"
             },
             {
                 title: "Award Ceremonies & Recognition Events",
@@ -134,7 +134,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Nomination Management: End-to-end process from nominations to winner selection.",
                     "Digital Integration: Live streaming, social media walls, and instant winner announcements."
                 ],
-                image: "/portfolio_images/work-9.webp"
+                image: "/assets/services/Award Ceremonies & Recognition Events.webp"
             },
             {
                 title: "Executive Retreats & Offsites",
@@ -145,7 +145,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Team Building: Custom activities that strengthen leadership bonds.",
                     "Confidentiality: Secure environments for sensitive discussions."
                 ],
-                image: "/portfolio_images/work-2.webp"
+                image: "/assets/services/Executive Retreats & Offsites.webp"
             }
         ]
     },
@@ -230,7 +230,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Broadcast Opportunities: Creating TV-friendly moments and soundbites.",
                     "Embargo Management: Coordinating exclusive previews and timed releases."
                 ],
-                image: "/portfolio_images/KIRBY-MUMBAI-scaled.webp"
+                image: "/assets/services/Media Launch Events.webp"
             },
             {
                 title: "Consumer Experience Launches",
@@ -277,7 +277,7 @@ const servicesData: Record<string, ServiceData> = {
             "Multi-day program coordination",
             "Custom incentive program design"
         ],
-        image: "/portfolio_images/10.webp",
+        image: "/assets/services/Comprehensive Solutions ✅MICE Services ✅.webp",
         ctaText: "Explore Premium MICE Services",
         subServices: [
             {
@@ -289,7 +289,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Cultural Integration: Local experiences that add value to the event.",
                     "Risk Management: Contingency planning for international travel disruptions."
                 ],
-                image: "/portfolio_images/PACKEX-MUMBAI.webp"
+                image: "/assets/services/Destination Management.webp"
             },
             {
                 title: "Incentive Travel Programs",
@@ -300,7 +300,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Recognition Integration: Award ceremonies and special acknowledgments.",
                     "Post-Trip Engagement: Maintaining motivation after the experience."
                 ],
-                image: "/portfolio_images/01.webp"
+                image: "/assets/services/Incentive Travel Programs.webp"
             },
             {
                 title: "International Conference Management",
@@ -311,7 +311,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Cross-Cultural Programming: Content and activities suitable for diverse audiences.",
                     "Time Zone Management: Scheduling considerations for global participants."
                 ],
-                image: "/portfolio_images/work-3.webp"
+                image: "/assets/services/International Conference Management.webp"
             },
             {
                 title: "Exhibition Services within MICE",
@@ -322,7 +322,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Matchmaking Services: Connecting exhibitors with relevant attendees.",
                     "ROI Measurement: Tracking leads and engagement for exhibitors."
                 ],
-                image: "/portfolio_images/PACK-PLUS-MUMBAI-1.webp"
+                image: "/assets/services/Exhibition Services within MICE.webp"
             }
         ]
     },
@@ -336,7 +336,7 @@ const servicesData: Record<string, ServiceData> = {
             "Regional market expertise",
             "Channel partner engagement optimization"
         ],
-        image: "/portfolio_images/9.webp",
+        image: "/assets/services/Comprehensive Solutions ✅ Dealer Meets ✅.webp",
         ctaText: "Explore Corporate Roadshow Services",
         subServices: [
             {
@@ -348,7 +348,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Travel Logistics: Managing movement of teams and equipment between cities.",
                     "Local Partnerships: Collaborating with regional vendors and partners."
                 ],
-                image: "/portfolio_images/PAINT-AND-COATING-EXPO.webp"
+                image: "/assets/services/Multi-City Product Roadshows.webp"
             },
             {
                 title: "Dealer Conference & Award Events",
@@ -359,7 +359,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Network Building: Opportunities for dealers to connect and share best practices.",
                     "Future Planning: Collaborative sessions for setting regional targets."
                 ],
-                image: "/portfolio_images/8.webp"
+                image: "/assets/services/Comprehensive Solutions ✅ Dealer Meets ✅.webp"
             },
             {
                 title: "Distributor Engagement Programs",
@@ -370,7 +370,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Communication Platforms: Regular updates and engagement channels.",
                     "Competency Building: Training programs for distributor sales teams."
                 ],
-                image: "/portfolio_images/PAINT-AND-COATING-EXPO-1.webp"
+                image: "/assets/services/Distributor Engagement Programs.webp"
             },
             {
                 title: "Regional Launch Events",
@@ -381,7 +381,7 @@ const servicesData: Record<string, ServiceData> = {
                     "Cultural Relevance: Adapting messaging to resonate with local audiences.",
                     "Language Customization: Materials and presentations in regional languages."
                 ],
-                image: "/portfolio_images/IMG_1098-1.jpeg.1"
+                image: "/assets/services/Regional Launch Events1.webp"
             }
         ]
     },

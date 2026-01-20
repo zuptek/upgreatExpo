@@ -242,7 +242,7 @@ export default function ServicesPage() {
                         </div>
                         <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
                             <Image
-                                src="/assets/services/Corporate Conferences & Summits.webp"
+                                src="/assets/services/Dealer Conference & Award Events.webp"
                                 alt="Corporate Events"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
