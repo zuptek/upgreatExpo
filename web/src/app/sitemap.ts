@@ -6,6 +6,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
         '',
         '/about',
+        '/about/our-story',
+        '/about/team',
+        '/about/where-to-find-us',
+        '/about/careers',
         '/services',
         '/services/exhibition-stall-design',
         '/services/corporate-events',
@@ -16,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/portfolio',
         '/insights/blog',
         '/contact-us',
-        '/careers',
         '/privacy-policy',
         '/terms-of-service',
         '/cookie-policy',

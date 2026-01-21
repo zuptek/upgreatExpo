@@ -47,7 +47,7 @@ const BestExhibitionCompany = () => {
                         Industry Leader
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-[#191970] mb-6 font-outfit leading-tight">
-                        What Makes The UpGreat Expo <br />
+                        What Makes The <span className="text-[#E6007E]">UpGreat</span> Expo <br />
                         <span className="text-[#E6007E]">The Best Exhibition Company in India</span>
                     </h2>
                     <h3 className="text-xl font-semibold text-[#191970] mb-6">
@@ -61,7 +61,7 @@ const BestExhibitionCompany = () => {
                 {/* Difference Box */}
                 <div className="bg-[#191970] text-white p-8 md:p-12 rounded-3xl mb-20 relative overflow-hidden text-center max-w-5xl mx-auto shadow-xl">
                     <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    <h3 className="text-2xl font-bold mb-4 relative z-10 font-outfit">The UpGreat Expo Difference</h3>
+                    <h3 className="text-2xl font-bold mb-4 relative z-10 font-outfit">The <span className="text-[#E6007E]">UpGreat</span> Expo Difference</h3>
                     <p className="text-lg text-white/90 leading-relaxed relative z-10">
                         Every custom exhibition booth is strategically designed for maximum footfall, qualified lead generation, and competitive brand dominance. We don't create displays—we create revenue engines.
                     </p>

@@ -162,14 +162,14 @@ export default function Hero() {
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#191970]/5 rounded-full -ml-32 -mb-32 blur-3xl" />
 
                         <h2 className="text-3xl md:text-5xl font-bold text-[#191970] mb-6 relative z-10">
-                            Ready to UpGreat Your Next Event?
+                            Ready to <span className="text-[#E6007E]">UpGreat</span> Your Next Event?
                         </h2>
                         <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 relative z-10 leading-relaxed">
                             Let's build an unforgettable experience together. Our experts are ready to turn your vision into a landmark exhibition.
                         </p>
                         <div className="relative z-10">
                             <Button
-                                className="bg-[#191970] hover:bg-[#12125a] text-white font-bold uppercase tracking-widest text-sm h-14 px-10 rounded-sm shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
+                                className="bg-[#E6007E] hover:bg-[#be0068] text-white font-bold uppercase tracking-widest text-sm h-14 px-10 rounded-sm shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
                                 href="/contact-us"
                             >
                                 Get Started Now

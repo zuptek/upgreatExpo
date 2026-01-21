@@ -129,7 +129,7 @@ const TechExhibitionNetwork = () => {
 
                         <div className="relative mb-8 md:mb-10">
                             <h2 className="text-4xl md:text-5xl font-bold leading-tight font-outfit text-gray-900">
-                                The UpGreat Expo – India’s Leading <br />
+                                The <span className="text-[#E6007E]">UpGreat</span> Expo – India’s Leading <br />
                                 <div className="relative h-[1.2em] overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.span

@@ -54,7 +54,7 @@ export default function UpGreatAdvantage() {
                             transition={{ duration: 0.6 }}
                             className="text-4xl font-bold mb-4 font-outfit"
                         >
-                            The UpGreat Advantage
+                            The <span className="text-[#E6007E]">UpGreat</span> Advantage
                         </motion.h2>
                         <motion.h3
                             initial={{ opacity: 0, x: -30 }}
