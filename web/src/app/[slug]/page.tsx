@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { client } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "@/components/Blog/RichTextComponents";
