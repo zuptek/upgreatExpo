@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Map, FileText, Briefcase, Shield } from 'lucide-react';
+import { ArrowRight, Map, FileText, Briefcase, Shield, Users } from 'lucide-react';
 
 export const metadata = {
     title: 'Sitemap | The UpGreat Expo',
@@ -14,12 +14,21 @@ export default function SitemapPage() {
             icon: <Map className="w-6 h-6 text-[#E6007E]" />,
             links: [
                 { label: "Home", href: "/" },
-                { label: "Who We Are", href: "/about" },
-                { label: "What We Do", href: "/services" },
-                { label: "Our Work", href: "/portfolio" },
+                { label: "About", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Portfolio", href: "/portfolio" },
                 { label: "Blog", href: "/insights/blog" },
-                { label: "Get In Touch", href: "/contact-us" },
-                { label: "Careers", href: "/careers" },
+                { label: "Contact Us", href: "/contact-us" },
+            ]
+        },
+        {
+            title: "About",
+            icon: <Users className="w-6 h-6 text-[#E6007E]" />,
+            links: [
+                { label: "Our Story", href: "/about/our-story" },
+                { label: "Team", href: "/about/team" },
+                { label: "Where to Find Us", href: "/about/where-to-find-us" },
+                { label: "Careers", href: "/about/careers" },
             ]
         },
         {
