@@ -45,7 +45,7 @@ export default function CookieConsent() {
                         <div className="flex-1">
                             <h3 className="text-lg font-semibold text-slate-800 mb-2 font-outfit">We Value Your Privacy</h3>
                             <p className="text-slate-600 text-sm leading-relaxed">
-                                UpgreatExpo uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies. You can customize your preferences at any time.
+                                UpGreat Expo uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies. You can customize your preferences at any time.
                             </p>
                             <div className="mt-3 flex flex-wrap items-center gap-4">
                                 <Link href="/privacy-policy" className="text-[#E6007E] hover:text-[#d50070] text-sm font-medium transition-colors">
