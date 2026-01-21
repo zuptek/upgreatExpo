@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { client } from "@/lib/sanity";
 import BlogCard from "@/components/Blog/BlogCard";
 import { Metadata } from "next";

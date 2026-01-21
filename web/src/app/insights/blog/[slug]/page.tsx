@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { client, urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
