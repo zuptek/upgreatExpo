@@ -1,19 +1,22 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Hero";
-import EndToEndExecution from "@/components/Home/EndToEndExecution";
-import OurProcess from "@/components/Home/OurProcess";
-
-import WorkCarousel from "@/components/Home/WorkCarousel";
-import ImageGrid from "@/components/Home/ImageGrid";
-import FAQ from "@/components/Home/FAQ";
-import BTSDocumentation from "@/components/Home/BTSDocumentation";
-import PanIndiaExecution from "@/components/Home/PanIndiaExecution";
-import WhyPartner from "@/components/Home/WhyPartner";
-
-import GetStarted from "@/components/Home/GetStarted";
 import { Button } from "@/components/UI/Button";
+
+// Lazy load below-the-fold components
+const OurProcess = dynamic(() => import("@/components/Home/OurProcess"));
+const PanIndiaExecution = dynamic(() => import("@/components/Home/PanIndiaExecution"));
+const WhyPartner = dynamic(() => import("@/components/Home/WhyPartner"));
+const GetStarted = dynamic(() => import("@/components/Home/GetStarted"));
+const ImageGrid = dynamic(() => import("@/components/Home/ImageGrid"));
+const FAQ = dynamic(() => import("@/components/Home/FAQ"));
+
+// Unused components (commented out in original)
+// import EndToEndExecution from "@/components/Home/EndToEndExecution";
+// import WorkCarousel from "@/components/Home/WorkCarousel";
+// import BTSDocumentation from "@/components/Home/BTSDocumentation";
 
 export default function Home() {
   return (

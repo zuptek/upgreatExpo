@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'gsap', 'sanity', '@portabletext/react'],
+  },
 };
 
 export default nextConfig;
