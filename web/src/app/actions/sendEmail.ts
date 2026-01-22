@@ -28,7 +28,7 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "wings.recr@gmail.com",
+            to: "chandanwingshr@gmail.com",
             subject: `New Message from UpgreatExpo: ${firstName} ${lastName}`,
             text: `
 Name: ${firstName} ${lastName}

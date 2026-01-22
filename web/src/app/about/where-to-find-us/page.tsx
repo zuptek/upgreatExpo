@@ -30,47 +30,45 @@ export default function WhereToFindUsPage() {
             {/* Locations */}
             <section className="py-24 px-6 lg:px-12">
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div className="max-w-3xl mx-auto">
                         {/* Head Office */}
-                        <div className="bg-slate-50 p-8 rounded-lg shadow-sm border-l-4 border-[#E6007E]">
-                            <h2 className="text-2xl font-bold text-[#003063] mb-6">Head Office</h2>
-                            <div className="space-y-4">
-                                <div className="flex items-start gap-4">
-                                    <MapPin className="w-6 h-6 text-[#E6007E] flex-shrink-0 mt-1" />
-                                    <p className="text-slate-600">
-                                        Plot No. 23, Sector 18,<br />
-                                        Gurugram, Haryana - 122001
-                                    </p>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Phone className="w-6 h-6 text-[#E6007E] flex-shrink-0" />
-                                    <p className="text-slate-600">+91 98765 43210</p>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Mail className="w-6 h-6 text-[#E6007E] flex-shrink-0" />
-                                    <p className="text-slate-600">info@upgreatexpo.com</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div className="bg-slate-50 p-10 rounded-xl shadow-lg border-t-4 border-[#E6007E]">
+                            <h2 className="text-3xl font-bold text-[#003063] mb-8 text-center">Head Office</h2>
 
-                        {/* Branch Office (Placeholder) */}
-                        <div className="bg-slate-50 p-8 rounded-lg shadow-sm border-l-4 border-[#003063]">
-                            <h2 className="text-2xl font-bold text-[#003063] mb-6">Branch Office (Mumbai)</h2>
-                            <div className="space-y-4">
-                                <div className="flex items-start gap-4">
-                                    <MapPin className="w-6 h-6 text-[#003063] flex-shrink-0 mt-1" />
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {/* Address */}
+                                <div className="flex flex-col items-center text-center space-y-3">
+                                    <div className="w-12 h-12 rounded-full bg-[#E6007E]/10 flex items-center justify-center mb-2">
+                                        <MapPin className="w-6 h-6 text-[#E6007E]" />
+                                    </div>
+                                    <h3 className="font-semibold text-[#003063]">Address</h3>
                                     <p className="text-slate-600">
-                                        Unit 405, Corporate Park,<br />
-                                        Andheri East, Mumbai - 400093
+                                        Welldone Tech Park, Sector 48<br />
+                                        Gurugram – 122018
                                     </p>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <Phone className="w-6 h-6 text-[#003063] flex-shrink-0" />
-                                    <p className="text-slate-600">+91 22 1234 5678</p>
+
+                                {/* Email & Website */}
+                                <div className="flex flex-col items-center text-center space-y-3">
+                                    <div className="w-12 h-12 rounded-full bg-[#E6007E]/10 flex items-center justify-center mb-2">
+                                        <Mail className="w-6 h-6 text-[#E6007E]" />
+                                    </div>
+                                    <h3 className="font-semibold text-[#003063]">Email & Website</h3>
+                                    <div className="text-slate-600 flex flex-col">
+                                        <a href="mailto:info@upgreatexpo.com" className="hover:text-[#E6007E] transition-colors">info@upgreatexpo.com</a>
+                                        <a href="https://www.upgreatexpo.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E6007E] transition-colors">www.upgreatexpo.com</a>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <Mail className="w-6 h-6 text-[#003063] flex-shrink-0" />
-                                    <p className="text-slate-600">mumbai@upgreatexpo.com</p>
+
+                                {/* Contact */}
+                                <div className="flex flex-col items-center text-center space-y-3">
+                                    <div className="w-12 h-12 rounded-full bg-[#E6007E]/10 flex items-center justify-center mb-2">
+                                        <Phone className="w-6 h-6 text-[#E6007E]" />
+                                    </div>
+                                    <h3 className="font-semibold text-[#003063]">Contact</h3>
+                                    <a href="tel:+919088655513" className="text-slate-600 hover:text-[#E6007E] transition-colors">
+                                        +91 90886 55513
+                                    </a>
                                 </div>
                             </div>
                         </div>

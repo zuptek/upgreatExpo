@@ -60,27 +60,25 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* Column 2: Exhibition Design */}
+                        {/* Column 2: Exhibition */}
                         <div>
                             <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">EXHIBITION</h4>
                             <ul className="space-y-3 text-sm text-gray-400">
-                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Custom Stalls</Link></li>
-                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Modular Systems</Link></li>
-                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Double-Decker</Link></li>
-                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Pavilions</Link></li>
-                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">3D Visualization</Link></li>
+                                <li><Link href="/services/exhibition-stall-design" className="hover:text-white transition-colors">Exhibition Stall Design</Link></li>
+                                <li><Link href="/services/trade-show-organization" className="hover:text-white transition-colors">Trade Show Organization</Link></li>
+                                <li><Link href="/services/brand-activations" className="hover:text-white transition-colors">Brand Activations</Link></li>
                             </ul>
                         </div>
 
-                        {/* Column 3: Event Management */}
+                        {/* Column 3: Events */}
                         <div>
                             <h4 className="font-bold text-base mb-6 text-[#E6007E] tracking-wider">EVENTS</h4>
                             <ul className="space-y-3 text-sm text-gray-400">
                                 <li><Link href="/services/corporate-events" className="hover:text-white transition-colors">Corporate Events</Link></li>
-                                <li><Link href="/services/corporate-events" className="hover:text-white transition-colors">Conferences</Link></li>
                                 <li><Link href="/services/product-launches" className="hover:text-white transition-colors">Product Launches</Link></li>
-                                <li><Link href="/services/trade-show-organization" className="hover:text-white transition-colors">Trade Shows</Link></li>
-                                <li><Link href="/services/mice-services" className="hover:text-white transition-colors">MICE</Link></li>
+                                <li><Link href="/services/mice-services" className="hover:text-white transition-colors">MICE Services</Link></li>
+                                <li><Link href="/services/dealer-meets" className="hover:text-white transition-colors">Dealer Meets</Link></li>
+                                <li><Link href="/services/stage-design" className="hover:text-white transition-colors">Stage Design</Link></li>
                             </ul>
                         </div>
 
