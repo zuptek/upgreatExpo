@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/terms-of-service',
         '/cookie-policy',
         '/disclaimer',
+        '/website-map',
     ];
 
     return routes.map((route) => ({

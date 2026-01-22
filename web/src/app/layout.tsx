@@ -11,6 +11,9 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export const metadata: Metadata = {
     title: "The UpGreat Expo – India’s Leading Exhibition Stall Design",
     description: "Creating unforgettable experiences for your most important moments.",
+    icons: {
+        icon: "/assets/expoLogo.webp",
+    },
 };
 
 import ScrollProgress from "@/components/UI/ScrollProgress";

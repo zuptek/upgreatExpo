@@ -142,7 +142,7 @@ export default function Footer() {
                                 <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
                                 <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
                                 <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
-                                <Link href="/site-map" className="hover:text-white transition-colors">Sitemap</Link>
+                                <Link href="/website-map" className="hover:text-white transition-colors">Sitemap</Link>
                             </div>
                         </div>
                     </div>
