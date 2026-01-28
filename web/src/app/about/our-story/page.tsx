@@ -12,7 +12,7 @@ export default function OurStoryPage() {
             <section className="relative h-[50vh] flex items-center justify-center bg-[#003063] text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-30">
                     <img
-                        src="/assets/event_img1.webp"
+                        src="/assets/hero_img.webp"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -48,7 +48,7 @@ export default function OurStoryPage() {
                         </div>
                         <div className="relative h-[500px] rounded-sm overflow-hidden shadow-2xl">
                             <img
-                                src="/assets/event_img5.webp"
+                                src="/assets/services/Corporate Conferences & Summits.webp"
                                 alt="Our Team"
                                 className="w-full h-full object-cover"
                             />
