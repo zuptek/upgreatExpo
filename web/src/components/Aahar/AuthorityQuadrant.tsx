@@ -23,7 +23,7 @@ const Metric: React.FC<MetricProps> = ({ value, label, prefix = "", suffix = "",
             <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">
                 {prefix}
                 {value.includes('Crore') || value.includes('Year') ? (
-                    <Counter end={parseInt(value)} duration={2} />
+                    <Counter value={parseInt(value)} />
                 ) : (
                     value
                 )}
