@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
 import { Calendar, Download, MapPin, Building2, Phone, Mail } from 'lucide-react';
+import ImageGrid from '@/components/Home/ImageGrid';
 
 export default function AaharCTA() {
     return (
@@ -94,24 +95,15 @@ export default function AaharCTA() {
                     </motion.div>
                 </div>
 
-                {/* Corporate Office Image */}
+                {/* Portfolio Image Grid */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.25 }}
-                    className="max-w-5xl mx-auto mb-12"
+                    className="max-w-7xl mx-auto mb-12"
                 >
-                    <div className="bg-white rounded-2xl p-4 shadow-2xl">
-                        <img
-                            src="/assets/corporate-office.png"
-                            alt="Welldone Tech Park - Corporate Office"
-                            className="w-full h-auto rounded-xl"
-                        />
-                        <p className="text-center text-gray-600 text-sm mt-4 font-medium">
-                            Welldone Tech Park, Sector 48, Gurugram - Our Corporate Office
-                        </p>
-                    </div>
+                    <ImageGrid />
                 </motion.div>
 
                 {/* Contact Information */}

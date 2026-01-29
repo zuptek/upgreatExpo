@@ -52,7 +52,7 @@ export default function AuthorityQuadrant() {
                 delay={0.2}
             />
             <Metric
-                value="23"
+                value="5"
                 label="Years Zero Delays"
                 suffix=" Yrs"
                 delay={0.3}

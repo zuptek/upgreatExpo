@@ -103,8 +103,8 @@ export default function ConsultancyShift() {
                     <Differentiator
                         icon={<FileCheck className="w-8 h-8" />}
                         title="Performance-Based Accountability"
-                        description="We don't make promises; we sign bonds. Our contracts include a ₹5 Lakh penalty clause for installation delays."
-                        value="₹5L Guarantee"
+                        description="We don't make promises; we deliver results. Our contracts ensure on-time completion with comprehensive quality guarantees."
+                        value="Quality Assured"
                         delay={0.4}
                     />
                 </div>

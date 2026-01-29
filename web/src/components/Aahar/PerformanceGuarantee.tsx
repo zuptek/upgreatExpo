@@ -85,8 +85,8 @@ export default function PerformanceGuarantee() {
                     <GuaranteeCard
                         icon={<Shield className="w-8 h-8" />}
                         title="Installation Guarantee"
-                        description="₹5 Lakh penalty if not 100% complete 24 hours before opening. We put our money where our mouth is."
-                        badge="₹5L Bond"
+                        description="100% complete 24 hours before opening. We put our commitment where our reputation is."
+                        badge="On-Time Delivery"
                         delay={0.1}
                     />
 
@@ -117,7 +117,7 @@ export default function PerformanceGuarantee() {
                 >
                     <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-3xl">
                         <p className="text-white/90 text-lg leading-relaxed">
-                            <span className="font-bold text-[#E6007E]">23 years.</span> Not a single installation delay.
+                            <span className="font-bold text-[#E6007E]">5 years.</span> Not a single installation delay.
                             Not a single compliance failure. Not a single broken promise.
                             <span className="block mt-4 text-white font-semibold">That's not luck. That's engineering.</span>
                         </p>

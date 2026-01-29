@@ -55,11 +55,6 @@ const costData: CostRow[] = [
         isBudgetHidden: true
     },
     {
-        component: 'Risk Mitigation',
-        budgetVendor: '₹0 (No Accountability)',
-        upgreat: '₹5 Lakh Penalty Bond'
-    },
-    {
         component: 'TOTAL LANDED COST',
         budgetVendor: '₹7,10,000+',
         upgreat: '₹5,50,000 (Locked Price)',
@@ -131,7 +126,7 @@ export default function InvestmentMirage() {
                             <div>
                                 <h4 className="font-bold text-amber-900 mb-2">Strategic Insight</h4>
                                 <p className="text-amber-800">
-                                    In 2025, 28% of exhibitors faced fabrication failures due to budget vendors. 
+                                    In 2025, 28% of exhibitors faced fabrication failures due to budget vendors.
                                     Market leaders choose transparent, all-inclusive pricing for predictable results.
                                 </p>
                             </div>
@@ -171,10 +166,10 @@ export default function InvestmentMirage() {
                                     transition={{ delay: index * 0.05 }}
                                     className={`
                                         grid grid-cols-3 items-center
-                                        ${row.isTotal 
-                                            ? 'bg-gradient-to-r from-[#191970]/10 to-[#0a0a2e]/10 border-t-2 border-[#191970]' 
-                                            : index % 2 === 0 
-                                                ? 'bg-gray-50' 
+                                        ${row.isTotal
+                                            ? 'bg-gradient-to-r from-[#191970]/10 to-[#0a0a2e]/10 border-t-2 border-[#191970]'
+                                            : index % 2 === 0
+                                                ? 'bg-gray-50'
                                                 : 'bg-white'
                                         }
                                         hover:bg-gray-100 transition-colors
@@ -263,7 +258,7 @@ export default function InvestmentMirage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-900 mb-1">Risk Protection</h4>
-                                    <p className="text-gray-600 text-sm">₹5 Lakh penalty bond and comprehensive insurance coverage.</p>
+                                    <p className="text-gray-600 text-sm">Comprehensive insurance coverage and quality assurance.</p>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +279,7 @@ export default function InvestmentMirage() {
                         Choose predictable results over hidden costs
                     </p>
                     <p className="text-gray-700 max-w-2xl mx-auto">
-                        The UpGreat difference is clear: transparent pricing, comprehensive inclusions, 
+                        The UpGreat difference is clear: transparent pricing, comprehensive inclusions,
                         and strategic execution that delivers real business results.
                     </p>
                 </motion.div>

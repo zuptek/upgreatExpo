@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'AAHAR 2026 Exhibition Partnership | The UpGreat Expo',
-    description: 'Partner with India\'s premier exhibition consultancy for AAHAR 2026 at Pragati Maidan. Engineering high-impact presence for global food & hospitality leaders. ₹47 Crore documented revenue, 23-year zero-delay record.',
+    description: 'Partner with India\'s premier exhibition consultancy for AAHAR 2026 at Pragati Maidan. Engineering high-impact presence for global food & hospitality leaders. ₹47 Crore documented revenue, 5-year zero-delay record.',
     keywords: [
         'AAHAR 2026',
         'Pragati Maidan exhibition',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     ],
     openGraph: {
         title: 'AAHAR 2026: Architectural Excellence for Food & Hospitality Leaders',
-        description: 'Strategic exhibition consultancy with ₹47 Crore documented client revenue and 23-year flawless execution record.',
+        description: 'Strategic exhibition consultancy with ₹47 Crore documented client revenue and 5-year flawless execution record.',
         type: 'website',
         locale: 'en_IN',
         siteName: 'The UpGreat Expo'
