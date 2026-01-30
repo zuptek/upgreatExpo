@@ -1,398 +1,553 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/UI/Button';
-import { Globe, Award, CheckCircle, Play, Sparkles, ChevronRight, Users, Clock, Zap } from 'lucide-react';
+import { CheckCircle, Clock, Shield, Star, Phone, Mail, User, Map, Calendar, Target, ChevronRight, Sparkles, Building, Package, Users } from 'lucide-react';
+import { submitToGoogleSheets } from '@/app/actions/submitToGoogleSheets';
 
 export default function AaharHero() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [mounted, setMounted] = useState(false);
-    const { scrollY } = useScroll();
-    const y = useTransform(scrollY, [0, 500], [0, 100]);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        stallSize: '',
+        requirements: 'basic'
+    });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const formRef = useRef<HTMLFormElement>(null);
+
+    // Target date: March 10, 2026
+    const targetDate = new Date('2026-03-10T09:00:00').getTime();
+
+    // Countdown timer
     useEffect(() => {
-        setMounted(true);
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: (e.clientX / window.innerWidth - 0.5) * 40,
-                y: (e.clientY / window.innerHeight - 0.5) * 40
-            });
-        };
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+            if (distance < 0) {
+                clearInterval(timer);
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Generate particles with fixed seed-based values to prevent hydration mismatch
-    const particles = useMemo(() => {
-        return Array.from({ length: 30 }, (_, i) => ({
-            id: i,
-            color: i % 3 === 0 ? '#4285f4' : i % 3 === 1 ? '#E6007E' : '#00c853',
-            width: (i * 7 + 50) % 100 + 20,
-            height: (i * 11 + 40) % 100 + 20,
-            left: (i * 13) % 100,
-            top: (i * 17) % 100,
-            moveX: (i * 5) % 100 - 50,
-            moveY: (i * 7) % 100 - 50,
-            duration: (i % 10) + 10,
-        }));
-    }, []);
+                setTimeLeft({ days, hours, minutes, seconds });
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [targetDate]);
+
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitError(null);
+
+        try {
+            // Use server action instead of client-side fetch
+            const result = await submitToGoogleSheets(formData);
+
+            setIsSubmitting(false);
+
+            if (result.success) {
+                setSubmitSuccess(true);
+                console.log('✅ Form submitted successfully to Google Sheets');
+
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    company: '',
+                    stallSize: '',
+                    requirements: 'basic'
+                });
+
+                // Reset success message after 5 seconds
+                setTimeout(() => setSubmitSuccess(false), 5000);
+            } else {
+                setSubmitError(result.message || 'Failed to submit. Please try again.');
+                console.error('❌ Form submission failed:', result.message);
+
+                // Clear error after 5 seconds
+                setTimeout(() => setSubmitError(null), 5000);
+            }
+
+        } catch (error) {
+            console.error('❌ Error submitting form:', error);
+            setIsSubmitting(false);
+            setSubmitError('Network error. Please try again.');
+
+            setTimeout(() => setSubmitError(null), 5000);
+        }
+    };
+
+    const handleCallClick = () => {
+        // This will work on mobile devices to trigger phone call
+        window.location.href = 'tel:+919088655513';
+    };
 
     return (
-        <section className="relative w-full min-h-screen pt-32 pb-0 overflow-hidden bg-gradient-to-b from-[#0a192f] via-[#0f2744] to-[#14305a]">
-            {/* Animated Background with Parallax */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                {/* Animated Gradient Background */}
-                <motion.div
-                    className="absolute inset-0 opacity-30"
-                    animate={{
-                        background: [
-                            'radial-gradient(circle at 20% 50%, rgba(66, 133, 244, 0.2) 0%, transparent 50%)',
-                            'radial-gradient(circle at 80% 50%, rgba(230, 0, 126, 0.2) 0%, transparent 50%)',
-                            'radial-gradient(circle at 50% 20%, rgba(66, 133, 244, 0.2) 0%, transparent 50%)',
-                        ]
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
-
-                {/* Floating Particles - Only render after mount to prevent hydration mismatch */}
-                {mounted && particles.map((particle) => (
-                    <motion.div
-                        key={particle.id}
-                        className="absolute rounded-full"
-                        style={{
-                            background: `radial-gradient(circle, ${particle.color}30, transparent 70%)`,
-                            width: `${particle.width}px`,
-                            height: `${particle.height}px`,
-                            left: `${particle.left}%`,
-                            top: `${particle.top}%`,
-                        }}
-                        animate={{
-                            x: [0, particle.moveX],
-                            y: [0, particle.moveY],
-                            rotate: [0, 360],
-                        }}
-                        transition={{
-                            duration: particle.duration,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            ease: "linear"
-                        }}
-                    />
-                ))}
-
-                {/* Interactive Grid Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                        backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
-                        backgroundSize: '40px 40px',
-                        transform: `translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`
-                    }} />
+        <section className="relative w-full bg-gradient-to-br from-[#191970] via-[#1a1a5e] to-[#0a0a2e] pt-28 md:pt-36 pb-20 md:pb-28 px-4 md:px-8 lg:px-12 overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 right-0 w-[70vw] h-[70vw] bg-[#E6007E] rounded-full blur-[180px] -mr-[35%] -mt-[35%] opacity-30" />
+                <div className="absolute bottom-0 left-0 w-[60vw] h-[60vw] bg-white rounded-full blur-[140px] -ml-[30%] -mb-[25%] opacity-15" />
             </div>
 
-            {/* Animated Logo/Icon */}
-            <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: "spring", duration: 1 }}
-                className="absolute top-8 left-8 z-20 hidden lg:block"
-            >
-                <div className="relative">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#4285f4] to-[#E6007E] flex items-center justify-center">
-                        <Sparkles className="w-8 h-8 text-white" />
-                    </div>
-                    <motion.div
-                        className="absolute -inset-2 rounded-xl border-2 border-[#4285f4]/30"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    />
-                </div>
-            </motion.div>
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 opacity-[0.03]">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+                    backgroundSize: '60px 60px'
+                }} />
+            </div>
 
-            <div className="container relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
-                {/* Event Banner with Countdown */}
+
+            <div className="container mx-auto max-w-7xl relative z-10">
+                {/* AAHAR 2026 Banner Image with Countdown Timer */}
                 <motion.div
-                    initial={{ opacity: 0, y: -50 }}
+                    initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="mb-16 max-w-5xl mx-auto"
+                    className="mb-12 md:mb-16"
                 >
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-lg bg-gradient-to-r from-white/5 to-white/10">
-                        {/* Banner Image */}
-                        <div className="relative aspect-[16/5] overflow-hidden">
-                            <img
-                                src="/assets/aahar-2026-banner.png"
-                                alt="AAHAR 2026 - The International Food & Hospitality Fair"
-                                className="w-full h-full object-cover"
-                            />
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                        {/* AAHAR 2026 Banner Image */}
+                        <img
+                            src="/assets/aahar-2026-banner.png"
+                            alt="AAHAR 2026 - The International Food & Hospitality Fair, 10-14 March 2026, Bharat Mandapam, New Delhi"
+                            className="w-full h-auto"
+                        />
 
-                            {/* Countdown Timer */}
-                            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                                <div className="text-white">
-                                    <h2 className="text-2xl font-bold mb-2">AAHAR 2026</h2>
-                                    <p className="text-white/80">March 10-14 • Bharat Mandapam, New Delhi</p>
+                        {/* Gradient Overlay for better countdown visibility */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+                        {/* Countdown Timer Overlay - Bottom Right */}
+                        <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="bg-gradient-to-br from-black/90 via-black/85 to-black/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-3 md:p-5 border border-white/20 shadow-2xl shadow-black/50"
+                            >
+                                <div className="flex items-center gap-2 md:gap-3 mb-3">
+                                    <Target className="w-4 h-4 md:w-5 md:h-5 text-[#E6007E]" />
+                                    <div>
+                                        <h4 className="text-white font-bold text-sm md:text-base">Event Starts In</h4>
+                                        <p className="text-white/60 text-xs hidden md:block">March 10-14, 2026</p>
+                                    </div>
                                 </div>
 
-                                <div className="flex gap-4">
-                                    {[
-                                        { value: '85', label: 'Days' },
-                                        { value: '12', label: 'Hours' },
-                                        { value: '45', label: 'Minutes' },
-                                    ].map((item, index) => (
-                                        <div key={index} className="text-center">
-                                            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                                                <div className="text-2xl font-bold text-white">{item.value}</div>
-                                                <div className="text-xs text-white/60">{item.label}</div>
-                                            </div>
+                                <div className="grid grid-cols-4 gap-2 md:gap-3">
+                                    <div className="text-center">
+                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                                            {timeLeft.days}
                                         </div>
-                                    ))}
+                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">DAYS</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                                            {timeLeft.hours.toString().padStart(2, '0')}
+                                        </div>
+                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">HRS</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                                            {timeLeft.minutes.toString().padStart(2, '0')}
+                                        </div>
+                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">MIN</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                                            {timeLeft.seconds.toString().padStart(2, '0')}
+                                        </div>
+                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">SEC</div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div className="mt-3 pt-3 border-t border-white/10 hidden md:block">
+                                    <p className="text-white/80 text-xs text-center">
+                                        Book before March 1st for early bird discount!
+                                    </p>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Main Content */}
-                <div className="flex flex-col lg:flex-row gap-12 items-center">
-                    {/* Left Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:w-1/2 text-left"
-                    >
-                        {/* Badge with Animation */}
+
+                <div className="flex flex-col lg:flex-row gap-12 items-start">
+                    {/* Left Content Column */}
+                    <div className="lg:w-3/5">
+                        {/* Badge */}
                         <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#E6007E]/20 to-[#4285f4]/20 backdrop-blur-md border border-white/10 px-6 py-3 rounded-full mb-8"
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm px-6 py-3 rounded-full border border-white/10 mb-8 group hover:border-[#E6007E]/50 transition-all"
                         >
-                            <Globe className="w-5 h-5 text-[#E6007E]" />
-                            <span className="text-white text-sm font-bold uppercase tracking-widest">
-                                Global Exhibition Partners • 50+ Countries
+                            <Sparkles className="w-5 h-5 text-[#E6007E] group-hover:rotate-12 transition-transform" />
+                            <span className="text-[#E6007E] font-bold uppercase tracking-[0.2em] text-sm">
+                                Premium Aahar Stall Designers Since 2019
                             </span>
-                            <Sparkles className="w-4 h-4 text-[#4285f4]" />
                         </motion.div>
 
-                        {/* Main Heading with Gradient */}
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight mb-8 leading-[1.1]">
-                            <span className="block">BEYOND</span>
-                            <motion.span
-                                className="text-transparent bg-clip-text bg-gradient-to-r from-[#4285f4] via-[#E6007E] to-[#00c853]"
-                                animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                                style={{ backgroundSize: '200% 200%' }}
-                            >
-                                STRUCTURES
-                            </motion.span>
-                        </h1>
+                        {/* Main Headline */}
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.1 }}
+                            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6"
+                        >
+                            <span className="block">Transform Your</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E6007E] via-[#FF4081] to-[#FF6B9D]">
+                                Aahar 2026 Presence
+                            </span>
+                        </motion.h1>
 
-                        {/* Subtitle */}
-                        <p className="text-white/80 text-xl md:text-2xl max-w-xl mb-10 leading-relaxed">
-                            Premium Exhibition Stand Design & Build services at Pragati Maidan.
-                            We transform empty spaces into immersive brand experiences that captivate and convert.
-                        </p>
+                        {/* Sub-Headline */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="text-xl md:text-2xl text-white/85 mb-10 leading-relaxed max-w-3xl"
+                        >
+                            Delhi's most trusted exhibition stall designer for food & hospitality exhibitors.
+                            5 years of Pragati Maidan expertise. Premium fabrication.
+                        </motion.p>
 
-                        {/* Stats Row */}
-                        <div className="flex flex-wrap gap-8 mb-10">
-                            {[
-                                { icon: <Award className="w-6 h-6" />, value: '150+', label: 'Projects Completed' },
-                                { icon: <Users className="w-6 h-6" />, value: '500+', label: 'Happy Clients' },
-                                { icon: <Clock className="w-6 h-6" />, value: '24/7', label: 'Support' },
-                            ].map((stat, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex items-center gap-3"
-                                >
-                                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4285f4]/20 to-[#E6007E]/20 flex items-center justify-center">
-                                        {stat.icon}
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                        <div className="text-white/60 text-sm">{stat.label}</div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                        {/* Trust Badges */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
+                        >
+                            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10 hover:border-[#E6007E]/30 transition-all group">
+                                <div className="p-2 bg-green-500/10 rounded-lg">
+                                    <CheckCircle className="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" />
+                                </div>
+                                <div>
+                                    <div className="text-white font-bold text-lg">200+</div>
+                                    <div className="text-white/70 text-sm">Stalls Delivered</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10 hover:border-[#E6007E]/30 transition-all group">
+                                <div className="p-2 bg-blue-500/10 rounded-lg">
+                                    <Shield className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
+                                </div>
+                                <div>
+                                    <div className="text-white font-bold text-lg">ISO 9001</div>
+                                    <div className="text-white/70 text-sm">Certified</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10 hover:border-[#E6007E]/30 transition-all group">
+                                <div className="p-2 bg-yellow-500/10 rounded-lg">
+                                    <Star className="w-5 h-5 text-yellow-400 group-hover:scale-110 transition-transform" />
+                                </div>
+                                <div>
+                                    <div className="text-white font-bold text-lg">4.8★</div>
+                                    <div className="text-white/70 text-sm">Rated</div>
+                                </div>
+                            </div>
+                        </motion.div>
 
                         {/* CTA Buttons */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
-                            className="flex flex-wrap gap-6 mb-12"
+                            transition={{ delay: 0.4 }}
+                            className="flex flex-col sm:flex-row gap-4 mb-8"
                         >
                             <Button
-                                href="/portfolio"
-                                className="group relative px-12 py-6 rounded-full bg-gradient-to-r from-[#4285f4] to-[#2a56c6] text-white font-bold text-lg shadow-2xl shadow-blue-500/30 overflow-hidden"
+                                className="bg-gradient-to-r from-[#E6007E] to-[#be0068] hover:from-[#ff0090] hover:to-[#e6007e] text-white font-bold uppercase tracking-widest text-sm h-14 px-8 rounded-lg transition-all shadow-lg hover:shadow-[#E6007E]/50 w-full sm:w-auto group"
+                                href="/get-design"
                             >
-                                {/* Animated Background */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#2a56c6] to-[#4285f4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="relative z-10 flex items-center gap-3">
-                                    Explore Portfolio
-                                    <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                                <span className="flex items-center justify-center group-hover:scale-105 transition-transform">
+                                    <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                                    Get Free 3D Design in 24 Hours
+                                    <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                 </span>
                             </Button>
-
                             <Button
-                                href="/contact-us"
-                                className="group relative px-12 py-6 rounded-full bg-gradient-to-r from-[#E6007E] to-[#be0068] text-white font-bold text-lg shadow-2xl shadow-pink-500/30 overflow-hidden"
+                                onClick={handleCallClick}
+                                className="bg-white/10 hover:bg-white/20 text-white font-bold uppercase tracking-widest text-sm h-14 px-8 rounded-lg transition-all border border-white/20 backdrop-blur-sm w-full sm:w-auto group hover:border-[#E6007E]/50"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#be0068] to-[#E6007E] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="relative z-10 flex items-center gap-3">
-                                    <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                                    Get Free Consultation
+                                <span className="flex items-center justify-center">
+                                    <Phone className="w-4 h-4 mr-2 group-hover:animate-pulse transition-all" />
+                                    Call Now: +91 9088655513
                                 </span>
                             </Button>
                         </motion.div>
-                    </motion.div>
 
-                    {/* Right Video/Image Section */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50, scale: 0.9 }}
-                        animate={{ opacity: 1, x: 0, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="lg:w-1/2 relative"
-                        style={{ y }}
-                    >
-                        {/* Floating Video Container */}
-                        <div className="relative">
-                            {/* Outer Glow */}
-                            <div className="absolute -inset-4 bg-gradient-to-r from-[#4285f4]/30 to-[#E6007E]/30 rounded-3xl blur-2xl opacity-70" />
-
-                            {/* Main Video Container */}
-                            <div className="relative aspect-video rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl bg-black">
-                                {/* Video Player */}
-                                <video
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="w-full h-full object-cover"
-                                >
-                                    <source src="/assets/hero-background.mp4" type="video/mp4" />
-                                </video>
-
-                                {/* Video Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                                {/* Play Button Overlay */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <motion.button
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-20 h-20 rounded-full bg-gradient-to-r from-[#4285f4] to-[#E6007E] flex items-center justify-center shadow-2xl shadow-black/50"
-                                    >
-                                        <Play className="w-10 h-10 text-white ml-1" />
-                                    </motion.button>
-                                </div>
-
-                                {/* Floating Badges */}
-                                <motion.div
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute -top-4 right-8 bg-gradient-to-r from-[#00c853] to-[#00a844] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
-                                >
-                                    Live Project Preview
-                                </motion.div>
-
-                                <motion.div
-                                    animate={{ y: [0, -8, 0] }}
-                                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                                    className="absolute -bottom-4 left-8 bg-gradient-to-r from-[#E6007E] to-[#be0068] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
-                                >
-                                    4K Quality Preview
-                                </motion.div>
-                            </div>
-
-                            {/* Floating Elements Around Video */}
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                className="absolute -top-6 -right-6 w-32 h-32 border-2 border-[#4285f4]/30 rounded-full"
-                            />
-                            <motion.div
-                                animate={{ rotate: -360 }}
-                                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                                className="absolute -bottom-6 -left-6 w-40 h-40 border-2 border-[#E6007E]/30 rounded-full"
-                            />
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Scroll Indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:block"
-                >
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="flex flex-col items-center text-white/60"
-                    >
-                        <span className="text-sm mb-2">Scroll to explore</span>
-                        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center p-2">
-                            <div className="w-1 h-2 bg-white/60 rounded-full" />
-                        </div>
-                    </motion.div>
-                </motion.div>
-            </div>
-
-            {/* Animated Bottom Wave */}
-            <motion.div
-                initial={{ y: 100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="absolute bottom-0 left-0 w-full overflow-hidden"
-            >
-                <svg
-                    className="relative block w-full h-[150px] md:h-[200px]"
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z"
-                        fill="url(#wave-gradient)"
-                    />
-                    <defs>
-                        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#4285f4" stopOpacity="0.8" />
-                            <stop offset="50%" stopColor="#E6007E" stopOpacity="0.6" />
-                            <stop offset="100%" stopColor="#00c853" stopOpacity="0.4" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </motion.div>
-
-            {/* Floating Contact Button */}
-            <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
-                className="fixed bottom-8 right-8 z-50 hidden lg:block"
-            >
-                <Button
-                    href="/contact-us"
-                    className="group bg-gradient-to-r from-[#4285f4] to-[#E6007E] text-white px-6 py-4 rounded-full shadow-2xl shadow-blue-500/30"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className="relative">
-                            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <Sparkles className="w-5 h-5" />
-                            </div>
-                            <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping" />
-                        </div>
-                        <span className="font-bold">Start Your Project</span>
+                        {/* Bottom Tagline */}
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                            className="mt-8 text-white/60 text-sm uppercase tracking-wider flex items-center gap-2"
+                        >
+                            <Calendar className="w-4 h-4" />
+                            Build Your Lead-Generating Powerhouse at Pragati Maidan
+                        </motion.p>
                     </div>
-                </Button>
-            </motion.div>
+
+                    {/* Right Form Column */}
+                    <div className="lg:w-2/5 lg:sticky lg:top-8">
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="bg-gradient-to-br from-black/80 via-black/70 to-black/60 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 shadow-2xl shadow-black/50 overflow-hidden"
+                        >
+                            {/* Form Header */}
+                            <div className="text-center mb-6">
+                                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#E6007E] to-[#be0068] rounded-full mb-4">
+                                    <Sparkles className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">
+                                    {submitSuccess ? 'Thank You!' : 'Get Your Free 3D Design'}
+                                </h3>
+                                <p className="text-white/70">
+                                    {submitSuccess
+                                        ? 'Our design team will contact you within 24 hours!'
+                                        : 'Fill the form below to receive your custom stall design'
+                                    }
+                                </p>
+                            </div>
+
+                            {/* Error Message */}
+                            {submitError && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6"
+                                >
+                                    <p className="text-red-400 text-sm text-center">{submitError}</p>
+                                </motion.div>
+                            )}
+
+                            {/* Success Message */}
+                            {submitSuccess ? (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="text-center py-8"
+                                >
+                                    <div className="w-20 h-20 bg-gradient-to-br from-green-500/20 to-green-700/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/30">
+                                        <CheckCircle className="w-10 h-10 text-green-400" />
+                                    </div>
+                                    <h4 className="text-white text-xl font-bold mb-2">Design Request Submitted!</h4>
+                                    <p className="text-white/80 mb-4">Our team will create your 3D design and contact you within 24 hours.</p>
+                                    <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                                        <p className="text-white/70 text-sm">Need immediate assistance?</p>
+                                        <button
+                                            onClick={handleCallClick}
+                                            className="text-[#E6007E] font-bold mt-2 hover:text-white transition-colors"
+                                        >
+                                            Call +91 9088655513
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ) : (
+                                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                                    {/* Name Field */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-2">
+                                            <User className="w-4 h-4 text-white/60" />
+                                            <label className="block text-sm font-medium text-white/80">
+                                                Your Full Name *
+                                            </label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="John Doe"
+                                            className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30"
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Email & Phone */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2">
+                                                <Mail className="w-4 h-4 text-white/60" />
+                                                <label className="block text-sm font-medium text-white/80">
+                                                    Email *
+                                                </label>
+                                            </div>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                placeholder="john@company.com"
+                                                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2">
+                                                <Phone className="w-4 h-4 text-white/60" />
+                                                <label className="block text-sm font-medium text-white/80">
+                                                    Phone *
+                                                </label>
+                                            </div>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                placeholder="+91 9876543210"
+                                                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Company & Stall Size */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-2">
+                                            <Building className="w-4 h-4 text-white/60" />
+                                            <label className="block text-sm font-medium text-white/80">
+                                                Company Name *
+                                            </label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            placeholder="Your company name"
+                                            className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2">
+                                                <Package className="w-4 h-4 text-white/60" />
+                                                <label className="block text-sm font-medium text-white/80">
+                                                    Stall Size
+                                                </label>
+                                            </div>
+                                            <select
+                                                name="stallSize"
+                                                value={formData.stallSize}
+                                                onChange={handleChange}
+                                                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30 appearance-none"
+                                            >
+                                                <option value="">Select stall size</option>
+                                                <option value="9-18">9-18 SQM (Small)</option>
+                                                <option value="18-36">18-36 SQM (Medium)</option>
+                                                <option value="36-72">36-72 SQM (Large)</option>
+                                                <option value="72+">72+ SQM (X-Large)</option>
+                                                <option value="custom">Custom Size</option>
+                                            </select>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2">
+                                                <Users className="w-4 h-4 text-white/60" />
+                                                <label className="block text-sm font-medium text-white/80">
+                                                    Requirements
+                                                </label>
+                                            </div>
+                                            <select
+                                                name="requirements"
+                                                value={formData.requirements}
+                                                onChange={handleChange}
+                                                className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30 appearance-none"
+                                            >
+                                                <option value="basic">Basic Stall Design</option>
+                                                <option value="premium">Premium Custom Design</option>
+                                                <option value="complete">Complete Turnkey Solution</option>
+                                                <option value="consultation">Design Consultation</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {/* Exhibition Name */}
+                                    <div className="bg-gradient-to-r from-[#E6007E]/10 to-transparent border border-[#E6007E]/20 rounded-xl p-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="p-2 bg-[#E6007E]/20 rounded-lg">
+                                                <Calendar className="w-5 h-5 text-[#E6007E]" />
+                                            </div>
+                                            <div>
+                                                <p className="text-white font-medium">Exhibition: Aahar 2026</p>
+                                                <p className="text-white/60 text-sm">Pragati Maidan, New Delhi</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <Button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full bg-gradient-to-r from-[#E6007E] to-[#be0068] hover:from-[#ff0090] hover:to-[#e6007e] text-white font-bold uppercase tracking-widest text-sm h-14 rounded-xl transition-all shadow-lg hover:shadow-[#E6007E]/50 group mt-2 relative overflow-hidden"
+                                    >
+                                        <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                                        {isSubmitting ? (
+                                            <span className="flex items-center justify-center relative z-10">
+                                                <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                                </svg>
+                                                Creating Your Design...
+                                            </span>
+                                        ) : (
+                                            <span className="flex items-center justify-center relative z-10 group-hover:scale-105 transition-transform">
+                                                <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                                                GET FREE 3D DESIGN NOW
+                                                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                            </span>
+                                        )}
+                                    </Button>
+
+                                    {/* Privacy Notice */}
+                                    <p className="text-white/50 text-xs text-center mt-4">
+                                        We respect your privacy. Your information is secure with us.
+                                    </p>
+                                </form>
+                            )}
+
+                            {/* Quick Contact */}
+                            <div className="mt-6 pt-6 border-t border-white/10">
+                                <p className="text-white/70 text-sm text-center">
+                                    Need immediate assistance?
+                                </p>
+                                <button
+                                    onClick={handleCallClick}
+                                    className="flex items-center justify-center gap-2 text-white font-bold text-lg mt-2 hover:text-[#E6007E] transition-colors w-full"
+                                >
+                                    <Phone className="w-5 h-5" />
+                                    +91 9088655513
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }
