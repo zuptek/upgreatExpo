@@ -156,8 +156,8 @@ export default function AaharCTA() {
                             </div>
                             <div>
                                 <h4 className="text-white font-bold mb-2">Phone</h4>
-                                <a href="tel:+918586965553" className="text-white/80 text-sm hover:text-[#E6007E] transition-colors">
-                                    +91 85869 65553
+                                <a href="tel:+919088655513" className="text-white/80 text-sm hover:text-[#E6007E] transition-colors">
+                                    +91 9088655513
                                 </a>
                             </div>
                         </div>
