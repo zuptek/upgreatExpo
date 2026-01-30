@@ -176,7 +176,7 @@ export default function InvestmentMirage() {
                                     `}
                                 >
                                     {/* Cost Component */}
-                                    <div className={`p-4 ${row.isTotal ? 'font-bold text-lg' : 'text-gray-800'}`}>
+                                    <div className={`p-4 ${row.isTotal ? 'font-bold text-lg text-black' : 'text-gray-800'}`}>
                                         {row.component}
                                     </div>
 
@@ -188,7 +188,7 @@ export default function InvestmentMirage() {
                                             )}
                                             <span className={`
                                                 ${row.isBudgetHidden ? 'text-red-600' : ''}
-                                                ${row.isTotal ? 'font-bold text-lg' : ''}
+                                                ${row.isTotal ? 'font-bold text-lg text-red-600' : ''}
                                             `}>
                                                 {row.budgetVendor}
                                             </span>

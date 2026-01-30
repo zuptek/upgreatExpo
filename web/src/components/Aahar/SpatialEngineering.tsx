@@ -2,61 +2,40 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Magnet, Users, Handshake, Crown } from 'lucide-react';
+import { Video, Camera, Users, FileText, Share2, TrendingUp } from 'lucide-react';
 
-interface ZoneProps {
-    number: string;
+interface BenefitProps {
     icon: React.ReactNode;
     title: string;
-    subtitle: string;
     description: string;
-    color: string;
     delay: number;
 }
 
-const Zone: React.FC<ZoneProps> = ({ number, icon, title, subtitle, description, color, delay }) => {
+const Benefit: React.FC<BenefitProps> = ({ icon, title, description, delay }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay }}
-            className="relative group"
+            className="flex items-start gap-4 group"
         >
-            {/* Zone Number */}
-            <div className="absolute -left-4 -top-4 w-16 h-16 bg-gradient-to-br from-[#191970] to-[#E6007E] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-10">
-                {number}
-            </div>
-
-            {/* Card */}
-            <div className="bg-white rounded-2xl p-8 pt-12 shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 h-full" style={{ borderColor: color }}>
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4`} style={{ backgroundColor: `${color}20` }}>
-                    <div style={{ color: color }}>
-                        {icon}
-                    </div>
+            <div className="w-12 h-12 bg-gradient-to-br from-[#E6007E] to-[#be0068] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <div className="text-white">
+                    {icon}
                 </div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-[#191970] mb-2">
-                    {title}
-                </h3>
-                <p className="text-[#E6007E] font-semibold text-sm uppercase tracking-wider mb-3">
-                    {subtitle}
-                </p>
-
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
-                    {description}
-                </p>
+            </div>
+            <div>
+                <h4 className="text-xl font-bold text-white mb-2">{title}</h4>
+                <p className="text-white/70 leading-relaxed">{description}</p>
             </div>
         </motion.div>
     );
 };
 
-export default function SpatialEngineering() {
+export default function DocumentationAdvantage() {
     return (
-        <section className="relative w-full bg-[#191970] py-24 md:py-32 px-4 md:px-8 lg:px-12 overflow-hidden">
+        <section className="relative w-full bg-gradient-to-br from-[#191970] via-[#1a1a5e] to-[#0a0a2e] py-24 md:py-32 px-4 md:px-8 lg:px-12 overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -64,6 +43,10 @@ export default function SpatialEngineering() {
                     backgroundSize: '40px 40px'
                 }} />
             </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-1/4 right-10 w-64 h-64 bg-[#E6007E]/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
 
             <div className="container mx-auto relative z-10">
                 {/* Section Header */}
@@ -74,101 +57,141 @@ export default function SpatialEngineering() {
                     className="text-center mb-16"
                 >
                     <span className="inline-block text-[#E6007E] font-bold uppercase tracking-[0.3em] text-xs md:text-sm mb-4">
-                        BEHAVIORAL SCIENCE MEETS ROI ENGINEERING
+                        🎯 THE COMPLIMENTARY DOCUMENTATION ADVANTAGE
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                        We Don't Design Booths.<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#E6007E]">
-                            We Optimize Brand Authority
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
+                        The Only Stall Designer Who Turns Your ₹5 Lakh Investment Into{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E6007E] to-[#ff4eb0]">
+                            Year-Long Marketing Assets
                         </span>
                     </h2>
-                    <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                        Per Square Meter
-                    </p>
                 </motion.div>
 
-                {/* Subtitle */}
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center text-white/70 text-lg mb-12 max-w-4xl mx-auto"
-                >
-                    Strategic exhibition architecture backed by behavioral science and ROI engineering
-                </motion.p>
-
-                {/* Zones Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <Zone
-                        number="1"
-                        icon={<Magnet className="w-7 h-7" />}
-                        title="Attraction"
-                        subtitle="THE HOOK"
-                        description="Visual magnets engineered to stop traffic in high-density aisles. Using contrast psychology and motion design to achieve 3x higher foot traffic than industry average."
-                        color="#E6007E"
-                        delay={0.1}
-                    />
-
-                    <Zone
-                        number="2"
-                        icon={<Users className="w-7 h-7" />}
-                        title="Engagement"
-                        subtitle="THE EXPERIENCE"
-                        description="Multi-sensory demonstration areas including live kitchens and tech demos. Designed to increase dwell time by 40% and create memorable brand interactions."
-                        color="#FF6B35"
-                        delay={0.2}
-                    />
-
-                    <Zone
-                        number="3"
-                        icon={<Handshake className="w-7 h-7" />}
-                        title="Conversion"
-                        subtitle="THE CLOSE"
-                        description="Sound-insulated B2B negotiation suites for high-value deal-making. Privacy-optimized spaces that facilitate serious business conversations and contract signings."
-                        color="#4ECDC4"
-                        delay={0.3}
-                    />
-
-                    <Zone
-                        number="4"
-                        icon={<Crown className="w-7 h-7" />}
-                        title="Relationship"
-                        subtitle="THE LEGACY"
-                        description="VIP lounges designed for deep stakeholder engagement. Premium hospitality zones that transform transactional meetings into long-term partnerships."
-                        color="#FFD700"
-                        delay={0.4}
-                    />
-                </div>
-
-                {/* Spatial Diagram */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-16 max-w-4xl mx-auto"
-                >
-                    <div className="bg-white rounded-2xl p-6 shadow-2xl">
-                        <img
-                            src="/assets/spatial-diagram.png"
-                            alt="4-Zone Booth Layout Diagram"
-                            className="w-full h-auto rounded-xl"
-                        />
-                    </div>
-                </motion.div>
-
-                {/* Bottom Note */}
+                {/* Problem Statement */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-8 text-center"
+                    className="max-w-4xl mx-auto mb-16"
                 >
-                    <p className="text-white/60 text-sm italic max-w-2xl mx-auto">
-                        Each zone is meticulously engineered based on visitor flow bio-mechanics,
-                        brand psychology, and conversion optimization principles.
-                    </p>
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
+                        <p className="text-white/90 text-lg leading-relaxed mb-4">
+                            Most exhibitors spend lakhs on their Aahar stall and walk away with nothing but memories and phone photos. The investment vanishes the moment the event ends.
+                        </p>
+                        <p className="text-[#E6007E] text-xl font-bold">
+                            We solved that problem.
+                        </p>
+                        <p className="text-white/80 text-lg leading-relaxed mt-4">
+                            Every project from The UpGreat Expo includes <span className="font-bold text-white">professional documentation at zero extra cost</span>—turning your three-day exhibition into a 12-month content engine.
+                        </p>
+                    </div>
+                </motion.div>
+
+                {/* Benefits Grid */}
+                <div className="max-w-6xl mx-auto mb-16">
+                    <motion.h3
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="text-3xl font-bold text-white mb-12 text-center"
+                    >
+                        What You Get (Included Free):
+                    </motion.h3>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <Benefit
+                            icon={<Video className="w-6 h-6" />}
+                            title="Time-Lapse Construction Videos"
+                            description="Watch your stall come to life from foundation to final lighting. Perfect for LinkedIn, company presentations, and investor decks."
+                            delay={0.1}
+                        />
+
+                        <Benefit
+                            icon={<Camera className="w-6 h-6" />}
+                            title="Professional Booth Photography"
+                            description="High-resolution images from strategic angles—day and night shots, visitor interactions, product displays. Fully edited and social-media ready."
+                            delay={0.2}
+                        />
+
+                        <Benefit
+                            icon={<Users className="w-6 h-6" />}
+                            title="Visitor Engagement Footage"
+                            description="Capture the buzz around your booth. Real people interacting with your products. Authentic testimonial material that money can't buy."
+                            delay={0.3}
+                        />
+
+                        <Benefit
+                            icon={<FileText className="w-6 h-6" />}
+                            title="Complete Raw File Library"
+                            description="Full ownership of all footage and images. Use them in sales proposals, annual reports, website galleries, and marketing campaigns forever."
+                            delay={0.4}
+                        />
+
+                        <Benefit
+                            icon={<Share2 className="w-6 h-6" />}
+                            title="Edited Social Media Packages"
+                            description="Pre-cut video clips optimized for Instagram Reels, LinkedIn posts, and YouTube shorts. Ready to publish the day Aahar ends."
+                            delay={0.5}
+                        />
+
+                        <Benefit
+                            icon={<TrendingUp className="w-6 h-6" />}
+                            title="Long-Term Brand Capital"
+                            description="Transform a short-term expense into permanent marketing assets that deliver value for years to come."
+                            delay={0.6}
+                        />
+                    </div>
+                </div>
+
+                {/* Case Study */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="max-w-4xl mx-auto"
+                >
+                    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-8 md:p-10">
+                        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <TrendingUp className="w-8 h-8 text-[#E6007E]" />
+                            The Strategic Impact
+                        </h3>
+
+                        <p className="text-white/90 text-lg mb-6">
+                            One manufacturing client used their Aahar documentation for:
+                        </p>
+
+                        <ul className="space-y-3 mb-6">
+                            {[
+                                'LinkedIn campaign (3-month duration)',
+                                'Annual investor presentation',
+                                'Sales team pitch decks',
+                                'Website case study section',
+                                'Recruitment marketing content'
+                            ].map((item, index) => (
+                                <motion.li
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 * index }}
+                                    className="flex items-center gap-3 text-white/80"
+                                >
+                                    <div className="w-2 h-2 bg-[#E6007E] rounded-full flex-shrink-0" />
+                                    {item}
+                                </motion.li>
+                            ))}
+                        </ul>
+
+                        <div className="bg-[#E6007E]/20 border border-[#E6007E]/30 rounded-xl p-6 mt-8">
+                            <p className="text-white text-lg font-bold text-center">
+                                What would have cost ₹80,000+ in separate production came bundled into their stall package.
+                            </p>
+                        </div>
+
+                        <p className="text-white/90 text-lg mt-6 text-center italic">
+                            This isn't just documentation—it's <span className="font-bold text-[#E6007E]">turning a short-term expense into long-term brand capital</span>.
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </section>
