@@ -142,8 +142,7 @@ export default function AaharCTA() {
                             <div>
                                 <h4 className="text-white font-bold mb-2">Fabrication Facility</h4>
                                 <p className="text-white/80 text-sm leading-relaxed">
-                                    Plot 23, Industrial Area<br />
-                                    Sector 37, Gurugram<br />
+                                    Sector 48, Gurugram – 122018<br />
                                     <span className="text-[#E6007E] font-semibold">(Inspection Welcome)</span>
                                 </p>
                             </div>
