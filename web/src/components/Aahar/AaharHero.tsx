@@ -139,57 +139,18 @@ export default function AaharHero() {
                         {/* Gradient Overlay for better countdown visibility */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                        {/* Countdown Timer Overlay - Bottom Right */}
-                        <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="bg-gradient-to-br from-black/90 via-black/85 to-black/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-3 md:p-5 border border-white/20 shadow-2xl shadow-black/50"
-                            >
-                                <div className="flex items-center gap-2 md:gap-3 mb-3">
-                                    <Target className="w-4 h-4 md:w-5 md:h-5 text-[#E6007E]" />
-                                    <div>
-                                        <h4 className="text-white font-bold text-sm md:text-base">Event Starts In</h4>
-                                        <p className="text-white/60 text-xs hidden md:block">March 10-14, 2026</p>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-4 gap-2 md:gap-3">
-                                    <div className="text-center">
-                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
-                                            {timeLeft.days}
-                                        </div>
-                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">DAYS</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
-                                            {timeLeft.hours.toString().padStart(2, '0')}
-                                        </div>
-                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">HRS</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
-                                            {timeLeft.minutes.toString().padStart(2, '0')}
-                                        </div>
-                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">MIN</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
-                                            {timeLeft.seconds.toString().padStart(2, '0')}
-                                        </div>
-                                        <div className="text-white/70 text-[10px] md:text-xs mt-1">SEC</div>
-                                    </div>
-                                </div>
-
-                                <div className="mt-3 pt-3 border-t border-white/10 hidden md:block">
-                                    <p className="text-white/80 text-xs text-center">
-                                        Book before March 1st for early bird discount!
-                                    </p>
-                                </div>
-                            </motion.div>
+                        {/* Countdown Timer Overlay - Bottom Right (Desktop Only) */}
+                        <div className="absolute bottom-6 right-6 z-20 hidden md:block">
+                            <CountdownTimer timeLeft={timeLeft} />
                         </div>
                     </div>
+                    {/* Countdown Timer - Mobile Only (Below Image) */}
+                    <div className="md:hidden mt-6 mb-8 flex justify-center">
+                        <div className="w-full max-w-sm">
+                            <CountdownTimer timeLeft={timeLeft} mobileMode />
+                        </div>
+                    </div>
+
                 </motion.div>
 
 
@@ -458,12 +419,12 @@ export default function AaharHero() {
                                                 onChange={handleChange}
                                                 className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30 appearance-none"
                                             >
-                                                <option value="">Select stall size</option>
-                                                <option value="9-18">9-18 SQM (Small)</option>
-                                                <option value="18-36">18-36 SQM (Medium)</option>
-                                                <option value="36-72">36-72 SQM (Large)</option>
-                                                <option value="72+">72+ SQM (X-Large)</option>
-                                                <option value="custom">Custom Size</option>
+                                                <option className="text-black" value="">Select stall size</option>
+                                                <option className="text-black" value="9-18">9-18 SQM (Small)</option>
+                                                <option className="text-black" value="18-36">18-36 SQM (Medium)</option>
+                                                <option className="text-black" value="36-72">36-72 SQM (Large)</option>
+                                                <option className="text-black" value="72+">72+ SQM (X-Large)</option>
+                                                <option className="text-black" value="custom">Custom Size</option>
                                             </select>
                                         </div>
                                         <div className="space-y-2">
@@ -479,10 +440,10 @@ export default function AaharHero() {
                                                 onChange={handleChange}
                                                 className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/40 focus:outline-none focus:border-[#E6007E] transition-all hover:border-white/30 appearance-none"
                                             >
-                                                <option value="basic">Basic Stall Design</option>
-                                                <option value="premium">Premium Custom Design</option>
-                                                <option value="complete">Complete Turnkey Solution</option>
-                                                <option value="consultation">Design Consultation</option>
+                                                <option className="text-black" value="basic">Basic Stall Design</option>
+                                                <option className="text-black" value="premium">Premium Custom Design</option>
+                                                <option className="text-black" value="complete">Complete Turnkey Solution</option>
+                                                <option className="text-black" value="consultation">Design Consultation</option>
                                             </select>
                                         </div>
                                     </div>
@@ -549,5 +510,66 @@ export default function AaharHero() {
                 </div>
             </div>
         </section>
+    );
+}
+
+// Reusable Countdown Timer Component
+function CountdownTimer({ timeLeft, mobileMode = false }: { timeLeft: { days: number, hours: number, minutes: number, seconds: number }, mobileMode?: boolean }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5 }}
+            className={`bg-gradient-to-br from-black/90 via-black/85 to-black/80 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/20 shadow-2xl shadow-black/50 ${mobileMode ? 'p-4 w-full' : 'p-3 md:p-5'}`}
+        >
+            <div className="flex items-center gap-2 md:gap-3 mb-3 justify-center md:justify-start">
+                <Target className="w-4 h-4 md:w-5 md:h-5 text-[#E6007E]" />
+                <div className="text-center md:text-left">
+                    <h4 className="text-white font-bold text-sm md:text-base">Event Starts In</h4>
+                    <p className="text-white/60 text-xs hidden md:block">March 10-14, 2026</p>
+                    {mobileMode && <p className="text-white/60 text-xs md:hidden">March 10-14, 2026</p>}
+                </div>
+            </div>
+
+            <div className="grid grid-cols-4 gap-2 md:gap-3">
+                <div className="text-center">
+                    <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                        {timeLeft.days}
+                    </div>
+                    <div className="text-white/70 text-[10px] md:text-xs mt-1">DAYS</div>
+                </div>
+                <div className="text-center">
+                    <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                        {timeLeft.hours.toString().padStart(2, '0')}
+                    </div>
+                    <div className="text-white/70 text-[10px] md:text-xs mt-1">HRS</div>
+                </div>
+                <div className="text-center">
+                    <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                        {timeLeft.minutes.toString().padStart(2, '0')}
+                    </div>
+                    <div className="text-white/70 text-[10px] md:text-xs mt-1">MIN</div>
+                </div>
+                <div className="text-center">
+                    <div className="bg-gradient-to-b from-[#E6007E] to-[#be0068] text-white font-bold text-lg md:text-2xl p-1.5 md:p-2 rounded-lg shadow-lg">
+                        {timeLeft.seconds.toString().padStart(2, '0')}
+                    </div>
+                    <div className="text-white/70 text-[10px] md:text-xs mt-1">SEC</div>
+                </div>
+            </div>
+
+            <div className="mt-3 pt-3 border-t border-white/10 hidden md:block">
+                <p className="text-white/80 text-xs text-center">
+                    Book before March 1st for early bird discount!
+                </p>
+            </div>
+            {mobileMode && (
+                <div className="mt-3 pt-3 border-t border-white/10 block md:hidden">
+                    <p className="text-white/80 text-xs text-center">
+                        Book before March 1st for early bird discount!
+                    </p>
+                </div>
+            )}
+        </motion.div>
     );
 }

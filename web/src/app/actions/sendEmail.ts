@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { submitContactFormToGoogleSheets } from "./submitToGoogleSheets";
 
 interface EmailState {
     success: boolean;
@@ -11,9 +12,10 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
     const firstName = formData.get("firstName") as string;
     const lastName = formData.get("lastName") as string;
     const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
     const message = formData.get("message") as string;
 
-    if (!firstName || !lastName || !email || !message) {
+    if (!firstName || !lastName || !email || !phone || !message) {
         return { success: false, message: "Please fill in all fields." };
     }
 
@@ -29,7 +31,7 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
         // Email to admin (you)
         const adminMailOptions = {
             from: process.env.EMAIL_USER,
-            to: "chandanwingshr@gmail.com",
+            to: process.env.EMAIL_ADMIN,
             subject: `🎯 New Contact Form Message from ${firstName} ${lastName}`,
             html: `
 <!DOCTYPE html>
@@ -50,6 +52,9 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
     <div class="container">
         <div class="header">
             <h1>🎯 New Contact Form Submission</h1>
+            <div style="background-color: #ffebee; color: #c62828; padding: 10px; margin-top: 10px; border-radius: 4px; border: 1px solid #ef5350;">
+                <strong>📞 ACTION REQUIRED:</strong> Please call this client immediately.
+            </div>
         </div>
         <div class="content">
             <div class="details">
@@ -58,6 +63,9 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
                 </div>
                 <div class="detail-row">
                     <span class="label">Email:</span> <a href="mailto:${email}">${email}</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Phone:</span> <a href="tel:${phone}" style="font-weight:bold; font-size:1.1em;">${phone}</a>
                 </div>
                 <div class="detail-row">
                     <span class="label">Message:</span>
@@ -99,7 +107,7 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
         
         <div class="content">
             <h2>What Happens Next?</h2>
-            <p>Our team will review your message and get back to you within <strong>24 hours</strong>.</p>
+            <p>Our team will review your message and <strong>will be calling you shortly</strong> to discuss your exhibition goals.</p>
             
             <div class="details">
                 <h3>Your Message:</h3>
@@ -143,6 +151,15 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
         // Send both emails
         await transporter.sendMail(adminMailOptions);
         await transporter.sendMail(clientMailOptions);
+
+        // Submit to Google Sheets
+        await submitContactFormToGoogleSheets({
+            firstName,
+            lastName,
+            email,
+            phone,
+            message
+        });
 
         return { success: true, message: "Message sent successfully! Check your email for confirmation." };
     } catch (error) {

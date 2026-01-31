@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { Button } from "@/components/UI/Button";
-import { Mail, MapPin, Phone, MessageSquare, Loader2, Globe, Clock, Calendar, FileText, Briefcase } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, Loader2, Globe, Clock, Calendar, FileText, Briefcase, CheckCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { useEffect } from "react";
 
@@ -14,19 +14,7 @@ const initialState = {
 export default function ContactPage() {
     const [state, formAction, isPending] = useActionState(sendEmail, initialState);
 
-    useEffect(() => {
-        if (state.message) {
-            if (state.success) {
-                // You could add a toast notification here
-                alert(state.message);
-                // Reset form if needed, though native form reset happens on navigation or manual reset
-                const form = document.querySelector('form') as HTMLFormElement;
-                if (form) form.reset();
-            } else {
-                alert(state.message);
-            }
-        }
-    }, [state]);
+    // Removed useEffect alert logic in favor of inline UI
 
     return (
         <div className="min-h-screen bg-slate-50">
@@ -129,74 +117,112 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    {/* Contact Form */}
+                    {/* Contact Form or Success Message */}
                     <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <h2 className="text-2xl font-bold text-[#003063] mb-8">Send us a Message</h2>
-                        <form action={formAction} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="firstName" className="text-sm font-medium text-slate-700">First Name</label>
-                                    <input
-                                        id="firstName"
-                                        name="firstName"
-                                        type="text"
-                                        required
-                                        className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all"
-                                        placeholder="John"
-                                    />
+                        {state.success ? (
+                            <div className="text-center py-12 h-full flex flex-col items-center justify-center">
+                                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
+                                    <CheckCircle className="w-12 h-12 text-green-500" />
                                 </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="lastName" className="text-sm font-medium text-slate-700">Last Name</label>
-                                    <input
-                                        id="lastName"
-                                        name="lastName"
-                                        type="text"
-                                        required
-                                        className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all"
-                                        placeholder="Doe"
-                                    />
-                                </div>
+                                <h2 className="text-3xl font-bold text-[#003063] mb-4">Thank You!</h2>
+                                <p className="text-xl text-slate-600 mb-8 max-w-md mx-auto">
+                                    {state.message}
+                                </p>
+                                <Button
+                                    href="/"
+                                    className="bg-[#003063] text-white hover:bg-[#00204a]"
+                                >
+                                    Return to Home
+                                </Button>
                             </div>
+                        ) : (
+                            <>
+                                <h2 className="text-2xl font-bold text-[#003063] mb-8">Send us a Message</h2>
+                                <form action={formAction} className="space-y-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="space-y-2">
+                                            <label htmlFor="firstName" className="text-sm font-medium text-slate-700">First Name</label>
+                                            <input
+                                                id="firstName"
+                                                name="firstName"
+                                                type="text"
+                                                required
+                                                className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
+                                                placeholder="John"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="lastName" className="text-sm font-medium text-slate-700">Last Name</label>
+                                            <input
+                                                id="lastName"
+                                                name="lastName"
+                                                type="text"
+                                                required
+                                                className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
+                                                placeholder="Doe"
+                                            />
+                                        </div>
+                                    </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm font-medium text-slate-700">Email</label>
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    required
-                                    className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all"
-                                    placeholder="john@example.com"
-                                />
-                            </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="email" className="text-sm font-medium text-slate-700">Email</label>
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            required
+                                            className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
+                                            placeholder="john@example.com"
+                                        />
+                                    </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-slate-700">Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows={4}
-                                    required
-                                    className="w-full p-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none resize-none transition-all"
-                                    placeholder="Tell us about your event..."
-                                />
-                            </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="phone" className="text-sm font-medium text-slate-700">Mobile Number</label>
+                                        <input
+                                            id="phone"
+                                            name="phone"
+                                            type="tel"
+                                            required
+                                            className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
+                                            placeholder="+91 98765 43210"
+                                        />
+                                    </div>
 
-                            <Button
-                                type="submit"
-                                disabled={isPending}
-                                className="w-full h-12 bg-[#E6007E] hover:bg-[#C5006C] text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-                            >
-                                {isPending ? (
-                                    <>
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                        Sending...
-                                    </>
-                                ) : (
-                                    "Send Message"
-                                )}
-                            </Button>
-                        </form>
+                                    <div className="space-y-2">
+                                        <label htmlFor="message" className="text-sm font-medium text-slate-700">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            rows={4}
+                                            required
+                                            className="w-full p-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none resize-none transition-all text-slate-900"
+                                            placeholder="Tell us about your event..."
+                                        />
+                                    </div>
+
+                                    {!state.success && state.message && (
+                                        <div className="p-4 bg-red-50 text-red-600 rounded-lg text-sm">
+                                            {state.message}
+                                        </div>
+                                    )}
+
+                                    <Button
+                                        type="submit"
+                                        disabled={isPending}
+                                        className="w-full h-12 bg-[#E6007E] hover:bg-[#C5006C] text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                                    >
+                                        {isPending ? (
+                                            <>
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            "Send Message"
+                                        )}
+                                    </Button>
+                                </form>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
