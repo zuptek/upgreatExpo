@@ -7,9 +7,13 @@ export async function submitToGoogleSheets(formData: {
     company: string;
     stallSize: string;
     requirements: string;
+    formName?: string;
 }) {
     try {
-        const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+        // Fallback to .env.local URL if process.env is not loaded (e.g. server not restarted)
+        const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "https://script.google.com/macros/s/AKfycbzX9LKfuyuJv4kNKFtRz0qKmjdofb9jGdwreKsdyOs_AD3awH5s-s-TWy10v941qFlt/exec";
+
+        console.log('Checking Google Sheets URL configuration:', googleSheetsUrl ? 'Present' : 'Missing');
 
         if (!googleSheetsUrl) {
             console.error('Google Sheets URL not configured');
@@ -19,7 +23,9 @@ export async function submitToGoogleSheets(formData: {
             };
         }
 
-        // Server-side fetch - no CORS issues!
+        // Combine specific fields into a generic "details" field
+        const details = `Stall Size: ${formData.stallSize}, Requirements: ${formData.requirements}`;
+
         const response = await fetch(googleSheetsUrl, {
             method: 'POST',
             headers: {
@@ -30,20 +36,16 @@ export async function submitToGoogleSheets(formData: {
                 email: formData.email,
                 phone: formData.phone,
                 company: formData.company,
-                stallSize: formData.stallSize,
-                requirements: formData.requirements,
-                timestamp: new Date().toISOString()
+                details: details, // Unified column
+                timestamp: new Date().toISOString(),
+                formName: formData.formName || "Unknown Form"
             })
         });
 
-        // We can actually read the response now!
         const responseText = await response.text();
-
         console.log('Google Sheets Response Status:', response.status);
-        console.log('Google Sheets Response:', responseText);
 
         if (response.ok || response.status === 302) {
-            // Google Apps Script often returns 302 redirect on success
             return {
                 success: true,
                 message: 'Form submitted successfully!'
@@ -70,10 +72,11 @@ export async function submitContactFormToGoogleSheets(formData: {
     lastName: string;
     email: string;
     phone: string;
+    company: string;
     message: string;
 }) {
     try {
-        const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+        const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "https://script.google.com/macros/s/AKfycbzX9LKfuyuJv4kNKFtRz0qKmjdofb9jGdwreKsdyOs_AD3awH5s-s-TWy10v941qFlt/exec";
 
         if (!googleSheetsUrl) {
             console.error('Google Sheets URL not configured');
@@ -83,7 +86,6 @@ export async function submitContactFormToGoogleSheets(formData: {
             };
         }
 
-        // Server-side fetch
         const response = await fetch(googleSheetsUrl, {
             method: 'POST',
             headers: {
@@ -93,11 +95,10 @@ export async function submitContactFormToGoogleSheets(formData: {
                 name: `${formData.firstName} ${formData.lastName}`,
                 email: formData.email,
                 phone: formData.phone || "Not Provided",
-                company: "Contact Form Inquiry",
-                stallSize: "N/A",
-                requirements: formData.message,
+                company: formData.company, // Use actual company name
+                details: formData.message, // Map message to details
                 timestamp: new Date().toISOString(),
-                formType: "Contact Us"
+                formName: "Contact Us"
             })
         });
 

@@ -13,26 +13,35 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
     const lastName = formData.get("lastName") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
+    const company = formData.get("company") as string;
     const message = formData.get("message") as string;
 
-    if (!firstName || !lastName || !email || !phone || !message) {
+    if (!firstName || !lastName || !email || !phone || !company || !message) {
         return { success: false, message: "Please fill in all fields." };
     }
 
     try {
+        const emailUser = process.env.EMAIL_USER;
+        const emailPassword = process.env.EMAIL_PASSWORD;
+
+        if (!emailUser || !emailPassword) {
+            console.error("EMAIL_USER or EMAIL_PASSWORD is missing");
+            return { success: false, message: "Server configuration error. Please contact support." };
+        }
+
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
+                user: emailUser,
+                pass: emailPassword,
             },
         });
 
-        // Email to admin (you)
-        const adminMailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_ADMIN,
-            subject: `🎯 New Contact Form Message from ${firstName} ${lastName}`,
+        // Email to admin
+        await transporter.sendMail({
+            from: `"The UpGreat Expo" <${emailUser}>`,
+            to: process.env.EMAIL_ADMIN || 'info.upgreatexpo@gmail.com',
+            subject: `🎯 New Contact form: ${firstName} ${lastName}`,
             html: `
 <!DOCTYPE html>
 <html>
@@ -62,6 +71,9 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
                     <span class="label">Name:</span> ${firstName} ${lastName}
                 </div>
                 <div class="detail-row">
+                    <span class="label">Company:</span> ${company}
+                </div>
+                <div class="detail-row">
                     <span class="label">Email:</span> <a href="mailto:${email}">${email}</a>
                 </div>
                 <div class="detail-row">
@@ -76,81 +88,82 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
     </div>
 </body>
 </html>
-            `,
-        };
+            `
+        });
 
         // Confirmation email to client
-        const clientMailOptions = {
-            from: process.env.EMAIL_USER,
+        await transporter.sendMail({
+            from: `"The UpGreat Expo" <${emailUser}>`,
             to: email,
-            subject: "✅ Thank You for Contacting The UpGreat Expo!",
+            subject: "We’ve received your inquiry – The UpGreat Expo",
             html: `
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #191970, #E6007E); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
-        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-        .details { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .cta-button { background: #E6007E; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
-        .footer { text-align: center; padding: 20px; color: #666; font-size: 14px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; }
+        .header { background: #191970; color: white; padding: 30px 20px; text-align: center; }
+        .logo { font-size: 24px; font-weight: bold; color: #fff; text-decoration: none; }
+        .content { padding: 40px 30px; background-color: #ffffff; }
+        .greeting { font-size: 18px; margin-bottom: 20px; color: #191970; font-weight: 600; }
+        .message-body { color: #555; font-size: 16px; margin-bottom: 25px; }
+        .highlight { color: #E6007E; font-weight: 600; }
+        .inquiry-box { background-color: #f8f9fa; border-left: 4px solid #E6007E; padding: 15px; margin: 25px 0; font-style: italic; color: #555; }
+        .footer { background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #e0e0e0; }
+        .social-links { margin-top: 10px; }
+        .social-links a { color: #191970; text-decoration: none; margin: 0 5px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>✅ Thank You, ${firstName}!</h1>
-            <p>We've Received Your Message</p>
+            <div class="logo">The UpGreat Expo</div>
         </div>
         
         <div class="content">
-            <h2>What Happens Next?</h2>
-            <p>Our team will review your message and <strong>will be calling you shortly</strong> to discuss your exhibition goals.</p>
+            <div class="greeting">Hi ${firstName},</div>
             
-            <div class="details">
-                <h3>Your Message:</h3>
-                <p style="white-space: pre-wrap;">${message}</p>
-            </div>
-            
-            <h3>Need Immediate Assistance?</h3>
-            <p>Feel free to reach out to us directly:</p>
-            <ul>
-                <li>📞 <strong>Phone:</strong> +91 9088655513</li>
-                <li>📧 <strong>Email:</strong> info@upgreatexpo.com</li>
-                <li>🌐 <strong>Website:</strong> www.upgreatexpo.com</li>
-            </ul>
-            
-            <p style="text-align: center;">
-                <a href="tel:+919088655513" class="cta-button">📞 Call Us Now</a>
+            <p class="message-body">
+                Thank you for reaching out to <span class="highlight">The UpGreat Expo</span>, India’s leading exhibition and installed design experts—transforming your presence into impact.
             </p>
             
-            <h3>Why Choose The UpGreat Expo?</h3>
-            <ul>
-                <li>✅ India's Leading Exhibition Stand Designer</li>
-                <li>✅ 200+ Successful Projects Delivered</li>
-                <li>✅ ISO 9001 Certified</li>
-                <li>✅ Turnkey Solutions</li>
-                <li>✅ On-Time Delivery Guaranteed</li>
-            </ul>
+            <p class="message-body">
+                We’ve successfully received your inquiry on behalf of ${company}.
+            </p>
+            
+            <p class="message-body">Regarding your requirement:</p>
+            
+            <div class="inquiry-box">
+                "${message}"
+            </div>
+            
+            <p class="message-body">
+                Our team is currently reviewing the details. One of our representatives will connect with you shortly to discuss how we can best support you at the Expo.
+            </p>
+            
+            <p class="message-body">
+                We appreciate your interest and look forward to speaking with you.
+            </p>
+            
+            <p class="message-body" style="margin-top: 40px;">
+                Best regards,<br>
+                <strong>Team The UpGreat Expo</strong>
+            </p>
         </div>
         
         <div class="footer">
-            <p><strong>The UpGreat Expo</strong></p>
+            <p>&copy; ${new Date().getFullYear()} The UpGreat Expo. All rights reserved.</p>
             <p>Welldone Tech Park, Sector 48, Gurugram – 122018, Haryana, India</p>
-            <p>📧 info@upgreatexpo.com | 📞 +91 9088655513</p>
-            <p>🌐 www.upgreatexpo.com</p>
+            <p>
+                <a href="https://www.upgreatexpo.com" style="color: #E6007E; text-decoration: none;">www.upgreatexpo.com</a>
+            </p>
         </div>
     </div>
 </body>
 </html>
             `,
-        };
-
-        // Send both emails
-        await transporter.sendMail(adminMailOptions);
-        await transporter.sendMail(clientMailOptions);
+        });
 
         // Submit to Google Sheets
         await submitContactFormToGoogleSheets({
@@ -158,10 +171,12 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
             lastName,
             email,
             phone,
+            company,
             message
         });
 
-        return { success: true, message: "Message sent successfully! Check your email for confirmation." };
+        return { success: true, message: "Message sent!" };
+
     } catch (error) {
         console.error("Error sending email:", error);
         return { success: false, message: "Failed to send message. Please try again later." };

@@ -13,7 +13,8 @@ export default function AaharHero() {
         phone: '',
         company: '',
         stallSize: '',
-        requirements: 'basic'
+        requirements: 'basic',
+        formName: 'Aahar 2026'
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -75,7 +76,8 @@ export default function AaharHero() {
                     phone: '',
                     company: '',
                     stallSize: '',
-                    requirements: 'basic'
+                    requirements: 'basic',
+                    formName: 'Aahar 2026'
                 });
 
                 // Reset success message after 5 seconds
@@ -316,7 +318,8 @@ export default function AaharHero() {
                                         <CheckCircle className="w-10 h-10 text-green-400" />
                                     </div>
                                     <h4 className="text-white text-xl font-bold mb-2">Design Request Submitted!</h4>
-                                    <p className="text-white/80 mb-4">Our team will create your 3D design and contact you within 24 hours.</p>
+                                    <p className="text-white/80 mb-2">Our team will create your 3D design and contact you within 24 hours.</p>
+                                    <p className="text-white/60 text-xs mb-4 italic">(Please check your spam/junk folder if you don't receive an email.)</p>
                                     <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                                         <p className="text-white/70 text-sm">Need immediate assistance?</p>
                                         <button

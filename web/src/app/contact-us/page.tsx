@@ -125,8 +125,11 @@ export default function ContactPage() {
                                     <CheckCircle className="w-12 h-12 text-green-500" />
                                 </div>
                                 <h2 className="text-3xl font-bold text-[#003063] mb-4">Thank You!</h2>
-                                <p className="text-xl text-slate-600 mb-8 max-w-md mx-auto">
+                                <p className="text-xl text-slate-600 mb-2 max-w-md mx-auto">
                                     {state.message}
+                                </p>
+                                <p className="text-sm text-slate-500 mb-8 max-w-md mx-auto italic">
+                                    (Please check your spam/junk folder if you don't receive an email in your inbox.)
                                 </p>
                                 <Button
                                     href="/"
@@ -173,6 +176,18 @@ export default function ContactPage() {
                                             required
                                             className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
                                             placeholder="john@example.com"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label htmlFor="company" className="text-sm font-medium text-slate-700">Company Name</label>
+                                        <input
+                                            id="company"
+                                            name="company"
+                                            type="text"
+                                            required
+                                            className="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-[#E6007E] focus:ring-1 focus:ring-[#E6007E] outline-none transition-all text-slate-900"
+                                            placeholder="Your Company Name"
                                         />
                                     </div>
 
