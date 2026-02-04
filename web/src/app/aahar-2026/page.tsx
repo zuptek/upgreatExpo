@@ -8,6 +8,8 @@ import IndustryVerticals from '@/components/Aahar/IndustryVerticals';
 import InvestmentMirage from '@/components/Aahar/InvestmentMirage';
 import PerformanceGuarantee from '@/components/Aahar/PerformanceGuarantee';
 import UrgencySection from '@/components/Aahar/UrgencySection';
+import ClientCarousel from '@/components/Home/ClientCarousel';
+import MediaCarousel from '@/components/Home/MediaCarousel';
 import AaharCTA from '@/components/Aahar/AaharCTA';
 
 export default function Aahar2026Page() {
@@ -33,6 +35,10 @@ export default function Aahar2026Page() {
 
             {/* 7. URGENCY SECTION */}
             <UrgencySection />
+
+            {/* CLIENT & MEDIA SOCIAL PROOF */}
+            <ClientCarousel />
+            <MediaCarousel />
 
             {/* 8. FINAL CTA & CONTACT */}
             <AaharCTA />

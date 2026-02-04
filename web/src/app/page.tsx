@@ -9,6 +9,8 @@ import { Button } from "@/components/UI/Button";
 const OurProcess = dynamic(() => import("@/components/Home/OurProcess"));
 const PanIndiaExecution = dynamic(() => import("@/components/Home/PanIndiaExecution"));
 const WhyPartner = dynamic(() => import("@/components/Home/WhyPartner"));
+const ClientCarousel = dynamic(() => import("@/components/Home/ClientCarousel"));
+const MediaCarousel = dynamic(() => import("@/components/Home/MediaCarousel"));
 const GetStarted = dynamic(() => import("@/components/Home/GetStarted"));
 const ImageGrid = dynamic(() => import("@/components/Home/ImageGrid"));
 const FAQ = dynamic(() => import("@/components/Home/FAQ"));
@@ -41,7 +43,11 @@ export default function Home() {
       {/* 2.2 WHY PARTNER */}
       <WhyPartner />
 
+      {/* CLIENT CAROUSEL */}
+      <ClientCarousel />
 
+      {/* MEDIA CAROUSEL */}
+      <MediaCarousel />
 
       {/* 7. GET STARTED SECTION */}
       <GetStarted />
