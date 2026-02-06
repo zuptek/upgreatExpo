@@ -8,10 +8,10 @@ import ImageGrid from '@/components/Home/ImageGrid';
 import Counter from '@/components/UI/Counter';
 
 const stats = [
-    { value: 200, suffix: "+", label: "Projects Delivered" },
-    { value: 55, suffix: "+", label: "Happy Clients" },
-    { value: 5, suffix: "+", label: "Years Experience" },
-    { value: 100, suffix: "%", label: "On-Time Delivery" },
+    { value: 200, suffix: "+", label: "Projects" },
+    { value: 98, suffix: "%", label: "Client Retention" },
+    { value: 50, suffix: "+", label: "Pan India Execution" },
+    { value: 7, suffix: "+", label: "Years Experience" },
 ];
 
 export const metadata = {

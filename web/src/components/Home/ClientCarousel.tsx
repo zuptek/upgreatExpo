@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Counter from '@/components/UI/Counter';
 
 const clients = [
     { name: "Client 1", src: "/assets/client/image.png" },
@@ -96,20 +97,28 @@ export default function ClientCarousel() {
             >
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                     <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">500+</div>
-                        <div className="text-gray-600 text-sm uppercase tracking-wide">Projects Delivered</div>
+                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">
+                            <Counter value={200} suffix="+" />
+                        </div>
+                        <div className="text-gray-600 text-sm uppercase tracking-wide">Projects</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">200+</div>
-                        <div className="text-gray-600 text-sm uppercase tracking-wide">Happy Clients</div>
+                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">
+                            <Counter value={98} suffix="%" />
+                        </div>
+                        <div className="text-gray-600 text-sm uppercase tracking-wide">Client Retention</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">15+</div>
+                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">
+                            <Counter value={50} suffix="+" />
+                        </div>
+                        <div className="text-gray-600 text-sm uppercase tracking-wide">Pan India Execution</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">
+                            <Counter value={7} suffix="+" />
+                        </div>
                         <div className="text-gray-600 text-sm uppercase tracking-wide">Years Experience</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-[#E6007E] mb-2">50+</div>
-                        <div className="text-gray-600 text-sm uppercase tracking-wide">Team Members</div>
                     </div>
                 </div>
             </motion.div>
